@@ -5,7 +5,7 @@ const path = require("path");
 // const flash = require("connect-flash");
 // const session = require("express-session");
 // const passport = require("passport");
-// const bodyParser = require("body-parser");
+const bodyParser = require("body-parser");
 
 const ejs = require("ejs");
 const expressLayouts = require("express-ejs-layouts");
@@ -61,9 +61,9 @@ app.set("views", path.resolve(__dirname, "./src/views/frontend"));
 
 
 const frRouter = require("./src/routers/frontend/frRouters");
-const authRouter = require("./src/routers/frontend/authRouters");
-const mobile_frRouter = require("./src/routers/mobile/mobile_frRouters");
-const mobile_authRouter = require("./src/routers/mobile/mobile_authRouters");
+// const authRouter = require("./src/routers/frontend/authRouters");
+// const mobile_frRouter = require("./src/routers/mobile/mobile_frRouters");
+// const mobile_authRouter = require("./src/routers/mobile/mobile_authRouters");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

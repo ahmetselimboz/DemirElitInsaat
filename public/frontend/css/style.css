@@ -340,13 +340,13 @@ a {
 @media screen and (max-width: 480px) {
   .navv {
     flex-direction: column;
-    height: 20vw;
-
+    height: 80px;
+    transition: 0.3s ease-in-out;
     border-bottom: 5px solid #940c0c;
   }
 
   .navv.active {
-    height: auto;
+    height: 248px;
     transition: 0.3s ease-in-out;
   }
 
@@ -371,7 +371,7 @@ a {
   }
 
   .nav-logo-img {
-    width: 30vw;
+    width: 120px;
     height: auto;
   }
 
@@ -397,7 +397,7 @@ a {
     cursor: pointer;
     position: absolute;
     right: 25px;
-    font-size: 7vw;
+    font-size: 25px;
   }
 
   .nav-menu {
@@ -409,7 +409,7 @@ a {
   }
   .nav-link a {
     padding: 0.5rem;
-    font-size: 13px;
+    font-size: 18px;
   }
 }
 @media screen and (min-width: 481px) and (max-width: 768px) {

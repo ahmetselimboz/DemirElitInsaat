@@ -167,7 +167,7 @@ window.addEventListener("load", () => {
       document.body.scrollTop > 100 ||
       document.documentElement.scrollTop > 100
     ) {
-      document.querySelector("nav").style.marginTop = "-135px";
+      document.querySelector("nav").style.marginTop = "-158px";
     } else {
       document.querySelector("nav").style.marginTop = "0";
     }

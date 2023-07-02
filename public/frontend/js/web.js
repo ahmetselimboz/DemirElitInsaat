@@ -220,6 +220,7 @@ window.addEventListener("scroll", () => {
 //Responsive Navbar Animation
 
 
+responsiveNavbar();
 
 function responsiveNavbar() {
   const nav = document.querySelector(".nav-menu");
@@ -228,13 +229,15 @@ function responsiveNavbar() {
     nav.classList.toggle("nav-menu-trans");
 
     window.onscroll = function () {
+      const navv = document.querySelector(".navv");
       if (
         document.body.scrollTop > 100 ||
         document.documentElement.scrollTop > 100
       ) {
-        nav.style.marginTop = "-270px";
+        navv.style.marginTop = "-270px";
       } else {
-        nav.style.marginTop = "0";
+        navv.style.marginTop = "0";
+        nav.classList.remove("nav-menu-trans");
       }
     };
   }
@@ -243,7 +246,7 @@ function responsiveNavbar() {
 var viewport_width = window.innerWidth;
 
 if (viewport_width <=480) {
-  responsiveNavbar();
+ 
 
     var navlink = document.querySelector("#kurumsal");
     var navvvlink = document.querySelector("#kurumsal-alt")

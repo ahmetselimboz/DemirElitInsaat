@@ -893,13 +893,13 @@ a {
     font-size: 3.5vw;
     color: #fff;
     padding: 1rem 0.5rem;
-    font-family: "Roboto", sans-serif;
+    font-family: "Ysabeau Infant", sans-serif;
   }
 
   #brand-title {
     color: #fff;
     padding: 1rem 0.5rem;
-    font-family: "Roboto", sans-serif;
+    font-family: "Courgette", cursive;
     font-size: 7vw;
     transition: 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
   }
@@ -918,7 +918,7 @@ a {
   .rightthumb h3 {
     font-size: 5vw;
     color: #080808;
-    font-family: "Roboto", sans-serif;
+    font-family: "Ysabeau Infant", sans-serif;
   }
 
   .brand-underline {

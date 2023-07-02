@@ -151,8 +151,8 @@ window.onscroll = function () {
   }
 
   if (
-    document.body.scrollTop > 2000 ||
-    document.documentElement.scrollTop > 2000
+    document.body.scrollTop > 1900 ||
+    document.documentElement.scrollTop > 1900
   ) {
     const counters = document.querySelectorAll(".count");
     const speed = 10000;

@@ -219,6 +219,11 @@ window.addEventListener("scroll", () => {
 
 //Responsive Navbar Animation
 
+document.querySelector(".header-text").addEventListener("click", ()=>{
+  console.log("meraha");
+  blank.classList.remove("nav-menu-trans");
+});
+
 
 responsiveNavbar();
 
@@ -241,53 +246,37 @@ function responsiveNavbar() {
       }
     };
   }
+
 }
 
 var viewport_width = window.innerWidth;
 
-if (viewport_width <=480) {
- 
-
-    var navlink = document.querySelector("#kurumsal");
-    var navvvlink = document.querySelector("#kurumsal-alt")
-    var navlinkiii = document.querySelector(".nav-link-a-ii")
-    navlink.addEventListener("click", ()=>{
+if (viewport_width <= 610) {
   
-      
-      navvvlink.classList.toggle("nav-link-alt-active");
+  var navlink = document.querySelector("#kurumsal");
+  var navvvlink = document.querySelector("#kurumsal-alt");
+  var navlinkiii = document.querySelector(".nav-link-a-ii");
+  navlink.addEventListener("click", () => {
+    navvvlink.classList.toggle("nav-link-alt-active");
 
-     
-      navlinkiii.classList.toggle("nav-link-a-i-active")
-      if(navvvlink2.classList.contains("nav-link-alt-active")){
-        navvvlink2.classList.remove("nav-link-alt-active");
-        navlinkii.classList.remove("nav-link-a-i-active")
-      }
-    })
-    var navlink2 = document.querySelector("#projeler");
-    var navvvlink2 = document.querySelector("#projeler-alt")
-    var navlinkii = document.querySelector(".nav-link-a-i")
-    navlink2.addEventListener("click", ()=>{
-      
-      navvvlink2.classList.toggle("nav-link-alt-active");
+    navlinkiii.classList.toggle("nav-link-a-i-active");
+    if (navvvlink2.classList.contains("nav-link-alt-active")) {
+      navvvlink2.classList.remove("nav-link-alt-active");
+      navlinkii.classList.remove("nav-link-a-i-active");
+    }
+  });
+  var navlink2 = document.querySelector("#projeler");
+  var navvvlink2 = document.querySelector("#projeler-alt");
+  var navlinkii = document.querySelector(".nav-link-a-i");
+  navlink2.addEventListener("click", () => {
+    navvvlink2.classList.toggle("nav-link-alt-active");
 
-      
-      navlinkii.classList.toggle("nav-link-a-i-active")
-      if(navvvlink.classList.contains("nav-link-alt-active")){
-        navvvlink.classList.remove("nav-link-alt-active");
-        navlinkiii.classList.remove("nav-link-a-i-active")
-      }
-    })
+    navlinkii.classList.toggle("nav-link-a-i-active");
+    if (navvvlink.classList.contains("nav-link-alt-active")) {
+      navvvlink.classList.remove("nav-link-alt-active");
+      navlinkiii.classList.remove("nav-link-a-i-active");
+    }
+  });
 
-    // function navlink() {
-    //   var navvvlink2 = document.querySelector("#kurumsal-alt")
-    //   navvvlink2.classList.toggle("nav-link-alt-active");
-    // }
-    // function navlinkk() {
-    //   var navvvlink2 = document.querySelector("#projeler-alt")
-    //   navvvlink2.classList.toggle("nav-link-alt-active");
-
-    //   if()
-    // }
-  
 
 }

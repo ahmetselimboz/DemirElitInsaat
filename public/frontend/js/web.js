@@ -219,10 +219,7 @@ window.addEventListener("scroll", () => {
 
 //Responsive Navbar Animation
 
-document.querySelector(".header-text").addEventListener("click", ()=>{
-  console.log("meraha");
-  blank.classList.remove("nav-menu-trans");
-});
+
 
 
 responsiveNavbar();
@@ -277,6 +274,10 @@ if (viewport_width <= 610) {
       navlinkiii.classList.remove("nav-link-a-i-active");
     }
   });
+  const nav = document.querySelector(".nav-menu");
+  document.querySelector("#wrapper").addEventListener("click", ()=>{
+    console.log("meraha");
 
-
+    nav.classList.remove("nav-menu-trans");
+  });
 }

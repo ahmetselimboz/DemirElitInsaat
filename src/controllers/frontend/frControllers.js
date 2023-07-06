@@ -12,9 +12,21 @@ const getHomePage = async (req, res, next) => {
   });
 };
 
+const getApartDetail = async (req, res, next) => {
+
+
+
+  res.render("apart_detail", {
+
+
+    layout: false,
+  });
+};
+
 
 module.exports = {
   getHomePage,
+  getApartDetail,
 //   getDetails,
 //   postComment,
 //   getAllComments,

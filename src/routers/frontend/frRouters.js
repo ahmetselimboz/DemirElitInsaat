@@ -7,6 +7,8 @@ const frontController = require("../../controllers/frontend/frControllers")
 
 router.get('/', frontController.getHomePage);
 router.get('/homepage', frontController.getHomePage);
+
+router.get('/daireDetay', frontController.getApartDetail)
 // router.get('/images',frontController.getImages);
 // router.post('/images',upload.any(), frontController.postImages);
 // router.get('/details/:id', frontController.getDetails);

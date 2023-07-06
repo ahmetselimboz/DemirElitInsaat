@@ -219,9 +219,6 @@ window.addEventListener("scroll", () => {
 
 //Responsive Navbar Animation
 
-
-
-
 responsiveNavbar();
 
 function responsiveNavbar() {
@@ -243,13 +240,11 @@ function responsiveNavbar() {
       }
     };
   }
-
 }
 
 var viewport_width = window.innerWidth;
 
 if (viewport_width <= 610) {
-  
   var navlink = document.querySelector("#kurumsal");
   var navvvlink = document.querySelector("#kurumsal-alt");
   var navlinkiii = document.querySelector(".nav-link-a-ii");
@@ -274,10 +269,128 @@ if (viewport_width <= 610) {
       navlinkiii.classList.remove("nav-link-a-i-active");
     }
   });
-  const nav = document.querySelector(".nav-menu");
-  document.querySelector("#wrapper").addEventListener("click", ()=>{
-    console.log("meraha");
 
-    nav.classList.remove("nav-menu-trans");
+  if (document.querySelector(".cl")) {
+    const nav = document.querySelector(".nav-menu");
+    document.querySelector(".cl").addEventListener("click", () => {
+
+  
+      nav.classList.remove("nav-menu-trans");
+    });
+  }
+ 
+ 
+ 
+ 
+}
+
+let buttonRight = document.querySelector("#detail-alt-right");
+let buttonLeft = document.querySelector("#detail-alt-left");
+
+buttonLeft.addEventListener("click", function () {
+  document.querySelector(".detail-alt").scrollLeft -= 170;
+});
+
+buttonRight.addEventListener("click", function () {
+  document.querySelector(".detail-alt").scrollLeft += 170;
+});
+
+let altImages = document.querySelectorAll(".detail-alt-image");
+let dots = document.querySelectorAll(".detail-alt-dots ul i");
+document.querySelector(".detail-image img").src = altImages[0].src;
+console.log(dots);
+
+altImages.forEach((eleman, index) => {
+  eleman.addEventListener("click", () => {
+    // Tüm <li> elemanlarından "active" sınıfını kaldırın
+    altImages.forEach((elem) => {
+      elem.classList.remove("alt-image-active");
+    });
+
+    // Tıklanan <li> elemanına "active" sınıfını ekleyin
+    document.querySelector(".detail-image img").src = eleman.src;
+    eleman.classList.add("alt-image-active");
+   
+    dots.forEach((elem ,inde) => {
+ 
+
+     
+      
+      if(index == inde){
+   
+        elem.classList.add("circle-active");
+      }  
+       dots.forEach((el, indexx)=>{
+        if (index != indexx) {
+          el.classList.remove("circle-active");
+        }
+       
+      })
+
+    });
+    
+  });
+});
+
+
+document.querySelector(".det-btn a").addEventListener("click", (e)=>{
+  e.preventDefault();
+  document.querySelector("#map-section").classList.toggle("map-active")
+  document.querySelector(".detail-map").classList.toggle("detail-map-active")
+})
+
+
+document.querySelector(".detail-image img").addEventListener("click", ()=>{
+  document.querySelector(".picture-plus").classList.add("picture-plus-active");
+
+  if (altImages[0].classList.contains("alt-image-active")) {
+    document.querySelector(".plus-image img").src = altImages[0].src;
+
+  }
+
+
+})
+
+document.querySelector("#plus-close").addEventListener("click", ()=>{
+  document.querySelector(".picture-plus").classList.remove("picture-plus-active")
+})
+
+
+var images = []; 
+
+altImages.forEach((eleman)=>{
+  images.push(eleman);
+})
+
+var currentIndex = 0;
+var imgElement = document.querySelector(".plus-image img");
+
+function showImage(index) {
+  if (index < 0 || index >= images.length) return;
+  imgElement.src = images[index].src;
+  currentIndex = index;
+}
+
+document.querySelector("#plus-left").addEventListener("click", function() {
+  showImage(currentIndex - 1);
+});
+
+document.querySelector("#plus-right").addEventListener("click", function() {
+  showImage(currentIndex + 1);
+});
+
+// İlk görüntüyü göstermek için:
+
+
+for (var i = 0; i < altImages.length; i++) {
+  altImages[i].addEventListener("click", function(event) {
+    event.preventDefault(); // Linkin varsayılan davranışını engelle (sayfayı yenileme gibi)
+    var index = Array.prototype.indexOf.call(altImages, this);
+
+    // Burada yapmak istediğiniz işlemleri gerçekleştirebilirsiniz.
+
+    showImage(index);
+
+
   });
 }

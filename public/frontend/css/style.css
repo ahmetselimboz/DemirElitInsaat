@@ -2039,7 +2039,7 @@ footer .container {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow-x: auto;
+  overflow-x: scroll;
 }
 
 .plus-image::-webkit-scrollbar {

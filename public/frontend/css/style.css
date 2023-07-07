@@ -2050,7 +2050,7 @@ footer .container {
 .plus-image img {
   width: 80%;
   transform-origin: left center;
-  scroll-snap-align: start;
+
 }
 
 #plus-left {

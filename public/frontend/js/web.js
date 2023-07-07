@@ -273,15 +273,9 @@ if (viewport_width <= 610) {
   if (document.querySelector(".cl")) {
     const nav = document.querySelector(".nav-menu");
     document.querySelector(".cl").addEventListener("click", () => {
-
-  
       nav.classList.remove("nav-menu-trans");
     });
   }
- 
- 
- 
- 
 }
 
 let buttonRight = document.querySelector("#detail-alt-right");
@@ -310,57 +304,45 @@ altImages.forEach((eleman, index) => {
     // Tıklanan <li> elemanına "active" sınıfını ekleyin
     document.querySelector(".detail-image img").src = eleman.src;
     eleman.classList.add("alt-image-active");
-   
-    dots.forEach((elem ,inde) => {
- 
 
-     
-      
-      if(index == inde){
-   
+    dots.forEach((elem, inde) => {
+      if (index == inde) {
         elem.classList.add("circle-active");
-      }  
-       dots.forEach((el, indexx)=>{
+      }
+      dots.forEach((el, indexx) => {
         if (index != indexx) {
           el.classList.remove("circle-active");
         }
-       
-      })
-
+      });
     });
-    
   });
 });
 
-
-document.querySelector(".det-btn a").addEventListener("click", (e)=>{
+document.querySelector(".det-btn a").addEventListener("click", (e) => {
   e.preventDefault();
-  document.querySelector("#map-section").classList.toggle("map-active")
-  document.querySelector(".detail-map").classList.toggle("detail-map-active")
-})
+  document.querySelector("#map-section").classList.toggle("map-active");
+  document.querySelector(".detail-map").classList.toggle("detail-map-active");
+});
 
-
-document.querySelector(".detail-image img").addEventListener("click", ()=>{
+document.querySelector(".detail-image img").addEventListener("click", () => {
   document.querySelector(".picture-plus").classList.add("picture-plus-active");
 
   if (altImages[0].classList.contains("alt-image-active")) {
     document.querySelector(".plus-image img").src = altImages[0].src;
-
   }
+});
 
+document.querySelector("#plus-close").addEventListener("click", () => {
+  document
+    .querySelector(".picture-plus")
+    .classList.remove("picture-plus-active");
+});
 
-})
+var images = [];
 
-document.querySelector("#plus-close").addEventListener("click", ()=>{
-  document.querySelector(".picture-plus").classList.remove("picture-plus-active")
-})
-
-
-var images = []; 
-
-altImages.forEach((eleman)=>{
+altImages.forEach((eleman) => {
   images.push(eleman);
-})
+});
 
 var currentIndex = 0;
 var imgElement = document.querySelector(".plus-image img");
@@ -371,26 +353,49 @@ function showImage(index) {
   currentIndex = index;
 }
 
-document.querySelector("#plus-left").addEventListener("click", function() {
+document.querySelector("#plus-left").addEventListener("click", function () {
   showImage(currentIndex - 1);
 });
 
-document.querySelector("#plus-right").addEventListener("click", function() {
+document.querySelector("#plus-right").addEventListener("click", function () {
   showImage(currentIndex + 1);
 });
 
 // İlk görüntüyü göstermek için:
 
-
 for (var i = 0; i < altImages.length; i++) {
-  altImages[i].addEventListener("click", function(event) {
+  altImages[i].addEventListener("click", function (event) {
     event.preventDefault(); // Linkin varsayılan davranışını engelle (sayfayı yenileme gibi)
     var index = Array.prototype.indexOf.call(altImages, this);
 
     // Burada yapmak istediğiniz işlemleri gerçekleştirebilirsiniz.
 
     showImage(index);
-
-
   });
 }
+
+let plusGlass = document.querySelector(".fa-magnifying-glass-plus");
+let minusGlass = document.querySelector(".fa-magnifying-glass-minus");
+let sayac = 1;
+
+plusGlass.addEventListener("click", function () {
+  sayac = sayac + 0.1;
+  document.querySelector(".plus-image img").style.transform = `scale(${sayac})`;
+
+  if (sayac > 1) {
+    document.querySelector("#plus-left").style.display = "none";
+    document.querySelector("#plus-right").style.display = "none";
+  }
+});
+
+minusGlass.addEventListener("click", function () {
+  sayac = sayac - 0.1;
+  if (sayac < 1) {
+    sayac = 1;
+  }
+  if (sayac == 1) {
+    document.querySelector("#plus-left").style.display = "block";
+    document.querySelector("#plus-right").style.display = "block";
+  }
+  document.querySelector(".plus-image img").style.transform = `scale(${sayac})`;
+});

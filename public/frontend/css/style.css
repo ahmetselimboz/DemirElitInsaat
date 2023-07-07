@@ -2043,7 +2043,7 @@ footer .container {
 }
 
 .plus-image::-webkit-scrollbar {
-  width: 1em;
+  width: 2px;
 }
  
 .plus-image::-webkit-scrollbar-track {
@@ -2051,7 +2051,7 @@ footer .container {
 }
  
 .plus-image::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0);
+  background-color: rgb(255, 255, 255);
   outline: 0px solid slategrey;
 }
 

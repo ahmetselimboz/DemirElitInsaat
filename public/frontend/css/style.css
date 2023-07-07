@@ -2043,7 +2043,16 @@ footer .container {
 }
 
 .plus-image::-webkit-scrollbar {
-  display: block;
+  width: 1em;
+}
+ 
+.plus-image::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+ 
+.plus-image::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0);
+  outline: 0px solid slategrey;
 }
 
 

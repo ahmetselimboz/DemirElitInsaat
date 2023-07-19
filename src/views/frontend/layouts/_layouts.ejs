@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
+    />
+    <!-- or -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"
+    />
+
+    <title>Demir Elit İnşaat | Kahramanmaraş</title>
+    <link
+      rel="shortcut icon"
+      href="/frontend/assets/Sekme_Icon.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="/frontend/css/style.css" />
+  </head>
+  <body>
+    <div class="loader">
+      <div class="box">
+        <div class="loader-img">
+          <img src="https://i.hizliresim.com/cjzidcu.png" alt="" />
+        </div>
+        <div class="b b1"></div>
+        <div class="b b2"></div>
+        <div class="b b3"></div>
+      </div>
+    </div>
+
+    <nav class="navv">
+      <a href="/" class="nav-logo">
+        <div class="nav-logo-img">
+          <img src="/frontend/assets/DEI_logo_dk.png" alt="" />
+        </div>
+        <i class="fa-solid fa-bars"></i>
+      </a>
+
+      <div class="nav-menu">
+        <ul class="nav-menu-ul">
+          <li class="nav-link">
+            <a
+              class="nav-link-a <%- link1 %>  hover-underline-animation"
+              href="/" style="cursor:pointer"
+              >ANA SAYFA</a
+            >
+          </li>
+          <li class="nav-link">
+            <a class="nav-link-a <%- link2 %> hover-underline-animation" id="kurumsal"
+              >KURUMSAL <i class="bx bx-chevron-down nav-link-a-ii"></i
+            ></a>
+            <div class="nav-link-alt">
+              <ul class="nav-link-alt-ul" id="kurumsal-alt">
+                <li>
+                  <span class="nav-link-alt-ul-span"></span
+                  ><a href="/hakkimizda">Hakkımızda</a>
+                </li>
+                <li>
+                  <span class="nav-link-alt-ul-span"></span
+                  ><a href="/ekibimiz">Ekibimiz</a>
+                </li>
+                <li>
+                  <span class="nav-link-alt-ul-span"></span
+                  ><a href="/vizyon-misyon">Vizyon & Misyon</a>
+                </li>
+                <li>
+                  <span class="nav-link-alt-ul-span"></span
+                  ><a href="/degerlerimiz">Değerlerimiz</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-link">
+            <a class="nav-link-a <%- link3 %> hover-underline-animation" id="projeler"
+              >PROJELER <i class="bx bx-chevron-down nav-link-a-i"></i
+            ></a>
+            <div class="nav-link-alt">
+              <ul class="nav-link-alt-ul" id="projeler-alt">
+                <li>
+                  <span class="nav-link-alt-ul-span"></span
+                  ><a href="/daireler">Tüm Projeler</a>
+                </li>
+                <li>
+                  <span class="nav-link-alt-ul-span"></span
+                  ><a href="/daireler">Güncel Projeler</a>
+                </li>
+                <li>
+                  <span class="nav-link-alt-ul-span"></span
+                  ><a href="/daireler">Tamamlanan Projeler</a>
+                </li>
+                <li>
+                  <span class="nav-link-alt-ul-span"></span
+                  ><a href="/daireler">Gelecek Projeler</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-link">
+            <a style="cursor:pointer" class="nav-link-a <%- link4 %> hover-underline-animation" href="/haberler">HABERLER</a>
+          </li>
+          <li class="nav-link">
+            <a style="cursor:pointer" class="nav-link-a <%- link5 %>  hover-underline-animation" href="/iletisim">İLETİŞİM</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <%- body %>
+
+    <footer>
+      <div class="container clearfix">
+        <div class="colum">
+          <a href="#" class="footer-logo">
+            <div class="footer-logo-img">
+              <img src="/frontend/assets/DEI_logo_dk.png" alt="" />
+            </div>
+          </a>
+          <hr class="footer-logo-underline" />
+          <ul>
+            <li>
+              <a href="#" class="btn-social">
+                <i class="fa-brands fa-facebook"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="btn-social">
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="btn-social">
+                <i class="fa-brands fa-twitter"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="btn-social">
+                <i class="fa-brands fa-linkedin"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="colum">
+          <div class="footer-contact">
+            <h4 class="text-uppercase">İLETİŞİM</h4>
+            <div class="footer-contact-info">
+              <p>
+                <i class="fa-solid fa-phone"></i>&nbsp; Telefon-1: (0344) 555 44
+                33
+              </p>
+              <p>
+                <i class="fa-solid fa-phone"></i>&nbsp; Telefon-2: (0532) 242 58
+                77
+              </p>
+              <p>
+                <i class="fa-solid fa-envelope"></i>&nbsp; Gmail:
+                demirelitinsaat@gmail.com
+              </p>
+            </div>
+
+            <hr class="footer-underline" />
+            <h4 class="text-uppercase">KONUM</h4>
+            <div class="footer-contact-adress">
+              <h6>
+                Yirmiikigün Mah. Prof. Dr. Necmettin Erbakan Bulvarı Berra Apt.
+                No:29/1/B, 46050 Onikişubat/Kahramanmaraş
+              </h6>
+            </div>
+          </div>
+        </div>
+        <div class="colum">
+          <h5 class="text-uppercase">SİTE HARİTASI</h5>
+          <div class="footer-way">
+            <a href="/">Ana Sayfa</a>
+            <a href="/hakkimizda">Hakkımızda</a>
+            <a href="/daireler">Tüm Projeler</a>
+            <a href="/haberler">Haberler</a>
+            <a href="/iletisim">İletişim</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <div class="footer-bottom">
+      <h5>Copyright © DEMİR ELİT İNŞAAT 2023 | Tüm Hakları Saklıdır.</h5>
+      <a href="www.linkedin.com/in/ahmet-selim-boz-216847229" target="_blank" class="footer-made">Designed by -ASB-</a>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-2.2.0.min.js"
+      type="text/javascript"
+    ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <script src="/frontend/js/web.js"></script>
+  </body>
+</html>

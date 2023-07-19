@@ -6,22 +6,18 @@ const frontController = require("../../controllers/frontend/frControllers")
 // const upload = multer();
 
 router.get('/', frontController.getHomePage);
-router.get('/homepage', frontController.getHomePage);
+router.get('/anasayfa', frontController.getHomePage);
 
-router.get('/daireDetay', frontController.getApartDetail)
-// router.get('/images',frontController.getImages);
-// router.post('/images',upload.any(), frontController.postImages);
-// router.get('/details/:id', frontController.getDetails);
+router.get('/dairedetay', frontController.getApartDetail)
+router.get('/hakkimizda', frontController.getAboutUs)
+router.get('/iletisim', frontController.getContact)
+router.get('/daireler', frontController.getAparts)
+router.get('/haberdetay', frontController.getNewsDetail)
+router.get('/haberler', frontController.getNews)
+router.get('/degerlerimiz', frontController.getOurValues)
+router.get('/ekibimiz', frontController.getSquad)
+router.get('/vizyon-misyon', frontController.getVisionMision)
 
 
-// router.post('/comment',  validations.validateNewComment(), isAuthenticated.yes, frontController.postComment);
-
-// router.get('/comment/:id', frontController.getAllComments);
-
-// router.get("/page/:name/:pg", frontController.getPage);
-
-// router.get("/book-of-the-day", frontController.getBookOfDay)
-
-// router.post("/search", frontController.postSearch);
 
 module.exports = router;

@@ -380,7 +380,31 @@ for (var i = 0; i < altImages.length; i++) {
     showImage(index);
   });
 }
+//------------------------------------------------------------------------------------
+// let plusGlass = document.querySelector(".fa-magnifying-glass-plus");
+// let minusGlass = document.querySelector(".fa-magnifying-glass-minus");
+// let sayac = 1;
 
+// plusGlass.addEventListener("click", function () {
+//   sayac = sayac + 0.1;
+//   document.querySelector(".plus-image img").style.transform = `scale(${sayac})`;
 
+//   if (sayac > 1) {
+//     document.querySelector("#plus-left").style.display = "none";
+//     document.querySelector("#plus-right").style.display = "none";
+//   }
+// });
+
+// minusGlass.addEventListener("click", function () {
+//   sayac = sayac - 0.1;
+//   if (sayac < 1) {
+//     sayac = 1;
+//   }
+//   if (sayac == 1) {
+//     document.querySelector("#plus-left").style.display = "block";
+//     document.querySelector("#plus-right").style.display = "block";
+//   }
+//   document.querySelector(".plus-image img").style.transform = `scale(${sayac})`;
+// });
 
 

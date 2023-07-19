@@ -291,8 +291,8 @@ buttonRight.addEventListener("click", function () {
 
 let altImages = document.querySelectorAll(".detail-alt-image");
 let dots = document.querySelectorAll(".detail-alt-dots ul i");
-document.querySelector(".detail-image img").src = altImages[0].src;
-console.log(dots);
+document.querySelector(".detail-image-img").src = altImages[0].src;
+
 
 altImages.forEach((eleman, index) => {
   eleman.addEventListener("click", () => {
@@ -302,7 +302,7 @@ altImages.forEach((eleman, index) => {
     });
 
     // Tıklanan <li> elemanına "active" sınıfını ekleyin
-    document.querySelector(".detail-image img").src = eleman.src;
+    document.querySelector(".detail-image-img").src = eleman.src;
     eleman.classList.add("alt-image-active");
 
     dots.forEach((elem, inde) => {
@@ -319,12 +319,19 @@ altImages.forEach((eleman, index) => {
 });
 
 document.querySelector(".det-btn a").addEventListener("click", (e) => {
-  e.preventDefault();
+
   document.querySelector("#map-section").classList.toggle("map-active");
   document.querySelector(".detail-map").classList.toggle("detail-map-active");
 });
 
-document.querySelector(".detail-image img").addEventListener("click", () => {
+document.querySelector(".detail-image-img").addEventListener("click", () => {
+  document.addEventListener('DOMContentLoaded', function(){
+    Code.photoSwipe('img', '.detail-alt-area', { captionAndToolbarHideOnSwipe: false } );
+  }, false);
+  
+  
+  
+  
   document.querySelector(".picture-plus").classList.add("picture-plus-active");
 
   if (altImages[0].classList.contains("alt-image-active")) {
@@ -374,28 +381,6 @@ for (var i = 0; i < altImages.length; i++) {
   });
 }
 
-let plusGlass = document.querySelector(".fa-magnifying-glass-plus");
-let minusGlass = document.querySelector(".fa-magnifying-glass-minus");
-let sayac = 1;
 
-plusGlass.addEventListener("click", function () {
-  sayac = sayac + 0.1;
-  document.querySelector(".plus-image img").style.transform = `scale(${sayac})`;
 
-  if (sayac > 1) {
-    document.querySelector("#plus-left").style.display = "none";
-    document.querySelector("#plus-right").style.display = "none";
-  }
-});
 
-minusGlass.addEventListener("click", function () {
-  sayac = sayac - 0.1;
-  if (sayac < 1) {
-    sayac = 1;
-  }
-  if (sayac == 1) {
-    document.querySelector("#plus-left").style.display = "block";
-    document.querySelector("#plus-right").style.display = "block";
-  }
-  document.querySelector(".plus-image img").style.transform = `scale(${sayac})`;
-});

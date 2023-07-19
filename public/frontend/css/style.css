@@ -66,8 +66,7 @@ li {
   list-style: none;
 }
 
-.cl{
-
+.cl {
 }
 
 h1,
@@ -1979,30 +1978,27 @@ footer .container {
   display: flex;
   align-items: center;
   justify-content: center;
- 
+
   width: 40px;
   height: 40px;
 
-  
   transition: 0.2s ease-in-out;
   cursor: pointer;
 }
 #plus-close:hover {
   color: #757575;
   background-color: #ffffff;
- 
 }
 
-.plus-closer{
+.plus-closer {
   margin: 0.5rem;
   right: 0;
   top: 0;
   position: fixed;
   display: flex;
-
 }
 
-#fa-magnifying{
+#fa-magnifying {
   transition: 0.2s ease-in-out;
   cursor: pointer;
   border: 1px solid #6a6a6a;
@@ -2020,7 +2016,6 @@ footer .container {
 #fa-magnifying:hover {
   color: #757575;
   background-color: #ffffff;
- 
 }
 
 .plus-area {
@@ -2045,21 +2040,19 @@ footer .container {
 .plus-image::-webkit-scrollbar {
   width: 2px;
 }
- 
+
 .plus-image::-webkit-scrollbar-track {
   box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
- 
+
 .plus-image::-webkit-scrollbar-thumb {
   background-color: rgb(255, 255, 255);
   outline: 0px solid slategrey;
 }
 
-
 .plus-image img {
   width: 80%;
   transform-origin: left center;
-
 }
 
 #plus-left {
@@ -2088,16 +2081,13 @@ footer .container {
 }
 
 @media screen and (max-width: 480px) {
-  #fa-magnifying{
-
+  #fa-magnifying {
     display: flex;
   }
 
-  
-.plus-image img {
-  width: 100%;
-
-}
+  .plus-image img {
+    width: 100%;
+  }
 }
 @media screen and (min-width: 481px) and (max-width: 768px) {
 }
@@ -2296,7 +2286,6 @@ footer .container {
   filter: opacity(1) drop-shadow(0 0 0 rgb(0, 0, 0));
   transition: 0.3s ease-in-out;
   position: absolute;
-  
 }
 
 .detail-alt-area {
@@ -2373,8 +2362,8 @@ footer .container {
 
 .detail-left {
   width: 27%;
-  height: 500px;
-  margin: 3.5rem 2rem;
+  height: inherit;
+  margin: 3.5rem 2rem .5rem 2rem;
   padding: 5rem 0rem;
   background: url("../assets/Baş.png");
   background-size: cover;
@@ -2443,6 +2432,76 @@ footer .container {
   font-family: "Poppins", sans-serif;
 }
 
+.detail-desc{
+  display: flex;
+  flex-direction: column;
+  height: inherit;
+margin:1rem;
+}
+
+.detail-ar{
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.detail-title{
+  padding: 0.5rem 0;
+}
+
+.detail-title h4 {
+  font-family: "Poppins", sans-serif;
+  color: #ececec;
+  font-size: 22px;
+
+}
+
+.detail-line-k{
+  border: none;
+  border-top: 0.1rem solid #ececec;
+  border-radius: 2px;
+  width: 1.5rem;
+  margin: 0rem 0;
+  transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1);
+}
+
+.detail-text-k{
+  height: inherit;
+}
+
+
+.detail-text-k h5 {
+  font-family: "Poppins", sans-serif;
+  color: #ececec;
+  font-size: 15px;
+}
+
+.det-btn {
+  padding: 1rem 0.5rem;
+}
+
+.det-btn a {
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+  background-color: #940c0c;
+  padding: 0.5rem;
+  color: #fff;
+  border: 2px solid #940c0c;
+  transition: 0.2s ease-in-out;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.det-btn a:hover {
+  background-color: #ffffff;
+
+  color: #171717;
+  border: 2px solid #940c0c;
+}
+
+
+
 @media screen and (max-width: 480px) {
   .detail-top-text h4 {
     font-size: 50px;
@@ -2500,10 +2559,8 @@ footer .container {
 
 .det-area {
   width: 100%;
-  padding-top: 3rem;
-  padding-left: 3rem;
-  padding-right: 3rem;
-  padding-bottom: 0rem;
+  padding: 3rem;
+
   /* padding: 3rem 1rem; */
   display: flex;
   flex-direction: row;
@@ -2621,8 +2678,6 @@ footer .container {
   .det-icon {
     width: 28%;
   }
-
-  
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
@@ -2700,11 +2755,11 @@ footer .container {
   border: none;
   border-top: 0.2rem solid #940c0c;
   border-radius: 0px;
-  width: 90%;
+  width: 85%;
   margin: 0rem auto;
 }
 
-#desc-pad{
+#desc-pad {
   padding: 1rem 6rem;
 }
 
@@ -2737,26 +2792,22 @@ footer .container {
   }
 
   .detail-map-title h4 {
-
     font-size: 50px;
-
   }
 
-  #desc-pad{
+  #desc-pad {
     padding: 1rem 0rem;
   }
 
   .desc-title h4 {
     padding: 0.3rem 3rem;
     font-size: 35px;
-
   }
 
   .desc-text {
     width: auto;
     margin: 0 3rem;
   }
-
 }
 @media screen and (min-width: 481px) and (max-width: 768px) {
 }
@@ -2764,3 +2815,4 @@ footer .container {
 }
 @media screen and (min-width: 1025px) and (max-width: 1200px) {
 }
+

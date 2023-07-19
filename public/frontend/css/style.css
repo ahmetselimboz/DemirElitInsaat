@@ -2043,6 +2043,9 @@ footer .container {
   .footer-made {
     font-size: 2.3vw;
   }
+  .footer-made:hover {
+    font-size: 2.6vw;
+  }
 
   .footer-underline {
     width: 90vw;
@@ -3324,6 +3327,14 @@ footer .container {
 }
 
 @media screen and (max-width: 480px) {
+
+.about-top img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+
+}
+
   .about-bottom-text h6 {
     font-size: 15vw;
   }
@@ -3920,7 +3931,7 @@ footer .container {
 
   .bottom-comment {
     padding: 1rem 0;
-
+    align-items: center;
     flex-direction: column;
 
 }

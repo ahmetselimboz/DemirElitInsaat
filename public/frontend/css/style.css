@@ -3225,11 +3225,17 @@ footer .container {
   height: 600px;
   display: flex;
   align-items: center;
-  background: url("../assets/870859.jpg");
+  /* background: url("../assets/870859.jpg");
   background-size: cover;
-  background-position: center;
+  background-position: center; */
   z-index: -15;
   position: relative;
+}
+
+.about-top img{
+  width: 100%;
+  height: auto;
+  position: absolute;
 }
 
 .about-panel {

@@ -13,7 +13,7 @@ app.use(expressLayouts);
 app.use(express.static("public"));
 // app.use("/uploads", express.static(path.join(__dirname, "/src/uploads")))
 app.set("view engine", "ejs");
-app.set("views", path.resolve(__dirname, "./src/views/frontend"));
+app.set("views", path.resolve(__dirname, "./src/views"));
 
 // //require('./src/config/bookApi');
 
@@ -61,9 +61,7 @@ app.set("views", path.resolve(__dirname, "./src/views/frontend"));
 
 
 const frRouter = require("./src/routers/frontend/frRouters");
-// const authRouter = require("./src/routers/frontend/authRouters");
-// const mobile_frRouter = require("./src/routers/mobile/mobile_frRouters");
-// const mobile_authRouter = require("./src/routers/mobile/mobile_authRouters");
+const adminRouters = require("./src/routers/admin/adminRouters");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -75,6 +73,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // });
 
 app.use("/", frRouter);
+app.use("/yonetim", adminRouters);
 // app.use("/auth", authRouter);
 // app.use("/mobile", mobile_frRouter);
 // app.use("/mobile/auth", mobile_authRouter);

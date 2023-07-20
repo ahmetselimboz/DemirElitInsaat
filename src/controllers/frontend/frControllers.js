@@ -1,6 +1,6 @@
 const getHomePage = async (req, res, next) => {
-  res.render("index", {
-    layout: "./layouts/_layouts.ejs",
+  res.render("./frontend/index", {
+    layout: "./frontend/layouts/_layouts.ejs",
     link1: "nav-active-link",
     link2: "",
     link3: "",
@@ -11,8 +11,8 @@ const getHomePage = async (req, res, next) => {
 };
 
 const getApartDetail = async (req, res, next) => {
-  res.render("apart_detail", {
-    layout: "./layouts/_layouts.ejs",
+  res.render("./frontend/apart_detail", {
+    layout: "./frontend/layouts/_layouts.ejs",
     link1: "",
     link2: "",
     link3: "nav-active-link",
@@ -21,8 +21,8 @@ const getApartDetail = async (req, res, next) => {
   });
 };
 const getAboutUs = async (req, res, next) => {
-  res.render("about_us", {
-    layout: "./layouts/_layouts.ejs",
+  res.render("./frontend/about_us", {
+    layout: "./frontend/layouts/_layouts.ejs",
     link1: "",
     link2: "nav-active-link",
     link3: "",
@@ -31,8 +31,8 @@ const getAboutUs = async (req, res, next) => {
   });
 };
 const getContact = async (req, res, next) => {
-  res.render("contact", {
-    layout: "./layouts/_layouts.ejs",
+  res.render("./frontend/contact", {
+    layout: "./frontend/layouts/_layouts.ejs",
     link1: "",
     link2: "",
     link3: "",
@@ -41,8 +41,8 @@ const getContact = async (req, res, next) => {
   });
 };
 const getAparts = async (req, res, next) => {
-  res.render("defaultCategory", {
-    layout: "./layouts/_layouts.ejs",
+  res.render("./frontend/defaultCategory", {
+    layout: "./frontend/layouts/_layouts.ejs",
     link1: "",
     link2: "",
     link3: "nav-active-link",
@@ -51,8 +51,8 @@ const getAparts = async (req, res, next) => {
   });
 };
 const getNewsDetail = async (req, res, next) => {
-  res.render("news_detail", {
-    layout: "./layouts/_layouts.ejs",
+  res.render("./frontend/news_detail", {
+    layout: "./frontend/layouts/_layouts.ejs",
     link1: "",
     link2: "",
     link3: "",
@@ -61,8 +61,8 @@ const getNewsDetail = async (req, res, next) => {
   });
 };
 const getNews = async (req, res, next) => {
-  res.render("news", {
-    layout: "./layouts/_layouts.ejs",
+  res.render("./frontend/news", {
+    layout: "./frontend/layouts/_layouts.ejs",
     link1: "",
     link2: "",
     link3: "",
@@ -71,8 +71,8 @@ const getNews = async (req, res, next) => {
   });
 };
 const getOurValues = async (req, res, next) => {
-  res.render("our_values", {
-    layout: "./layouts/_layouts.ejs",
+  res.render("./frontend/our_values", {
+    layout: "./frontend/layouts/_layouts.ejs",
     link1: "",
     link2: "nav-active-link",
     link3: "",
@@ -81,8 +81,8 @@ const getOurValues = async (req, res, next) => {
   });
 };
 const getSquad = async (req, res, next) => {
-  res.render("squad", {
-    layout: "./layouts/_layouts.ejs",
+  res.render("./frontend/squad", {
+    layout: "./frontend/layouts/_layouts.ejs",
     link1: "",
     link2: "nav-active-link",
     link3: "",
@@ -91,8 +91,8 @@ const getSquad = async (req, res, next) => {
   });
 };
 const getVisionMision = async (req, res, next) => {
-  res.render("vision_mision", {
-    layout: "./layouts/_layouts.ejs",
+  res.render("./frontend/vision_mision", {
+    layout: "./frontend/layouts/_layouts.ejs",
     link1: "",
     link2: "nav-active-link",
     link3: "",

@@ -7,6 +7,9 @@ const adminController = require("../../controllers/admin/adminController")
 
 router.get('/', adminController.getHomePage);
 router.get('/anapanel', adminController.getHomePage);
+router.get('/projeler', adminController.getAllProjects);
+router.get('/projeler/daire', adminController.getApart);
+
 
 
 

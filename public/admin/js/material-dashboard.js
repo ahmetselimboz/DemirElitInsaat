@@ -874,3 +874,5 @@ if (indicators) {
 
   sections.forEach(onSectionLeavesViewport);
 }
+
+

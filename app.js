@@ -2,8 +2,8 @@ const express = require("express");
 const app = express();
 require("dotenv").config();
 const path = require("path");
-// const flash = require("connect-flash");
-// const session = require("express-session");
+const flash = require("connect-flash");
+const session = require("express-session");
 // const passport = require("passport");
 const bodyParser = require("body-parser");
 
@@ -17,38 +17,38 @@ app.set("views", path.resolve(__dirname, "./src/views"));
 
 // //require('./src/config/bookApi');
 
-// require("./src/config/database");
-// const MongoDBStore = require("connect-mongodb-session")(session);
+require("./src/config/database");
+const MongoDBStore = require("connect-mongodb-session")(session);
 
-// const sessionStore = new MongoDBStore({
-//   uri: process.env.MONGODB_CONNECTION_STRING,
-//   collection: "sessions",
-// });
+const sessionStore = new MongoDBStore({
+  uri: process.env.MONGODB_CONNECTION_STRING,
+  collection: "sessions",
+});
 
-// app.use(
-//   session({
-//     secret: process.env.SESSION_SECRET,
-//     resave: false,
-//     saveUninitialized: false,
-//     cookie: {
-//       maxAge: 24 * 60 * 60 * 1000,
-//     },
-//     store: sessionStore,
-//   })
-// );
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      maxAge: 24 * 60 * 60 * 1000,
+    },
+    store: sessionStore,
+  })
+);
 
 
 
-// app.use(flash());
-// app.use((req, res, next) => {
-//   res.locals.validation_error = req.flash("validation_error");
-//   res.locals.success_message = req.flash("success_message");
-//   res.locals.email = req.flash("email");
-//   res.locals.name = req.flash("name");
-//   res.locals.surname = req.flash("surname");
-//   res.locals.login_error = req.flash("error");
-//   next();
-// });
+app.use(flash());
+app.use((req, res, next) => {
+  // res.locals.validation_error = req.flash("validation_error");
+  // res.locals.success_message = req.flash("success_message");
+  // res.locals.email = req.flash("email");
+  // res.locals.name = req.flash("name");
+  // res.locals.surname = req.flash("surname");
+  // res.locals.login_error = req.flash("error");
+  next();
+});
 
 
 

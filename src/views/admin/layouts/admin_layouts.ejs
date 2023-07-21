@@ -42,6 +42,7 @@
       href="/admin/css/material-dashboard.css?v=3.1.0"
       rel="stylesheet"
     />
+
     <!-- Nepcha Analytics (nepcha.com) -->
     <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
     <!-- <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script> -->
@@ -69,10 +70,7 @@
       <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a
-              class="nav-link text-white active bg-gradient-primary"
-              href="../pages/dashboard.html"
-            >
+            <a class="nav-link text-white active bg-gradient-primary" href="/">
               <div
                 class="text-white text-center me-2 d-flex align-items-center justify-content-center"
               >
@@ -183,7 +181,7 @@
           </li>
           <hr class="horizontal light mt-0 mb-2" />
           <li class="nav-item">
-            <a class="nav-link text-white" href="../pages/notifications.html">
+            <a class="nav-link text-white" href="/yonetim/projeler">
               <div
                 class="text-white text-center me-2 d-flex align-items-center justify-content-center"
               >
@@ -225,24 +223,26 @@
         data-scroll="true"
       >
         <div class="container-fluid py-1 px-3">
-          <nav aria-label="breadcrumb">
-            
-          </nav>
+          <nav aria-label="breadcrumb"></nav>
           <div
             class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4"
             id="navbar"
           >
             <div class="ms-md-auto pe-md-3 d-flex align-items-center"></div>
             <ul class="navbar-nav justify-content-end">
-                <li class="nav-item d-xl-none pe-3 d-flex align-items-center">
-                    <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
-                      <div class="sidenav-toggler-inner">
-                        <i class="sidenav-toggler-line"></i>
-                        <i class="sidenav-toggler-line"></i>
-                        <i class="sidenav-toggler-line"></i>
-                      </div>
-                    </a>
-                  </li>
+              <li class="nav-item d-xl-none pe-3 d-flex align-items-center">
+                <a
+                  href="javascript:;"
+                  class="nav-link text-body p-0"
+                  id="iconNavbarSidenav"
+                >
+                  <div class="sidenav-toggler-inner">
+                    <i class="sidenav-toggler-line"></i>
+                    <i class="sidenav-toggler-line"></i>
+                    <i class="sidenav-toggler-line"></i>
+                  </div>
+                </a>
+              </li>
               <li class="nav-item d-flex align-items-center">
                 <a
                   href="../pages/sign-in.html"
@@ -293,7 +293,7 @@
     <script src="/admin/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="/admin/js/plugins/smooth-scrollbar.min.js"></script>
     <script src="/admin/js/plugins/chartjs.min.js"></script>
-   
+
     <script>
       var win = navigator.platform.indexOf("Win") > -1;
       if (win && document.querySelector("#sidenav-scrollbar")) {
@@ -307,5 +307,11 @@
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="/admin/js/material-dashboard.min.js?v=3.1.0"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.min.js"
+      integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+      crossorigin="anonymous"
+    ></script>
+    
   </body>
 </html>

@@ -2,14 +2,11 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const ImageSchema = new Schema({
-  fotoId: {
-    type: String,
-    trim: true,
+  fotoid: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Post",
   },
-  name: {
-    type: String,
-    default: "defaultUser.png",
-  },
+  name: { type: String },
 });
 
 const ApartSchema = new Schema(
@@ -19,6 +16,10 @@ const ApartSchema = new Schema(
       trim: true,
     },
     room_num: {
+      type: String,
+      trim: true,
+    },
+    bath_num: {
       type: String,
       trim: true,
     },
@@ -34,6 +35,10 @@ const ApartSchema = new Schema(
       type: String,
       trim: true,
     },
+    apart_num: {
+      type: String,
+      trim: true,
+    },
     floors_num: {
       type: String,
       trim: true,
@@ -46,14 +51,32 @@ const ApartSchema = new Schema(
       type: String,
       trim: true,
     },
-    images: {
-      type: [ImageSchema],
-      trim: true,
+    images: [
+      {
+        id: {
+          type: String,
+        },
+        name: {
+          type: String,
+        },
+      },
+    ],
+    otopark_check: {
+      type: Boolean,
+      default: false
     },
- 
+    locat_check: {
+      type: Boolean,
+      default: false
+    },
+    transfer_check: {
+      type: Boolean,
+      default: false
+    },
   },
   { collection: "apart", timestamps: true }
 );
+
 
 // UserSchema.plugin(passportLocalMongoose);
 

@@ -77,129 +77,146 @@
         </div>
       </div>
       <div class="card-body px-0 pb-2">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="input-group input-group-static mb-4 px-5">
-              <label>Proje Adı</label>
-              <input type="text" class="form-control" />
+        <form
+          action="/yonetim/projeler/daire"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <div class="row">
+            <div class="col-md-6">
+              <div class="input-group input-group-static mb-4 px-5">
+                <label>Proje Adı</label>
+                <input type="text" class="form-control" name="project_name" />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="input-group input-group-static mb-4 px-5">
+                <label>Resimleri Seç</label>
+                <input
+                  type="file"
+                  class="form-control px-1"
+                  name="images"
+                  multiple
+                />
+              </div>
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="input-group input-group-static mb-4 px-5">
-              <label>Resimleri Seç</label>
-              <input type="file" class="form-control px-1" multiple />
-            </div>
-          </div>
-        </div>
 
-        <div class="row px-5 justify-content-between my-1">
-          <div class="col-md-1 px-1 mx-1">
-            <div class="input-group input-group-static mb-4 px-1">
-              <label>Oda Sayısı</label>
-              <input type="text" class="form-control" />
+          <div class="row px-5 justify-content-between my-1">
+            <div class="col-md-1 px-1 mx-1">
+              <div class="input-group input-group-static mb-4 px-1">
+                <label>Oda Sayısı</label>
+                <input type="text" class="form-control" name="room_num" />
+              </div>
+            </div>
+            <div class="col-md-1 px-1 mx-1">
+              <div class="input-group input-group-static mb-4 px-1">
+                <label>Banyo Sayısı</label>
+                <input type="text" class="form-control" name="bath_num" />
+              </div>
+            </div>
+            <div class="col-md-1 px-1">
+              <div class="input-group input-group-static mb-4 px-1">
+                <label>Brüt m<sup>2</sup></label>
+                <input type="text" class="form-control" name="brut_m2" />
+              </div>
+            </div>
+            <div class="col-md-1 px-1">
+              <div class="input-group input-group-static mb-4 px-1">
+                <label>Net m<sup>2</sup></label>
+                <input type="text" class="form-control" name="net_m2" />
+              </div>
+            </div>
+            <div class="col-md-1 px-1">
+              <div class="input-group input-group-static mb-4 px-1">
+                <label>Blok Sayısı</label>
+                <input type="text" class="form-control" name="block_num" />
+              </div>
+            </div>
+            <div class="col-md-1 px-1">
+              <div class="input-group input-group-static mb-4 px-1">
+                <label>Daire Sayısı</label>
+                <input type="text" class="form-control" name="apart_num" />
+              </div>
+            </div>
+            <div class="col-md-1 px-1">
+              <div class="input-group input-group-static mb-4 px-1">
+                <label>Kat Sayı</label>
+                <input type="text" class="form-control" name="floors_num" />
+              </div>
             </div>
           </div>
-          <div class="col-md-1 px-1 mx-1">
-            <div class="input-group input-group-static mb-4 px-1">
-              <label>Banyo Sayısı</label>
-              <input type="text" class="form-control" />
+          <div class="row px-5 justify-content-between my-1">
+            <div class="col-md-5">
+              <div class="input-group input-group-static">
+                <label>Adres</label>
+                <textarea
+                  class="form-control"
+                  rows="5"
+                  name="adress"
+                ></textarea>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="input-group input-group-static">
+                <label>Açıklama</label>
+                <textarea class="form-control" rows="5" name="desc"></textarea>
+              </div>
             </div>
           </div>
-          <div class="col-md-1 px-1">
-            <div class="input-group input-group-static mb-4 px-1">
-              <label>Brüt m<sup>2</sup></label>
-              <input type="text" class="form-control" />
+          <div class="row px-6 justify-content-center mt-6">
+            <div class="col-md-3">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="otopark_check"
+                  id="flexCheckDefault"
+                  value="true"
+                />
+                <label class="form-check-label" for="flexCheckDefault">
+                  Otopark
+                </label>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="locat_check"
+                  id="flexCheckDefault"
+                  value="true"
+                />
+                <label class="form-check-label" for="flexCheckDefault">
+                  Merkeze Yakınlık
+                </label>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="transfer_check"
+                  id="flexCheckDefault"
+                  value="true"
+                />
+                <label class="form-check-label" for="flexCheckDefault">
+                  Ulaşım Kolaylığı
+                </label>
+              </div>
             </div>
           </div>
-          <div class="col-md-1 px-1">
-            <div class="input-group input-group-static mb-4 px-1">
-              <label>Net m<sup>2</sup></label>
-              <input type="text" class="form-control" />
+          <div class="card-body px-6">
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <button type="submit" class="btn bg-gradient-info">Proje Ekle</button>
             </div>
           </div>
-          <div class="col-md-1 px-1">
-            <div class="input-group input-group-static mb-4 px-1">
-              <label>Blok Sayısı</label>
-              <input type="text" class="form-control" />
-            </div>
-          </div>
-          <div class="col-md-1 px-1">
-            <div class="input-group input-group-static mb-4 px-1">
-              <label>Daire Sayısı</label>
-              <input type="text" class="form-control" />
-            </div>
-          </div>
-          <div class="col-md-1 px-1">
-            <div class="input-group input-group-static mb-4 px-1">
-              <label>Kat Sayı</label>
-              <input type="text" class="form-control" />
-            </div>
-          </div>
-        </div>
-        <div class="row px-5 justify-content-between my-1">
-          <div class="col-md-5">
-            <div class="input-group input-group-static">
-              <label>Adres</label>
-              <textarea class="form-control" rows="5"></textarea>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="input-group input-group-static">
-              <label>Açıklama</label>
-              <textarea class="form-control" rows="5"></textarea>
-            </div>
-          </div>
-        </div>
-        <div class="row px-6 justify-content-center mt-6">
-          <div class="col-md-3">
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
-                id="flexCheckDefault"
-              />
-              <label class="form-check-label" for="flexCheckDefault">
-                Otopark
-              </label>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
-                id="flexCheckDefault"
-              />
-              <label class="form-check-label" for="flexCheckDefault">
-                Merkeze Yakınlık
-              </label>
-            </div>
-          </div>
-          <div class="col-md-3">
-            <div class="form-check">
-              <input
-                class="form-check-input"
-                type="checkbox"
-                value=""
-                id="flexCheckDefault"
-              />
-              <label class="form-check-label" for="flexCheckDefault">
-                Ulaşım Kolaylığı
-              </label>
-            </div>
-          </div>
-        </div>
+        </form>
       </div>
 
-      <div class="card-body px-6">
-        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-          <a href="/yonetim/projeler/daire" class="btn bg-gradient-info"
-            >Proje Ekle</a
-          >
-        </div>
-      </div>
+      
     </div>
   </div>
 </div>

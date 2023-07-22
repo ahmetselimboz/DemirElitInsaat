@@ -63,8 +63,8 @@ app.use((req, res, next) => {
 const frRouter = require("./src/routers/frontend/frRouters");
 const adminRouters = require("./src/routers/admin/adminRouters");
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 
 // app.get("/", (req, res, next) => {

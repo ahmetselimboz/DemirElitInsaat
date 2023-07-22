@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-12">
     <div class="card my-4">
-      <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+      <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-1">
         <div
           class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3"
         >
@@ -78,7 +78,7 @@
       </div>
       <div class="card-body px-0 pb-2">
         <form
-          action="/yonetim/projeler/daire"
+          action="/yonetim/projeler/daire-ekle"
           method="post"
           enctype="multipart/form-data"
         >
@@ -86,7 +86,7 @@
             <div class="col-md-6">
               <div class="input-group input-group-static mb-4 px-5">
                 <label>Proje Adı</label>
-                <input type="text" class="form-control" name="project_name" />
+                <input value="<%= typeof project_name != 'undefined' ? project_name : '' %>" type="text" class="form-control" name="project_name" />
               </div>
             </div>
             <div class="col-md-6">

@@ -37,28 +37,21 @@ app.use(
   })
 );
 
-
-
 app.use(flash());
 app.use((req, res, next) => {
-  // res.locals.validation_error = req.flash("validation_error");
-  // res.locals.success_message = req.flash("success_message");
-  // res.locals.email = req.flash("email");
-  // res.locals.name = req.flash("name");
-  // res.locals.surname = req.flash("surname");
+  res.locals.validation_error = req.flash("validation_error");
+  res.locals.success_message = req.flash("success_message");
+ 
   // res.locals.login_error = req.flash("error");
+
+  res.locals.project_name = req.flash("project_name");
+
   next();
 });
-
-
-
-
 
 // app.use(passport.initialize());
 // app.use(passport.session());
 // //app.use(passport.authenticate('session'));
-
-
 
 const frRouter = require("./src/routers/frontend/frRouters");
 const adminRouters = require("./src/routers/admin/adminRouters");
@@ -66,9 +59,8 @@ const adminRouters = require("./src/routers/admin/adminRouters");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
 // app.get("/", (req, res, next) => {
- 
+
 //   res.redirect("/");
 // });
 
@@ -81,4 +73,3 @@ app.use("/yonetim", adminRouters);
 app.listen(process.env.PORT, () => {
   console.log(`Server is standing to ${process.env.PORT} port`);
 });
-

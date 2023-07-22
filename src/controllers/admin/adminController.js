@@ -1,5 +1,5 @@
 const Apart = require("../../model/_apartModel");
-const uploadFile = require("../../config/multer_config");
+const { uploadFile, deleteFile } = require("../../config/multer_config");
 const { validationResult } = require("express-validator");
 
 const getHomePage = async (req, res, next) => {
@@ -8,12 +8,11 @@ const getHomePage = async (req, res, next) => {
   });
 };
 const getAllProjects = async (req, res, next) => {
-
   const result = await Apart.find({});
 
   res.render("./admin/ad_aparts", {
     layout: "./admin/layouts/admin_layouts.ejs",
-    apart: result
+    apart: result,
   });
 };
 
@@ -38,7 +37,6 @@ const postAddApart = async (req, res, next) => {
     req.flash("floors_num", req.body.floors_num);
     req.flash("adress", req.body.adress);
     req.flash("desc", req.body.desc);
-  
 
     res.redirect("/yonetim/projeler/daire-ekle");
   } else {
@@ -46,17 +44,16 @@ const postAddApart = async (req, res, next) => {
 
     try {
       const { body, files } = req;
-      console.log(files);
-      console.log(body);
+
       for (let f = 0; f < files.length; f++) {
         await uploadFile(files[f]);
         if (data) {
           val.push(data);
         }
       }
-  
+
       var apt = new Apart();
-  
+
       apt.project_name = req.body.project_name;
       apt.room_num = req.body.room_num;
       apt.bath_num = req.body.bath_num;
@@ -69,23 +66,95 @@ const postAddApart = async (req, res, next) => {
       apt.desc = req.body.desc;
       apt.project_status = req.body.project_status;
       apt.otopark_check = !req.body.otopark_check ? false : true;
-      apt.locat_check = !req.body.locat_check ? false: true;
-      apt.transfer_check = !req.body.transfer_check ? false: true;
-  
+      apt.locat_check = !req.body.locat_check ? false : true;
+      apt.transfer_check = !req.body.transfer_check ? false : true;
+
       val.forEach((element) => {
         apt.images.push(element);
       });
-  
+
       apt.save();
-      req.flash("success_message", [
-        { msg: "Daire Eklendi" },
-      ]);
+      req.flash("success_message", [{ msg: "Daire Eklendi" }]);
       res.redirect("/yonetim/projeler");
     } catch (f) {
       console.log(f);
     }
   }
- 
+};
+
+const getUpdateApart = async (req, res, next) => {
+  try {
+    if (req.params.id) {
+      const result = await Apart.findById(req.params.id);
+      //console.log(result);
+      res.render("./admin/ad_apartUpdate", {
+        layout: "./admin/layouts/admin_layouts.ejs",
+        apart: result,
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const postUpdateApart = async (req, res, next) => {
+  console.log(req.body);
+  const hatalar = validationResult(req);
+  console.log(hatalar);
+  if (!hatalar.isEmpty()) {
+    req.flash("validation_error", hatalar.array());
+
+    res.redirect("/yonetim/projeler/daire-guncelle/" + req.body.id);
+  } else {
+    try {
+      const options = {
+        project_name: req.body.project_name,
+        project_status: req.body.project_status,
+        bath_num: req.body.bath_num,
+        room_num: req.body.room_num,
+        brut_m2: req.body.brut_m2,
+        net_m2: req.body.net_m2,
+        block_num: req.body.block_num,
+        apart_num: req.body.apart_num,
+        floors_num: req.body.floors_num,
+        adress: req.body.adress,
+        desc: req.body.desc,
+        otopark_check: !req.body.otopark_check ? false : true,
+        locat_check: !req.body.locat_check ? false : true,
+        transfer_check: !req.body.transfer_check ? false : true,
+      };
+
+      const result = await Apart.findByIdAndUpdate(req.body.id, options);
+      if (result) {
+        res.redirect("/yonetim/projeler");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+};
+
+const postDeleteApart = async (req, res, next) => {
+  if (req.params) {
+    const result = await Apart.findById(req.params.id);
+
+    if (result) {
+      for (let index = 0; index < result.images.length; index++) {
+        var check = await deleteFile(result.images[index].id);
+      
+      }
+      console.log(check);
+      if (check == 204) {
+        await Apart.findByIdAndRemove(req.params.id);
+        req.flash("success_message", [{ msg: "Daire Silindi" }]);
+
+        res.redirect("/yonetim/projeler");
+      }else{
+        req.flash("error", ["Bi hata oluştu. Lütfen tekrar deneyiniz."]);
+      }
+      
+    }
+  }
 };
 
 module.exports = {
@@ -93,4 +162,7 @@ module.exports = {
   getAllProjects,
   getAddApart,
   postAddApart,
+  getUpdateApart,
+  postUpdateApart,
+  postDeleteApart,
 };

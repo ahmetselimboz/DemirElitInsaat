@@ -42,7 +42,7 @@ app.use((req, res, next) => {
   res.locals.validation_error = req.flash("validation_error");
   res.locals.success_message = req.flash("success_message");
  
-  // res.locals.login_error = req.flash("error");
+  res.locals.error = req.flash("error");
 
   res.locals.project_name = req.flash("project_name");
   res.locals.room_num = req.flash("room_num");

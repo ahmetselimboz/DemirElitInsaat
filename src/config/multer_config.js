@@ -35,7 +35,20 @@ const uploadFile = async (fileObject) => {
 
 };
 
-module.exports = uploadFile;
+const deleteFile = async (fileId) => {
+
+
+  const sonuc = await google.drive({ version: "v3", auth }).files.delete({fileId:fileId});
+  if (sonuc) {
+    return sonuc.status
+  }
+
+};
+
+module.exports = {
+  uploadFile,
+  deleteFile
+};
 
 
 

@@ -1,3 +1,7 @@
+const Apart = require("../../model/_apartModel");
+
+
+
 const getHomePage = async (req, res, next) => {
   res.render("./frontend/index", {
     layout: "./frontend/layouts/_layouts.ejs",
@@ -41,6 +45,9 @@ const getContact = async (req, res, next) => {
   });
 };
 const getAparts = async (req, res, next) => {
+
+  const result = await Apart.find({});
+
   res.render("./frontend/defaultCategory", {
     layout: "./frontend/layouts/_layouts.ejs",
     link1: "",
@@ -48,6 +55,7 @@ const getAparts = async (req, res, next) => {
     link3: "nav-active-link",
     link4: "",
     link5: "",
+    apart: result
   });
 };
 const getNewsDetail = async (req, res, next) => {

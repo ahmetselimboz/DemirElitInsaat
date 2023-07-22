@@ -21,66 +21,22 @@
    
 
         <div class="cat-contain">
-          <div class="cat-item ">
-            <img class="img-fluid-p" src="/frontend/assets/ber.jpeg" alt="" />
-            <div class="cat-text">
-              <h2>YILDIZ SİTESİ</h2>
-            </div>
-            <div class="cat-overlay">
-              <div class="cat-text-hover">
-                <a href="/daireDetay" class="cat-btn-incele">İncele</a>
-                <h4>Necip Fazıl Mah. 50008. Sok. No:21/14</h4>
+          <% for( let index = 0; index < apart.length; index++ ) { %>
+            <div class="cat-item ">
+              <img class="img-fluid-p" src="https://drive.google.com/uc?export=view&id=<%- apart[index].images[0].id %>" alt="" />
+              <div class="cat-text">
+                <h2><%- apart[index].project_name %></h2>
+              </div>
+              <div class="cat-overlay">
+                <div class="cat-text-hover">
+                  <a href="/daireDetay" class="cat-btn-incele">İncele</a>
+                  <h4><%- apart[index].adress %></h4>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="cat-item ">
-            <img class="img-fluid-p" src="/frontend/assets/ber.jpeg" alt="" />
-            <div class="cat-text">
-              <h2>YILDIZ SİTESİ</h2>
-            </div>
-            <div class="cat-overlay">
-              <div class="cat-text-hover">
-                <a href="/daireDetay" class="cat-btn-incele">İncele</a>
-                <h4>Necip Fazıl Mah. 50008. Sok. No:21/14</h4>
-              </div>
-            </div>
-          </div>
-          <div class="cat-item ">
-            <img class="img-fluid-p" src="/frontend/assets/ber.jpeg" alt="" />
-            <div class="cat-text">
-              <h2>YILDIZ SİTESİ</h2>
-            </div>
-            <div class="cat-overlay">
-              <div class="cat-text-hover">
-                <a href="/daireDetay" class="cat-btn-incele">İncele</a>
-                <h4>Necip Fazıl Mah. 50008. Sok. No:21/14</h4>
-              </div>
-            </div>
-          </div>
-          <div class="cat-item ">
-            <img class="img-fluid-p" src="/frontend/assets/ber.jpeg" alt="" />
-            <div class="cat-text">
-              <h2>YILDIZ SİTESİ</h2>
-            </div>
-            <div class="cat-overlay">
-              <div class="cat-text-hover">
-                <a href="/daireDetay" class="cat-btn-incele">İncele</a>
-                <h4>Necip Fazıl Mah. 50008. Sok. No:21/14</h4>
-              </div>
-            </div>
-          </div>
-          <div class="cat-item ">
-            <img class="img-fluid-p" src="/frontend/assets/ber.jpeg" alt="" />
-            <div class="cat-text">
-              <h2>YILDIZ SİTESİ</h2>
-            </div>
-            <div class="cat-overlay">
-              <div class="cat-text-hover">
-                <a href="/daireDetay" class="cat-btn-incele">İncele</a>
-                <h4>Necip Fazıl Mah. 50008. Sok. No:21/14</h4>
-              </div>
-            </div>
-          </div>
+          <% } %>
+       
+      
         </div>
       </div>
     </section>

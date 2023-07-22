@@ -11,6 +11,11 @@ router.get('/projeler', adminController.getAllProjects);
 router.get('/projeler/daire-ekle', adminController.getAddApart);
 router.post('/projeler/daire-ekle',upload.any(),validations.validateApart(), adminController.postAddApart);
 
+router.get("/projeler/daire-guncelle/:id",  adminController.getUpdateApart)
+router.post("/projeler/daire-guncelle",validations.validateApart(), adminController.postUpdateApart)
+
+router.get("/projeler/daire-sil/:id", adminController.postDeleteApart);
+
 
 
 

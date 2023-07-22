@@ -45,6 +45,15 @@ app.use((req, res, next) => {
   // res.locals.login_error = req.flash("error");
 
   res.locals.project_name = req.flash("project_name");
+  res.locals.room_num = req.flash("room_num");
+  res.locals.bath_num = req.flash("bath_num");
+  res.locals.brut_m2 = req.flash("brut_m2");
+  res.locals.net_m2 = req.flash("net_m2");
+  res.locals.block_num = req.flash("block_num");
+  res.locals.apart_num = req.flash("apart_num");
+  res.locals.floors_num = req.flash("floors_num");
+  res.locals.adress = req.flash("adress");
+  res.locals.desc = req.flash("desc");
 
   next();
 });

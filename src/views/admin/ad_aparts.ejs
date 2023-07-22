@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-12">
     <div class="card my-4">
-      <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+      <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-1">
         <div
           class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3"
         >
@@ -52,144 +52,81 @@
               </tr>
             </thead>
             <tbody>
+              <% for( let index = 0; index < apart.length; index++ ) { %>
               <tr>
                 <td>
                   <div class="d-flex px-2 py-1">
                     <div>
                       <img
-                        src="/frontend/assets/indir.jpeg"
+                        src="https://drive.google.com/uc?export=view&id=<%- apart[index].images[0].id %>"
                         class="avatar avatar-sm me-3 border-radius-lg"
                         alt="user1"
                       />
                     </div>
                     <div class="d-flex flex-column justify-content-center">
-                      <h6 class="mb-0 text-sm">Beril Sitesi</h6>
+                      <h6 class="mb-0 text-sm">
+                        <%- apart[index].project_name %>
+                      </h6>
                     </div>
                   </div>
                 </td>
                 <td>
                   <p class="text-xs font-weight-bold mb-0">
-                    Necip Fazıl Mah. 50008. Sok. No:21/14
-                    Onikişubat/Kahramanmaraş
+                    <%- apart[index].project_name %>
                   </p>
                 </td>
                 <td class="align-middle text-center text-sm">
-                  <span class="badge badge-sm bg-gradient-success"
-                    >Devam ediyor</span
+                  <% if (apart[index].project_status == "Tamamlandı") { %>
+                  <span class="badge badge-sm bg-gradient-success">
+                    <%- apart[index].project_status %></span
                   >
+
+                  <% } else if (apart[index].project_status == "Devam Ediyor") {%>
+                    <span class="badge badge-sm bg-gradient-info">
+                      <%- apart[index].project_status %></span
+                    >
+                    
+                    
+                   <% } else if (apart[index].project_status == "Planlandı") { %> 
+                    <span class="badge badge-sm bg-gradient-secondary">
+                      <%- apart[index].project_status %></span
+                    > <% } %>
+                     
                 </td>
                 <td class="align-middle text-center">
+                  <% date = new Date( apart[index].createdAt) %> <% aylar =
+                  ['01',
+                  '02',"03","04","05","06","07","08","09","10","11","12"];
+                  %>
                   <span class="text-secondary text-xs font-weight-bold"
-                    >23/04/18</span
+                    >
+                    <%- date.getDate() + "." + aylar[date.getMonth()] + "." +
+                    date.getFullYear() %></span
                   >
                 </td>
                 <td class="align-middle text-center">
                   <button class="btn bg-gradient-success shadow-success">
-                    Güncelle
+                    GÜNCELLE
                   </button>
                 </td>
                 <td class="align-middle text-center">
                   <button class="btn bg-gradient-danger shadow-danger">
-                    Sil
+                    SİL
                   </button>
                 </td>
               </tr>
-              <tr>
-                <td>
-                  <div class="d-flex px-2 py-1">
-                    <div>
-                      <img
-                        src="/frontend/assets/proje.jpg"
-                        class="avatar avatar-sm me-3 border-radius-lg"
-                        alt="user1"
-                      />
-                    </div>
-                    <div class="d-flex flex-column justify-content-center">
-                      <h6 class="mb-0 text-sm">Yıldız Sitesi</h6>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <p class="text-xs font-weight-bold mb-0">
-                    Necip Fazıl Mah. 50008. Sok. No:21/14
-                    Onikişubat/Kahramanmaraş
-                  </p>
-                </td>
-                <td class="align-middle text-center text-sm">
-                  <span class="badge badge-sm bg-gradient-info"
-                    >Tamamlandı</span
-                  >
-                </td>
-                <td class="align-middle text-center">
-                  <span class="text-secondary text-xs font-weight-bold"
-                    >23/04/18</span
-                  >
-                </td>
-                <td class="align-middle text-center">
-                  <button class="btn bg-gradient-success shadow-success">
-                    Güncelle
-                  </button>
-                </td>
-                <td class="align-middle text-center">
-                  <button class="btn bg-gradient-danger shadow-danger">
-                    Sil
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <div class="d-flex px-2 py-1">
-                    <div>
-                      <img
-                        src="/frontend/assets/indir2.jpg"
-                        class="avatar avatar-sm me-3 border-radius-lg"
-                        alt="user1"
-                      />
-                    </div>
-                    <div class="d-flex flex-column justify-content-center">
-                      <h6 class="mb-0 text-sm">Karatay Sitesi</h6>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <p class="text-xs font-weight-bold mb-0">
-                    Necip Fazıl Mah. 50008. Sok. No:21/14
-                    Onikişubat/Kahramanmaraş
-                  </p>
-                </td>
-                <td class="align-middle text-center text-sm">
-                  <span class="badge badge-sm bg-gradient-secondary"
-                    >Planlanıyor</span
-                  >
-                </td>
-                <td class="align-middle text-center">
-                  <span class="text-secondary text-xs font-weight-bold"
-                    >23/04/18</span
-                  >
-                </td>
-                <td class="align-middle text-center">
-                  <button class="btn bg-gradient-success shadow-success">
-                    Güncelle
-                  </button>
-                </td>
-                <td class="align-middle text-center">
-                  <button class="btn bg-gradient-danger shadow-danger">
-                    Sil
-                  </button>
-                </td>
-              </tr>
+              <% } %>
             </tbody>
           </table>
         </div>
       </div>
-    
- 
+
       <div class="card-body px-6">
-        
-          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <a href="/yonetim/projeler/daire-ekle" class="btn bg-gradient-info ">Proje Ekle</a>
-          </div>
-    
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <a href="/yonetim/projeler/daire-ekle" class="btn bg-gradient-info"
+            >Proje Ekle</a
+          >
+        </div>
       </div>
     </div>
   </div>

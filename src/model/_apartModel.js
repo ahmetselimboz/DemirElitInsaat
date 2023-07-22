@@ -73,6 +73,10 @@ const ApartSchema = new Schema(
       type: Boolean,
       default: false
     },
+    project_status:{
+      type:String,
+      default: 1
+    }
   },
   { collection: "apart", timestamps: true }
 );

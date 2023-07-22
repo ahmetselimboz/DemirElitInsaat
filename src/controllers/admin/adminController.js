@@ -8,8 +8,12 @@ const getHomePage = async (req, res, next) => {
   });
 };
 const getAllProjects = async (req, res, next) => {
+
+  const result = await Apart.find({});
+
   res.render("./admin/ad_aparts", {
     layout: "./admin/layouts/admin_layouts.ejs",
+    apart: result
   });
 };
 
@@ -21,7 +25,7 @@ const getAddApart = async (req, res, next) => {
 
 const postAddApart = async (req, res, next) => {
   const hatalar = validationResult(req);
-
+  console.log(hatalar);
   if (!hatalar.isEmpty()) {
     req.flash("validation_error", hatalar.array());
     req.flash("project_name", req.body.project_name);
@@ -42,8 +46,9 @@ const postAddApart = async (req, res, next) => {
 
     try {
       const { body, files } = req;
+      console.log(files);
       console.log(body);
-      for (let f = 0; f < 9; f++) {
+      for (let f = 0; f < files.length; f++) {
         await uploadFile(files[f]);
         if (data) {
           val.push(data);
@@ -62,6 +67,7 @@ const postAddApart = async (req, res, next) => {
       apt.floors_num = req.body.floors_num;
       apt.adress = req.body.adress;
       apt.desc = req.body.desc;
+      apt.project_status = req.body.project_status;
       apt.otopark_check = !req.body.otopark_check ? false : true;
       apt.locat_check = !req.body.locat_check ? false: true;
       apt.transfer_check = !req.body.transfer_check ? false: true;

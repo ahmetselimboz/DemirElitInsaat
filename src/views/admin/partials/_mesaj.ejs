@@ -3,7 +3,7 @@
 
   <div class="position-absolute top-0 end-0 z-index-2">
     <% validation_error.forEach(element => { %>
-      <div class=" col-md-11 ">
+      <div class="col-lg-20 col-md-11  ">
         <div
           class="alert alert-danger alert-dismissible text-white fade show"
           role="alert"
@@ -13,6 +13,31 @@
           </span>
           <span class="alert-text"
             ><strong>Uyarı!</strong> <%- element.msg %></span
+          >
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+      
+      <% }) %>
+
+    <% success_message.forEach(element => { %>
+      <div class="col-lg-20 col-md-11  ">
+        <div
+          class="alert alert-success alert-dismissible text-white fade show"
+          role="alert"
+        >
+          <span class="alert-icon align-middle">
+            <span class="material-icons text-md"> thumb_up </span>
+          </span>
+          <span class="alert-text"
+            ><strong>Başarılı!</strong> <%- element.msg %></span
           >
           <button
             type="button"

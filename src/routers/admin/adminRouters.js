@@ -9,7 +9,7 @@ router.get('/', adminController.getHomePage);
 router.get('/anapanel', adminController.getHomePage);
 router.get('/projeler', adminController.getAllProjects);
 router.get('/projeler/daire-ekle', adminController.getAddApart);
-router.post('/projeler/daire-ekle',validations.validateApart(),upload.any(), adminController.postAddApart);
+router.post('/projeler/daire-ekle',upload.any(),validations.validateApart(), adminController.postAddApart);
 
 
 

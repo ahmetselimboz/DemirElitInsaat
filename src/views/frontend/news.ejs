@@ -14,52 +14,21 @@
     </div>
 
     <div class="news-contain">
-      <div class="news-item ">
-        <iframe
-          width="1046"
-          height="445"
-          loading="lazy"
-          src="https://www.youtube.com/embed/y9j-BL5ocW8"
-          title="Cinematic Real estate video tour example 4K | Laowa 12mm &amp; Sony A7III"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-        ></iframe>
-        <div class="news-text">
-          <h5>Video Haber Adı</h5>
-          <a href="/haberdetay">İzle</a>
+      <% for( let index = 0; index < news.length; index++ ) { %>
+        <div class="news-item ">
+          <% if (news[index].images[0] != undefined && news[index].news_url == "") { %>
+            <img class="card-img-top" src="https://drive.google.com/uc?export=view&id=<%- news[index].images[0].id %>" alt="Card image cap">
+        <% } else { %> 
+          <%- news[index].news_url %>
+          
+          <% } %>
+          <div class="news-text">
+            <h5><%- news[index].news_name %></h5>
+            <a href="/haber-detay/<%- news[index].id %>">İzle</a>
+          </div>
         </div>
-      </div>
-      <div class="news-item ">
-        <iframe
-          width="1046"
-          height="445"
-          loading="lazy"
-          src="https://www.youtube.com/embed/y9j-BL5ocW8"
-          title="Cinematic Real estate video tour example 4K | Laowa 12mm &amp; Sony A7III"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-        ></iframe>
-        <div class="news-text">
-          <h5>Video Haber Adı</h5>
-          <a href="/haberdetay">İzle</a>
-        </div>
-      </div>
-      <div class="news-item ">
-        <img src="/frontend/assets/evrim.jpg" alt="" />
-        <div class="news-text">
-          <h5>Haber Adı</h5>
-          <a href="/haberdetay">Görüntüle</a>
-        </div>
-      </div>
-      <div class="news-item ">
-        <img src="/frontend/assets/evrim.jpg" alt="" />
-        <div class="news-text">
-          <h5>Haber Adı</h5>
-          <a href="/haberdetay">Görüntüle</a>
-        </div>
-      </div>
+      <% } %>
+    
     </div>
   </div>
 </section>

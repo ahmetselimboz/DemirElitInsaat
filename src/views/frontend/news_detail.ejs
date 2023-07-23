@@ -1,39 +1,34 @@
 <div class="about-top">
-  <img src="/frontend/assets/wp3396929-newspaper-wallpaperbackground.jpg" alt="">
+  <img
+    src="/frontend/assets/wp3396929-newspaper-wallpaperbackground.jpg"
+    alt=""
+  />
 
   <div class="about-text-top">
     <div class="about-bottom-text">
-      
       <hr class="about-bottom-line" />
       <h6>Haberler</h6>
-     
     </div>
   </div>
 </div>
-<section >
-      
-
+<section>
   <div class="about-panel">
     <div class="about-area">
       <div class="house-title-area">
         <hr class="house-underline js-scroll slide-left" />
-        <h3 class="text-uppercase js-scroll slide-left">Haber Adı</h3>
+        <h3 class="text-uppercase js-scroll slide-left">
+          <%- news.news_name %>
+        </h3>
       </div>
       <div class="news-det-area">
         <div class="news-det js-scroll fade-in-bottom">
-            <img src="/frontend/assets/evrim.jpg" alt="" />
-
-            <!-- <iframe
-            width="1046"
-            height="445"
-            loading="lazy"
-            src="https://www.youtube.com/embed/y9j-BL5ocW8"
-            title="Cinematic Real estate video tour example 4K | Laowa 12mm &amp; Sony A7III"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-          ></iframe> -->
-
+          <% if (news.images[0] != undefined && news.news_url =="") { %>
+          <img
+            class="card-img-top"
+            src="https://drive.google.com/uc?export=view&id=<%- news.images[0].id %>"
+            alt="Card image cap"
+          />
+          <% } else { %> <%- news.news_url %> <% } %>
         </div>
       </div>
     </div>
@@ -41,23 +36,8 @@
     <br />
     <br />
     <div class="about-area">
-    
       <div class="about-text js-scroll slide-left">
-       
-        <h5>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          ad fugit nam dignissimos nemo assumenda aspernatur vero labore quo
-          totam voluptates, hic tempore alias illo asperiores, veritatis
-          quidem repudiandae dolor! Fuga dignissimos veniam eius nemo earum,
-          dolor debitis! Adipisci cupiditate at unde vero tempora aspernatur
-          non ad, illo impedit quam magnam, nam deserunt blanditiis iure
-          quasi id libero voluptas repellat. Aperiam deserunt labore impedit
-          dicta odit ratione placeat illo quaerat fugiat voluptatum
-          distinctio ab cupiditate quas perferendis consectetur quae hic
-          laudantium ullam veniam nostrum soluta, blanditiis eaque
-          molestiae. Hic, nisi!
-       
-        </h5>
+        <h5><%- news.news_desc %></h5>
       </div>
     </div>
   </div>

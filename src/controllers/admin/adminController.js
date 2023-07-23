@@ -238,7 +238,7 @@ const getUpdateNews = async (req, res, next) => {
 };
 
 const postUpdateNews = async (req, res, next) => {
-  console.log(req.body);
+
   const hatalar = validationResult(req);
 
   if (!hatalar.isEmpty()) {

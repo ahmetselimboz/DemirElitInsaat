@@ -1,4 +1,5 @@
 const Apart = require("../../model/_apartModel");
+const News = require("../../model/_newsModel");
 
 const getHomePage = async (req, res, next) => {
   res.render("./frontend/index", {
@@ -23,17 +24,15 @@ const getApartDetail = async (req, res, next) => {
           link3: "nav-active-link",
           link4: "",
           link5: "",
-          apart:result
+          apart: result,
         });
       }
-    }else{
+    } else {
       req.flash("error", ["Bi hata oluştu. Lütfen tekrar deneyiniz."]);
-
     }
   } catch (error) {
     console.log(error);
   }
-  
 };
 const getAboutUs = async (req, res, next) => {
   res.render("./frontend/about_us", {
@@ -66,51 +65,61 @@ const getAparts = async (req, res, next) => {
       }
       if (req.params.link == "devam-eden-projeler") {
         title = "Devam Eden Projeler";
-        result = await Apart.find({project_status: "Devam Ediyor"});
+        result = await Apart.find({ project_status: "Devam Ediyor" });
       }
       if (req.params.link == "tamamlanan-projeler") {
         title = "Tamamlanan Projeler";
-        result = await Apart.find({project_status: "Tamamlandı"});
+        result = await Apart.find({ project_status: "Tamamlandı" });
       }
       if (req.params.link == "gelecek-projeler") {
         title = "Gelecek Projeler";
-        result = await Apart.find({project_status: "Planlandı"});
-      }
-      else{
+        result = await Apart.find({ project_status: "Planlandı" });
+      } else {
         req.flash("error", ["Bi hata oluştu. Lütfen tekrar deneyiniz."]);
-
       }
-      
-    res.render("./frontend/defaultCategory", {
-      layout: "./frontend/layouts/_layouts.ejs",
-      link1: "",
-      link2: "",
-      link3: "nav-active-link",
-      link4: "",
-      link5: "",
-      apart: result,
-      title: title,
-    });
-    }else{
+
+      res.render("./frontend/defaultCategory", {
+        layout: "./frontend/layouts/_layouts.ejs",
+        link1: "",
+        link2: "",
+        link3: "nav-active-link",
+        link4: "",
+        link5: "",
+        apart: result,
+        title: title,
+      });
+    } else {
       req.flash("error", ["Bi hata oluştu. Lütfen tekrar deneyiniz."]);
-
     }
-
   } catch (error) {
     console.log(error);
   }
 };
 const getNewsDetail = async (req, res, next) => {
-  res.render("./frontend/news_detail", {
-    layout: "./frontend/layouts/_layouts.ejs",
-    link1: "",
-    link2: "",
-    link3: "",
-    link4: "nav-active-link",
-    link5: "",
-  });
+  try {
+    if (req.params) {
+      const result = await News.findById(req.params.id);
+      if (result) {
+        res.render("./frontend/news_detail", {
+          layout: "./frontend/layouts/_layouts.ejs",
+          link1: "",
+          link2: "",
+          link3: "",
+          link4: "nav-active-link",
+          link5: "",
+          news: result,
+        });
+      }
+    } else {
+      req.flash("error", ["Bi hata oluştu. Lütfen tekrar deneyiniz."]);
+    }
+  } catch (error) {
+    console.log(error);
+  }
 };
 const getNews = async (req, res, next) => {
+  const result = await News.find({});
+
   res.render("./frontend/news", {
     layout: "./frontend/layouts/_layouts.ejs",
     link1: "",
@@ -118,6 +127,7 @@ const getNews = async (req, res, next) => {
     link3: "",
     link4: "nav-active-link",
     link5: "",
+    news: result,
   });
 };
 const getOurValues = async (req, res, next) => {

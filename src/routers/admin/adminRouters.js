@@ -18,8 +18,13 @@ router.get("/projeler/daire-sil/:id", adminController.postDeleteApart);
 
 router.get("/haberler", adminController.getNews);
 
+router.get('/haberler/haber-ekle', adminController.getAddNews);
+router.post('/haberler/haber-ekle',upload.any(),validations.validateNews(), adminController.postAddNews);
 
+router.get('/haberler/haber-guncelle/:id', adminController.getUpdateNews);
+router.post('/haberler/haber-guncelle',validations.validateNews(), adminController.postUpdateNews);
 
+router.get("/haberler/haber-sil/:id", adminController.postDeleteNews);
 
 
 

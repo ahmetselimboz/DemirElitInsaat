@@ -1,270 +1,254 @@
 <div class="row">
-    <div class="col-12">
-      <div class="card my-4">
-        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-1">
-          <div
-            class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3"
-          >
-            <h4 class="text-white text-capitalize ps-4">PROJE GÜNCELLE</h4>
-          </div>
-          <div class="card-body">
-            <h6 class="text-secondary">
-              Bu panel üzerinden projelerinizi güncelleyebilirsiniz.
-            </h6>
-          </div>
+  <div class="col-12">
+    <div class="card my-4">
+      <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-1">
+        <div
+          class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3"
+        >
+          <h4 class="text-white text-capitalize ps-4">PROJE GÜNCELLE</h4>
         </div>
+        <div class="card-body">
+          <h6 class="text-secondary">
+            Bu panel üzerinden projelerinizi güncelleyebilirsiniz.
+          </h6>
+        </div>
+      </div>
+      <div class="card-body px-0 pb-2">
         <div class="card-body px-0 pb-2">
-          <div class="card-body px-0 pb-2">
-            <form
-              action="/yonetim/projeler/daire-guncelle"
-              method="post"
-            
-             
-            >
-              <div class="col-8 mx-auto">
-                <div class="multiple-uploader" id="multiple-uploader">
-                  <div class="mup-msg">
-                    <span class="mup-main-msg"
-                      >Resimleri güncelleyemezsiniz.</span
-                    >
-                    <span class="mup-msg" id="max-upload-number"
-                      >Ekleme işleminde kullandığınız resimler kullanılır.</span
-                    >
-                  </div>
-                </div>
-  
-                <script src="/admin/js/multiple-uploader.js"></script>
-                <script>
-                  let multipleUploader = new MultipleUploader(
-                    "#multiple-uploader"
-                  ).init({
-                    maxUpload: 8, // maximum number of uploaded images
-                    maxSize: 3, // in size in mb
-                    filesInpName: "images", // input name sent to backend
-                    formSelector: "#my-form", // form selector
-                  });
-                </script>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="input-group input-group-static mb-4 px-5">
-                    <label>Proje Adı</label>
-                    <input
-                      value="<%- apart.project_name %>"
-                      type="text"
-                      class="form-control"
-                      name="project_name"
-                    />
-                  </div>
-                </div>
-  
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="exampleSelectGender">Projenin Durumu</label>
-                    <select
-                      class="form-control"
-                      name="project_status"
-                      id="exampleSelectGender"
-                        value="<%- apart.project_status %>"
-                    >
-                      <option value="Tamamlandı">Tamamlandı</option>
-                      <option value="Devam Ediyor">Devam Ediyor</option>
-                      <option value="Planlandı">Planlandı</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-  
-              <div class="row px-5 justify-content-between my-1">
-                <div class="col-md-1 px-1 mx-1">
-                  <div class="input-group input-group-static mb-4 px-1">
-                    <label>Oda Sayısı</label>
-                    <input
-                      value="<%- apart.room_num %>"
-                      type="text"
-                      class="form-control"
-                      name="room_num"
-                    />
-                  </div>
-                </div>
-                <div class="col-md-1 px-1 mx-1">
-                  <div class="input-group input-group-static mb-4 px-1">
-                    <label>Banyo Sayısı</label>
-                    <input
-                      value="<%- apart.bath_num %>"
-                      type="text"
-                      class="form-control"
-                      name="bath_num"
-                    />
-                  </div>
-                </div>
-                <div class="col-md-1 px-1">
-                  <div class="input-group input-group-static mb-4 px-1">
-                    <label>Brüt m<sup>2</sup></label>
-                    <input
-                      value="<%- apart.brut_m2 %>"
-                      type="text"
-                      class="form-control"
-                      name="brut_m2"
-                    />
-                  </div>
-                </div>
-                <div class="col-md-1 px-1">
-                  <div class="input-group input-group-static mb-4 px-1">
-                    <label>Net m<sup>2</sup></label>
-                    <input
-                      value="<%- apart.net_m2 %>"
-                      type="text"
-                      class="form-control"
-                      name="net_m2"
-                    />
-                  </div>
-                </div>
-                <div class="col-md-1 px-1">
-                  <div class="input-group input-group-static mb-4 px-1">
-                    <label>Blok Sayısı</label>
-                    <input
-                      value="<%- apart.block_num %>"
-                      type="text"
-                      class="form-control"
-                      name="block_num"
-                    />
-                  </div>
-                </div>
-                <div class="col-md-1 px-1">
-                  <div class="input-group input-group-static mb-4 px-1">
-                    <label>Daire Sayısı</label>
-                    <input
-                      value="<%- apart.apart_num %>"
-                      type="text"
-                      class="form-control"
-                      name="apart_num"
-                    />
-                  </div>
-                </div>
-                <div class="col-md-1 px-1">
-                  <div class="input-group input-group-static mb-4 px-1">
-                    <label>Kat Sayı</label>
-                    <input
-                      value="<%- apart.floors_num %>"
-                      type="text"
-                      class="form-control"
-                      name="floors_num"
-                    />
-                    <input type="hidden" name="id" value="<%- apart.id %>">
-                  </div>
-                </div>
-              </div>
-              <div class="row px-5 justify-content-between my-1">
-                <div class="col-md-5">
-                  <div class="input-group input-group-static mb-4"">
-                    <label>Adres</label>
-                    <input
-                      class="form-control"
-                      rows="5"
-                      name="adress"
-                      value="<%- apart.adress %>"
-
-                    >
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="input-group input-group-static  my-1">
-                    <label>Açıklama</label>
-                    <input
-                      class="form-control"
-                      rows="5"
-                      name="desc"
-                      value="<%- apart.desc %>"
-                    >
-                  </div>
-                </div>
-              </div>
-              <div class="row px-5 justify-content-between mt-4">
-                <div class="col-md-5">
-                  <div class="input-group input-group-static">
-                    <label>Adres Linki</label>
-                    <input
-                      class="form-control"
-                      rows="5"
-                      name="location_url"
-                      value="<%- apart.locat 
-  
-                    >
-                  </div>
-                </div>
-              
-              </div>
-              <div class="row px-6 justify-content-center mt-6">
-                <div class="col-md-3">
-                  <div class="form-check">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      name="otopark_check"
-                      id="flexCheckDefault"
-                      value="true"
-                    />
-                    <label class="form-check-label" for="flexCheckDefault">
-                      Otopark
-                    </label>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="form-check">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      name="locat_check"
-                      id="flexCheckDefault"
-                      value="true"
-                    />
-                    <label class="form-check-label" for="flexCheckDefault">
-                      Merkeze Yakınlık
-                    </label>
-                  </div>
-                </div>
-                <div class="col-md-3">
-                  <div class="form-check">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      name="transfer_check"
-                      id="flexCheckDefault"
-                      value="true"
-                    />
-                    <label class="form-check-label" for="flexCheckDefault">
-                      Ulaşım Kolaylığı
-                    </label>
-                  </div>
-                </div>
-              </div>
-             
-              <div class="card-body px-6">
-                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                  <button
-                    type="submit"
-                    class="btn btn-success"
-                    id="load2"
-                    data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order"
+          <form action="/yonetim/projeler/daire-guncelle" method="post">
+            <div class="col-8 mx-auto">
+              <div class="multiple-uploader" id="multiple-uploader">
+                <div class="mup-msg">
+                  <span class="mup-main-msg"
+                    >Resimleri güncelleyemezsiniz.</span
                   >
-                    Proje Güncelle
-                  </button>
+                  <span class="mup-msg" id="max-upload-number"
+                    >Ekleme işleminde kullandığınız resimler kullanılır.</span
+                  >
                 </div>
-                <script>
-                  $(".btn ").on("click", function () {
-                    var $this = $(this);
-                    $this.button("loading");
-                    setTimeout(function () {
-                      $this.button("reset");
-                    }, 8000);
-                  });
-                </script>
               </div>
-            </form>
-          </div>
+
+              <script src="/admin/js/multiple-uploader.js"></script>
+              <script>
+                let multipleUploader = new MultipleUploader(
+                  "#multiple-uploader"
+                ).init({
+                  maxUpload: 8, // maximum number of uploaded images
+                  maxSize: 3, // in size in mb
+                  filesInpName: "images", // input name sent to backend
+                  formSelector: "#my-form", // form selector
+                });
+              </script>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="input-group input-group-static mb-4 px-5">
+                  <label>Proje Adı</label>
+                  <input
+                    value="<%- apart.project_name %>"
+                    type="text"
+                    class="form-control"
+                    name="project_name"
+                  />
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="exampleSelectGender">Projenin Durumu</label>
+                  <select
+                    class="form-control"
+                    name="project_status"
+                    id="exampleSelectGender"
+                    value="<%- apart.project_status %>"
+                  >
+                    <option value="Tamamlandı">Tamamlandı</option>
+                    <option value="Devam Ediyor">Devam Ediyor</option>
+                    <option value="Planlandı">Planlandı</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="row px-5 justify-content-between my-1">
+              <div class="col-md-1 px-1 mx-1">
+                <div class="input-group input-group-static mb-4 px-1">
+                  <label>Oda Sayısı</label>
+                  <input
+                    value="<%- apart.room_num %>"
+                    type="text"
+                    class="form-control"
+                    name="room_num"
+                  />
+                </div>
+              </div>
+              <div class="col-md-1 px-1 mx-1">
+                <div class="input-group input-group-static mb-4 px-1">
+                  <label>Banyo Sayısı</label>
+                  <input
+                    value="<%- apart.bath_num %>"
+                    type="text"
+                    class="form-control"
+                    name="bath_num"
+                  />
+                </div>
+              </div>
+              <div class="col-md-1 px-1">
+                <div class="input-group input-group-static mb-4 px-1">
+                  <label>Brüt m<sup>2</sup></label>
+                  <input
+                    value="<%- apart.brut_m2 %>"
+                    type="text"
+                    class="form-control"
+                    name="brut_m2"
+                  />
+                </div>
+              </div>
+              <div class="col-md-1 px-1">
+                <div class="input-group input-group-static mb-4 px-1">
+                  <label>Net m<sup>2</sup></label>
+                  <input
+                    value="<%- apart.net_m2 %>"
+                    type="text"
+                    class="form-control"
+                    name="net_m2"
+                  />
+                </div>
+              </div>
+              <div class="col-md-1 px-1">
+                <div class="input-group input-group-static mb-4 px-1">
+                  <label>Blok Sayısı</label>
+                  <input
+                    value="<%- apart.block_num %>"
+                    type="text"
+                    class="form-control"
+                    name="block_num"
+                  />
+                </div>
+              </div>
+              <div class="col-md-1 px-1">
+                <div class="input-group input-group-static mb-4 px-1">
+                  <label>Daire Sayısı</label>
+                  <input
+                    value="<%- apart.apart_num %>"
+                    type="text"
+                    class="form-control"
+                    name="apart_num"
+                  />
+                </div>
+              </div>
+              <div class="col-md-1 px-1">
+                <div class="input-group input-group-static mb-4 px-1">
+                  <label>Kat Sayı</label>
+                  <input
+                    value="<%- apart.floors_num %>"
+                    type="text"
+                    class="form-control"
+                    name="floors_num"
+                  />
+                  <input type="hidden" name="id" value="<%- apart.id %>" />
+                </div>
+              </div>
+            </div>
+            <div class="row px-5 justify-content-between my-1">
+              <div class="col-md-5">
+                <div class="input-group input-group-static mb-4"">
+                <label>Adres</label>
+                <input
+                  class="form-control"
+                  rows="5"
+                  name="adress"
+                  value="<%- apart.adress %>"
+                />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="input-group input-group-static my-1">
+                <label>Açıklama</label>
+                <input
+                  class="form-control"
+                  rows="5"
+                  name="desc"
+                  value="<%- apart.desc %>"
+                />
+              </div>
+            </div>
+
+            <div class="row justify-content-between mt-4">
+              <div class="col-md-5">
+                <div class="input-group input-group-static">
+                  <label>Adres Linki</label>
+                  <input
+                    class="form-control"
+                    rows="5"
+                    name="location_url"
+                    value="<%- apart.location_url %>"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row px-6 justify-content-center mt-6">
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="otopark_check"
+                    id="flexCheckDefault"
+                    value="true"
+                  />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Otopark
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="locat_check"
+                    id="flexCheckDefault"
+                    value="true"
+                  />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Merkeze Yakınlık
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="transfer_check"
+                    id="flexCheckDefault"
+                    value="true"
+                  />
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Ulaşım Kolaylığı
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-body px-6">
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button
+                  onclick="btn(this)"
+                  type="submit"
+                  class="btn btn-success"
+                  id="load2"
+                  data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order"
+                >
+                  Proje Güncelle
+                </button>
+              </div>
+            </div>
+            <script src="/admin/js/btn.js"></script>
+          </form>
         </div>
       </div>
     </div>
   </div>
-  
+</div>

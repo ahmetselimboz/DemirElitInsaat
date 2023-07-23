@@ -14,76 +14,43 @@
           </h6>
         </div>
       </div>
-      <div class="card-body px-4 py-2">
-        <div class="card d-inline-flex mx-1 " style="width: 18rem">
-          <!-- <div class="embed-responsive embed-responsive-16by9 z-depth-1">
-            <iframe
-              width="853"
-              height="480"
-              src="https://www.youtube.com/embed/xJomE4Vdubw"
-              title="DALGA BOYU #6 - MICROSOFT TOKADI BASTI!, BENZİNLİ ARAÇLAR İÇİN SON 10 YIL"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-            ></iframe>
-          </div> -->
-      
+      <div class="card-body px-4">
+    <% for( let index = 0; index < news.length; index++ ) { %>
+      <div class="card d-inline-flex mx-1 my-4" style="width: 18rem">
+        <% if (news[index].images[0] != undefined && news[index].news_url == "") { %>
+          <img class="card-img-top" src="https://drive.google.com/uc?export=view&id=<%- news[index].images[0].id %>" alt="Card image cap">
+      <% } else { %> 
+        <%- news[index].news_url %>
+        
+        <% } %>
+         
+        
 
-          <img class="card-img-top" src="/frontend/assets/874.jpg" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <a
-              href="#"
-              class="d-inline m-2 btn bg-gradient-success shadow-succes"
-              >GÜNCELLE</a
-            >
-            <a
-              href="#"
-              class="d-inline m-2 btn bg-gradient-danger shadow-danger"
-              >SİL</a
-            >
-          </div>
+     
+        <div class="card-body">
+          <h5 class="card-title"> <%- news[index].news_name %></h5>
+          <p class="card-text">
+            <%- news[index].news_desc %>
+          </p>
+          <a  onclick="btn(this)"
+            href="/yonetim/haberler/haber-guncelle/<%- news[index].id %>"
+            class="d-inline m-2 btn bg-gradient-success shadow-succes"
+            >GÜNCELLE</a
+          > 
+          <a  onclick="btn(this)"
+            href="/yonetim/haberler/haber-sil/<%- news[index].id %>"
+            class="d-inline m-2 btn bg-gradient-danger shadow-danger"
+            >SİL</a
+          >
         </div>
-        <div class="card d-inline-flex mx-1" style="width: 18rem">
-            <iframe
-            width="853"
-            height="480"
-            src="https://www.youtube.com/embed/xJomE4Vdubw"
-            title="DALGA BOYU #6 - MICROSOFT TOKADI BASTI!, BENZİNLİ ARAÇLAR İÇİN SON 10 YIL"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-          ></iframe>
-   
-
-          <!-- <img class="card-img-top" src="/frontend/assets/874.jpg" alt="Card image cap"> -->
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
-            </p>
-            <a
-              href="#"
-              class="d-inline m-2 btn bg-gradient-success shadow-succes"
-              >GÜNCELLE</a
-            >
-            <a
-              href="#"
-              class="d-inline m-2 btn bg-gradient-danger shadow-danger"
-              >SİL</a
-            >
-          </div>
-        </div>
+      </div>
+    <% } %>
+     
       </div>
 
       <div class="card-body px-6">
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-          <a href="/yonetim/projeler/daire-ekle" class="btn bg-gradient-info"
+          <a onclick="btn(this)" href="/yonetim/haberler/haber-ekle" class="btn bg-gradient-info"
             >Haber Ekle</a
           >
         </div>
@@ -92,15 +59,16 @@
   </div>
   <script>
     const iframe = document.querySelectorAll("iframe");
-console.log(iframe.length);
+    console.log(iframe.length);
 
-for (let index = 0; index < iframe.length; index++) {
-    iframe[index].removeAttribute("height");
-    iframe[index].removeAttribute("width");
-    iframe[index].classList.add("embed-responsive-item");
-    iframe[index].style.width = "100%";
-    
-}
+    for (let index = 0; index < iframe.length; index++) {
+      iframe[index].removeAttribute("height");
+      iframe[index].removeAttribute("width");
+      iframe[index].classList.add("embed-responsive-item");
+      iframe[index].style.width = "100%";
+    }
+
   
   </script>
+   <script src="/admin/js/btn.js"></script>
 </div>

@@ -12,6 +12,16 @@
 
 // The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
+
+window.addEventListener("click", function (e) {
+  console.log(e.target.tagName);
+  if (e.target.tagName == "BUTTON" || e.target.tagName == "A") {
+    var text = e.target.innerHTML;
+    e.target.innerHTML =
+      "<i class='fa fa-spinner fa-spin '></i> " + text;
+  }
+});
+
 "use strict";
 (function () {
   var isWindows = navigator.platform.indexOf("Win") > -1 ? true : false;
@@ -949,5 +959,4 @@ if (indicators) {
 
   sections.forEach(onSectionLeavesViewport);
 }
-
 

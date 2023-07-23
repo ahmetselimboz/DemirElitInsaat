@@ -1,6 +1,7 @@
 const Apart = require("../../model/_apartModel");
 const { uploadFile, deleteFile } = require("../../config/multer_config");
 const { validationResult } = require("express-validator");
+const News = require("../../model/_newsModel");
 
 const getHomePage = async (req, res, next) => {
   res.render("./admin/ad_index", {
@@ -24,7 +25,7 @@ const getAddApart = async (req, res, next) => {
 
 const postAddApart = async (req, res, next) => {
   const hatalar = validationResult(req);
-  console.log(hatalar);
+
   if (!hatalar.isEmpty()) {
     req.flash("validation_error", hatalar.array());
     req.flash("project_name", req.body.project_name);
@@ -100,9 +101,8 @@ const getUpdateApart = async (req, res, next) => {
 };
 
 const postUpdateApart = async (req, res, next) => {
-  
   const hatalar = validationResult(req);
-  
+
   if (!hatalar.isEmpty()) {
     req.flash("validation_error", hatalar.array());
 
@@ -129,6 +129,8 @@ const postUpdateApart = async (req, res, next) => {
 
       const result = await Apart.findByIdAndUpdate(req.body.id, options);
       if (result) {
+        req.flash("success_message", [{ msg: "Daire Güncellendi" }]);
+
         res.redirect("/yonetim/projeler");
       }
     } catch (error) {
@@ -144,29 +146,151 @@ const postDeleteApart = async (req, res, next) => {
     if (result) {
       for (let index = 0; index < result.images.length; index++) {
         var check = await deleteFile(result.images[index].id);
-      
       }
-      
+
       if (check == 204) {
         await Apart.findByIdAndRemove(req.params.id);
         req.flash("success_message", [{ msg: "Daire Silindi" }]);
 
         res.redirect("/yonetim/projeler");
-      }else{
+      } else {
         req.flash("error", ["Bi hata oluştu. Lütfen tekrar deneyiniz."]);
       }
-      
     }
   }
 };
 
-
-const getNews = (req,res,next) =>{
+const getNews = async (req, res, next) => {
+  const result = await News.find({});
   res.render("./admin/ad_news", {
     layout: "./admin/layouts/admin_layouts.ejs",
-
+    news: result,
   });
-}
+};
+
+const getAddNews = (req, res, next) => {
+  res.render("./admin/ad_newsDetail", {
+    layout: "./admin/layouts/admin_layouts.ejs",
+  });
+};
+
+const postAddNews = async (req, res, next) => {
+  const hatalar = validationResult(req);
+
+  if (!hatalar.isEmpty()) {
+    req.flash("validation_error", hatalar.array());
+    req.flash("news_name", req.body.news_name);
+    req.flash("news_desc", req.body.news_desc);
+    req.flash("news_url", req.body.news_url);
+
+    res.redirect("/yonetim/haberler/haber-ekle");
+  } else {
+    var val = [];
+
+    try {
+      if (req.files[0] != undefined && req.body.news_url != "") {
+        req.flash("error", [
+          "Aynı anda hem resim hem de video yükleyemezsiniz.",
+        ]);
+        res.redirect("/yonetim/haberler/haber-ekle");
+      } else {
+        const { body, files } = req;
+
+        for (let f = 0; f < files.length; f++) {
+          await uploadFile(files[f]);
+          if (data) {
+            val.push(data);
+          }
+        }
+
+        var news = new News();
+        news.news_name = req.body.news_name;
+        news.news_desc = req.body.news_desc;
+        news.news_url = req.body.news_url;
+
+        val.forEach((element) => {
+          news.images.push(element);
+        });
+
+        news.save();
+        req.flash("success_message", [{ msg: "Haber Eklendi" }]);
+        res.redirect("/yonetim/haberler");
+      }
+    } catch (f) {
+      console.log(f);
+    }
+  }
+};
+
+const getUpdateNews = async (req, res, next) => {
+  try {
+    if (req.params.id) {
+      const result = await News.findById(req.params.id);
+      //console.log(result);
+      res.render("./admin/ad_newsUpdate", {
+        layout: "./admin/layouts/admin_layouts.ejs",
+        news: result,
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const postUpdateNews = async (req, res, next) => {
+  console.log(req.body);
+  const hatalar = validationResult(req);
+
+  if (!hatalar.isEmpty()) {
+    req.flash("validation_error", hatalar.array());
+
+    res.redirect("/yonetim/haberler/haber-guncelle/" + req.body.id);
+  } else {
+    try {
+      const options = {
+        news_name: req.body.news_name,
+        news_desc: req.body.news_desc,
+        news_url: req.body.news_url,
+      };
+
+      const result = await News.findByIdAndUpdate(req.body.id, options);
+      if (result) {
+        req.flash("success_message", [{ msg: "Haber Güncellendi" }]);
+        res.redirect("/yonetim/haberler");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+};
+
+const postDeleteNews = async (req, res, next) => {
+  if (req.params) {
+    const result = await News.findById(req.params.id);
+
+    if (result) {
+      if (result.images[0] != undefined && result.news_url == "") {
+        for (let index = 0; index < result.images.length; index++) {
+          var check = await deleteFile(result.images[index].id);
+        }
+
+        if (check == 204) {
+          await News.findByIdAndRemove(req.params.id);
+          req.flash("success_message", [{ msg: "Daire Silindi" }]);
+
+          res.redirect("/yonetim/haberler");
+        }
+      } else {
+        await News.findByIdAndRemove(req.params.id);
+        req.flash("success_message", [{ msg: "Daire Silindi" }]);
+
+        res.redirect("/yonetim/haberler");
+      }
+    } else {
+      req.flash("error", ["Bi hata oluştu. Lütfen tekrar deneyiniz."]);
+    }
+  }
+};
 
 module.exports = {
   getHomePage,
@@ -176,5 +300,10 @@ module.exports = {
   getUpdateApart,
   postUpdateApart,
   postDeleteApart,
-  getNews
+  getNews,
+  getAddNews,
+  postAddNews,
+  getUpdateNews,
+  postUpdateNews,
+  postDeleteNews,
 };

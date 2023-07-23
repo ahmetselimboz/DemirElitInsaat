@@ -1,0 +1,157 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card my-4">
+      <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-1">
+        <div
+          class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3"
+        >
+          <h4 class="text-white text-capitalize ps-4">HABER EKLE</h4>
+        </div>
+        <div class="card-body">
+          <h6 class="text-secondary">
+            Bu panel üzerinden yeni haber ekleyebilirsiniz.
+          </h6>
+        </div>
+      </div>
+      <div class="card-body px-0 pb-2">
+        <div class="card-body px-0 pb-2">
+          <form
+            action="/yonetim/haberler/haber-ekle"
+            method="post"
+            enctype="multipart/form-data"
+            id="my-form"
+          >
+            <div class="col-8 mx-auto">
+              <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link active"
+                    id="home-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#home"
+                    type="button"
+                    role="tab"
+                    aria-controls="home"
+                    aria-selected="true"
+                  >
+                    Resim Yükle
+                  </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link"
+                    id="profile-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#profile"
+                    type="button"
+                    role="tab"
+                    aria-controls="profile"
+                    aria-selected="false"
+                  >
+                    Video Yükle
+                  </button>
+                </li>
+              </ul>
+              <div class="tab-content" id="myTabContent">
+                <div
+                  class="tab-pane fade show active"
+                  id="home"
+                  role="tabpanel"
+                  aria-labelledby="home-tab"
+                >
+                  <div class="multiple-uploader" id="multiple-uploader">
+                    <div class="mup-msg">
+                      <span class="mup-main-msg"
+                        >Resim yüklemek için tıklayınız</span
+                      >
+                      <span class="mup-msg" id="max-upload-number"
+                        >En fazla 1 fotoğraf yükleyebilirsiniz</span
+                      >
+                      <span class="mup-msg"
+                        >Sadece resim dosyası yükleyiniz</span
+                      >
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="tab-pane fade "
+                  id="profile"
+                  role="tabpanel"
+                  aria-labelledby="profile-tab"
+                >
+                <div class="col-14 px-5">
+                  <div class="input-group input-group-static mt-4 mb-5">
+                    <label>Haber Linki</label>
+                    <input
+                      class="form-control"
+                      rows="5"
+                      name="news_url"
+                      value="<%= typeof news_url != 'undefined' ? news_url : '' %>"
+                    />
+                  </div>
+                </div>
+                  
+                </div>
+              </div>
+            </div>
+
+            <script src="/admin/js/multiple-uploader.js"></script>
+            <script>
+              let multipleUploader = new MultipleUploader(
+                "#multiple-uploader"
+              ).init({
+                maxUpload: 1, // maximum number of uploaded images
+                maxSize: 3, // in size in mb
+                filesInpName: "images", // input name sent to backend
+                formSelector: "#my-form", // form selector
+              });
+            </script>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="input-group input-group-static mb-4 px-3">
+                  <label>Haber Adı</label>
+                  <input
+                    value="<%= typeof news_name != 'undefined' ? news_name : '' %>"
+                    type="text"
+                    class="form-control"
+                    name="news_name"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="input-group input-group-static mb-4 px-3">
+                  <label>Açıklama</label>
+                  <input
+                    class="form-control"
+                    rows="5"
+                    name="news_desc"
+                    value="<%= typeof news_desc != 'undefined' ? news_desc : '' %>"
+                  />
+                </div>
+              </div>
+            </div>
+
+          
+
+            <div class="card-body px-6">
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button
+                  onclick="btn(this)"
+                  type="submit"
+                  class="btn btn-info"
+                  id="load2"
+                  data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order"
+                >
+                  Haber Ekle
+                </button>
+              </div>
+            </div>
+
+            <script src="/admin/js/btn.js"></script>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

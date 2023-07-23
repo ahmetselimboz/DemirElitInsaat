@@ -292,9 +292,16 @@ buttonRight.addEventListener("click", function () {
 let altImages = document.querySelectorAll(".detail-alt-image");
 let dots = document.querySelectorAll(".detail-alt-dots ul i");
 document.querySelector(".detail-image-img").src = altImages[0].src;
+altImages[0].classList.add("alt-image-active");
+dots[0].classList.add("circle-active");
+
+
 
 
 altImages.forEach((eleman, index) => {
+  eleman.addEventListener("load", ()=>{
+    elem.classList.remove("alt-image-active");
+  })
   eleman.addEventListener("click", () => {
     // Tüm <li> elemanlarından "active" sınıfını kaldırın
     altImages.forEach((elem) => {

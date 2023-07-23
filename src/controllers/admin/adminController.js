@@ -37,6 +37,7 @@ const postAddApart = async (req, res, next) => {
     req.flash("floors_num", req.body.floors_num);
     req.flash("adress", req.body.adress);
     req.flash("desc", req.body.desc);
+    req.flash("location_url", req.body.location_url);
 
     res.redirect("/yonetim/projeler/daire-ekle");
   } else {
@@ -65,6 +66,7 @@ const postAddApart = async (req, res, next) => {
       apt.adress = req.body.adress;
       apt.desc = req.body.desc;
       apt.project_status = req.body.project_status;
+      apt.location_url = req.body.location_url;
       apt.otopark_check = !req.body.otopark_check ? false : true;
       apt.locat_check = !req.body.locat_check ? false : true;
       apt.transfer_check = !req.body.transfer_check ? false : true;
@@ -98,9 +100,9 @@ const getUpdateApart = async (req, res, next) => {
 };
 
 const postUpdateApart = async (req, res, next) => {
-  console.log(req.body);
+  
   const hatalar = validationResult(req);
-  console.log(hatalar);
+  
   if (!hatalar.isEmpty()) {
     req.flash("validation_error", hatalar.array());
 
@@ -119,6 +121,7 @@ const postUpdateApart = async (req, res, next) => {
         floors_num: req.body.floors_num,
         adress: req.body.adress,
         desc: req.body.desc,
+        location_url: req.body.location_url,
         otopark_check: !req.body.otopark_check ? false : true,
         locat_check: !req.body.locat_check ? false : true,
         transfer_check: !req.body.transfer_check ? false : true,
@@ -143,7 +146,7 @@ const postDeleteApart = async (req, res, next) => {
         var check = await deleteFile(result.images[index].id);
       
       }
-      console.log(check);
+      
       if (check == 204) {
         await Apart.findByIdAndRemove(req.params.id);
         req.flash("success_message", [{ msg: "Daire Silindi" }]);
@@ -157,6 +160,14 @@ const postDeleteApart = async (req, res, next) => {
   }
 };
 
+
+const getNews = (req,res,next) =>{
+  res.render("./admin/ad_news", {
+    layout: "./admin/layouts/admin_layouts.ejs",
+
+  });
+}
+
 module.exports = {
   getHomePage,
   getAllProjects,
@@ -165,4 +176,5 @@ module.exports = {
   getUpdateApart,
   postUpdateApart,
   postDeleteApart,
+  getNews
 };

@@ -13,9 +13,9 @@
 </div>
 
 <section class="cl">
-  <div class="detail-top ">
-    <div class="detail-text ">
-      <div class="detail-bottom-text ">
+  <div class="detail-top">
+    <div class="detail-text">
+      <div class="detail-bottom-text">
         <hr class="detail-bottom-line" />
         <h5>Demir Elit İnşaat</h5>
         <div class="detail-bottom-alt">
@@ -26,76 +26,51 @@
   </div>
   <div class="detail-panel">
     <div class="detail-top-text js-scroll slide-left">
-      <h4>Yıldız Sitesi</h4>
+      <h4><%- apart.project_name %></h4>
       <hr class="detail-top-line" />
     </div>
     <div class="detail-box">
       <div class="detail-right">
-      
-
         <div class="detail-image js-scroll fade-in">
-          <img class="detail-image-img" src="/frontend/assets/bahce.jpg" alt="" />
-          
+          <img
+            class="detail-image-img"
+            src="/frontend/assets/bahce.jpg"
+            alt=""
+          />
 
           <div class="detail-click">
-              <i class='bx bxs-hand-up'></i>
-              <div class="detail-heade">
-                <h4 class="detail-image-h4">Büyütmek için Tıklayın</h4>
-              </div>
-            </div> 
+            <i class="bx bxs-hand-up"></i>
+            <div class="detail-heade">
+              <h4 class="detail-image-h4">Büyütmek için Tıklayın</h4>
+            </div>
+          </div>
         </div>
         <div class="detail-alt-area js-scroll fade-in">
           <i id="detail-alt-left" class="bx bx-chevron-left"></i>
           <div class="detail-alt">
+            <% for( let index = 0; index < apart.images.length; index++ ) { %>
             <img
-              class="detail-alt-image alt-image-active "
-              src="/frontend/assets/ber.jpeg"
+              class="detail-alt-image"
+              src="https://drive.google.com/uc?export=view&id=<%- apart.images[index].id %>"
               alt=""
             />
-            <img
-              class="detail-alt-image "
-              src="/frontend/assets/beautiful.jpg"
-              alt=""
-            />
-            <img class="detail-alt-image " src="/frontend/assets/bina.jpg" alt="" />
-            <img
-              class="detail-alt-image "
-              src="/frontend/assets/evrim.jpg"
-              alt=""
-            />
-            <img
-              class="detail-alt-image "
-              src="/frontend/assets/indir (1).jpeg"
-              alt=""
-            />
-            <img
-              class="detail-alt-image "
-              src="/frontend/assets/indir.jpeg"
-              alt=""
-            />
-            <img
-              class="detail-alt-image "
-              src="/frontend/assets/indir2.jpg"
-              alt=""
-            />
-            <img
-              class="detail-alt-image "
-              src="/frontend/assets/Background-3.jpg"
-              alt=""
-            />
+            <% } %>
           </div>
           <i id="detail-alt-right" class="bx bx-chevron-right"></i>
-        </div> 
+        </div>
         <div class="detail-alt-dots js-scroll fade-in">
           <ul>
-            <li><i class="bx bxs-circle circle-active"></i></li>
+            <% for( let index = 0; index < apart.images.length; index++ ) { %>
+            <li><i class="bx bxs-circle"></i></li>
+            <% } %>
+            <!--           
             <li><i class="bx bxs-circle"></i></li>
             <li><i class="bx bxs-circle"></i></li>
             <li><i class="bx bxs-circle"></i></li>
             <li><i class="bx bxs-circle"></i></li>
             <li><i class="bx bxs-circle"></i></li>
             <li><i class="bx bxs-circle"></i></li>
-            <li><i class="bx bxs-circle"></i></li>
+            <li><i class="bx bxs-circle"></i></li> -->
           </ul>
         </div>
       </div>
@@ -111,7 +86,7 @@
               <h2>Oda Sayısı:&nbsp;</h2>
             </div>
             <div class="detail-der">
-              <h4>4+1</h4>
+              <h4><%- apart.room_num %></h4>
             </div>
           </div>
           <div class="detail-content">
@@ -119,7 +94,7 @@
               <h2>Banyo Sayısı:&nbsp;</h2>
             </div>
             <div class="detail-der">
-              <h4>2</h4>
+              <h4><%- apart.bath_num %></h4>
             </div>
           </div>
           <div class="detail-content">
@@ -127,7 +102,7 @@
               <h2>Brüt m<sup>2</sup> :&nbsp;</h2>
             </div>
             <div class="detail-der">
-              <h4>230 m<sup>2</sup></h4>
+              <h4><%- apart.brut_m2 %> m<sup>2</sup></h4>
             </div>
           </div>
           <div class="detail-content">
@@ -135,7 +110,7 @@
               <h2>Net m<sup>2</sup> :&nbsp;</h2>
             </div>
             <div class="detail-der">
-              <h4>180 m<sup>2</sup></h4>
+              <h4><%- apart.net_m2 %> m<sup>2</sup></h4>
             </div>
           </div>
           <div class="detail-content">
@@ -143,7 +118,7 @@
               <h2>Blok Sayısı:&nbsp;</h2>
             </div>
             <div class="detail-der">
-              <h4>2</h4>
+              <h4><%- apart.block_num %></h4>
             </div>
           </div>
           <div class="detail-content">
@@ -151,7 +126,7 @@
               <h2>Daire Sayısı:&nbsp;</h2>
             </div>
             <div class="detail-der">
-              <h4>18</h4>
+              <h4><%- apart.apart_num %></h4>
             </div>
           </div>
           <div class="detail-content">
@@ -159,16 +134,16 @@
               <h2>Kat Sayısı:&nbsp;</h2>
             </div>
             <div class="detail-der">
-              <h4>9</h4>
+              <h4><%- apart.floors_num %></h4>
             </div>
           </div>
           <div class="detail-ad-content">
             <div class="detail-ad-det">
               <h2>Adres:&nbsp;</h2>
             </div>
-            
+
             <div class="detail-ad-der">
-              <h4>Necip Fazıl Mah. 50008. Sok. No:21/14 Onikişubat / Kahramanmaraş</h4>
+              <h4><%- apart.adress %></h4>
             </div>
             <div class="det-btn">
               <a href="#map-section">Haritada Görüntüle</a>
@@ -180,26 +155,19 @@
     <div class="part-det-line js-scroll fade-in-bottom">
       <hr class="part-det-underline" />
       <div class="part-det-img">
-        <img src="/frontend/assets/Just_Logo.png" alt="">
+        <img src="/frontend/assets/Just_Logo.png" alt="" />
       </div>
       <hr class="part-det-underline" />
     </div>
     <section>
       <div class="desc-panel js-scroll slide-left">
-        
         <div id="desc-pad">
           <div class="desc-title">
             <h4>Daire Açıklaması</h4>
             <!-- <hr class="desc-text-line" /> -->
           </div>
           <div class="desc-text">
-            <h5>
-              Bulunduğu merkezî konum sayesinde, mesafeleri ortadan kaldıran
-              ve kolay ulaşımı ile dikkat çeken Yıldız Sitesi, yüksek
-              konforlu ve kaliteli yaşam ortamını sizlere sunuyor. Her
-              aileye uygun ortam sunan ve özel olarak inşa edilen Yıldız
-              Sitesi'nde aradığınız tüm imkânları bulabileceksiniz.
-            </h5>
+            <h5><%- apart.desc %></h5>
           </div>
         </div>
       </div>
@@ -208,9 +176,8 @@
 </section>
 
 <section>
-  <div class="det-area ">
-    
-    <div class="det-col  js-scroll fade-in-bottom">
+  <div class="det-area">
+    <div class="det-col js-scroll fade-in-bottom">
       <div class="det-icon">
         <i id="ic" class="fa-solid fa-car-side"></i>
       </div>
@@ -219,9 +186,16 @@
           <h4>Otopark</h4>
           <hr class="det-line" />
         </div>
+        <% if (apart.otopark_check == true ) { %>
+
         <div class="det-text">
           <h5>Var</h5>
         </div>
+        <% } else { %>
+        <div class="det-text">
+          <h5>Yok</h5>
+        </div>
+        <% } %>
       </div>
     </div>
     <div class="det-col js-scroll fade-in-bottom">
@@ -233,9 +207,16 @@
           <h4>Merkeze Yakınlık</h4>
           <hr class="det-line" />
         </div>
-        <div class="det-text">
-          <h5>Var</h5>
-        </div>
+        <% if (apart.locat_check == true ) { %>
+
+          <div class="det-text">
+            <h5>Var</h5>
+          </div>
+          <% } else { %>
+          <div class="det-text">
+            <h5>Yok</h5>
+          </div>
+          <% } %>
       </div>
     </div>
     <div class="det-col js-scroll fade-in-bottom">
@@ -247,9 +228,16 @@
           <h4>Ulaşım Kolaylığı</h4>
           <hr class="det-line" />
         </div>
-        <div class="det-text">
-          <h5>Var</h5>
-        </div>
+        <% if (apart.transfer_check == true ) { %>
+
+          <div class="det-text">
+            <h5>Var</h5>
+          </div>
+          <% } else { %>
+          <div class="det-text">
+            <h5>Yok</h5>
+          </div>
+          <% } %>
       </div>
     </div>
     <div class="det-col js-scroll fade-in-bottom">
@@ -274,14 +262,6 @@
       <h4>Konum</h4>
       <hr class="detail-map-line" />
     </div>
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d383.93867379018894!2d36.89853343718801!3d37.59012159437447!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1str!2str!4v1688508818966!5m2!1str!2str"
-      width="600"
-      height="450"
-      style="border: 0"
-      allowfullscreen=""
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"
-    ></iframe>
+    <%- apart.location_url %>
   </div>
 </section>

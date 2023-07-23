@@ -8,10 +8,10 @@ const frontController = require("../../controllers/frontend/frControllers")
 router.get('/', frontController.getHomePage);
 router.get('/anasayfa', frontController.getHomePage);
 
-router.get('/dairedetay', frontController.getApartDetail)
+router.get('/daire-detay/:id', frontController.getApartDetail)
 router.get('/hakkimizda', frontController.getAboutUs)
 router.get('/iletisim', frontController.getContact)
-router.get('/daireler', frontController.getAparts)
+router.get('/daireler/:link', frontController.getAparts)
 router.get('/haberdetay', frontController.getNewsDetail)
 router.get('/haberler', frontController.getNews)
 router.get('/degerlerimiz', frontController.getOurValues)

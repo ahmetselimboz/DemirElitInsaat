@@ -76,6 +76,10 @@ const ApartSchema = new Schema(
     project_status:{
       type:String,
       default: 1
+    },
+    location_url:{
+      type: String,
+      trim: true
     }
   },
   { collection: "apart", timestamps: true }

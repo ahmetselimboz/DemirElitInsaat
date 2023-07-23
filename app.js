@@ -54,6 +54,7 @@ app.use((req, res, next) => {
   res.locals.floors_num = req.flash("floors_num");
   res.locals.adress = req.flash("adress");
   res.locals.desc = req.flash("desc");
+  res.locals.location_url = req.flash("location_url");
 
   next();
 });

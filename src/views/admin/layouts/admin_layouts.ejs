@@ -191,7 +191,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="../pages/notifications.html">
+            <a class="nav-link text-white" href="/yonetim/haberler">
               <div
                 class="text-white text-center me-2 d-flex align-items-center justify-content-center"
               >
@@ -249,7 +249,7 @@
                   class="nav-link text-body font-weight-bold px-0"
                 >
                   <i class="fa fa-user me-sm-1"></i>
-                  <span class="d-sm-inline d-none">Sign In</span>
+                  <span class="d-sm-inline d-none">Giriş Yap</span>
                 </a>
               </li>
             </ul>
@@ -258,8 +258,7 @@
       </nav>
       <!-- End Navbar -->
       <% if (locals.validation_error !=undefined || locals.success_message
-      !=undefined || locals.login_error !=undefined) { %> <%-
-      include('../partials/_mesaj') %> <% } %>
+      !=undefined || locals.login_error !=undefined) { %> <%-include('../partials/_mesaj') %> <% } %>
       <div class="container-fluid py-4">
       
         <%- body %>

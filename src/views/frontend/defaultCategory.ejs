@@ -7,7 +7,7 @@
       <div class="cat-panel">
         <div class="cat-title-area">
          
-          <h2 >Tamamlanan Projeler</h2>
+          <h2 ><%- title %></h2>
 
           <div class="part-line " >
             <hr class="part-underline"  id="cat-part-underline"/>
@@ -29,7 +29,7 @@
               </div>
               <div class="cat-overlay">
                 <div class="cat-text-hover">
-                  <a href="/daireDetay" class="cat-btn-incele">İncele</a>
+                  <a href="/daire-detay/<%- apart[index].id %>" class="cat-btn-incele">İncele</a>
                   <h4><%- apart[index].adress %></h4>
                 </div>
               </div>

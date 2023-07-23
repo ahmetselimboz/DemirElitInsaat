@@ -156,25 +156,43 @@
             </div>
             <div class="row px-5 justify-content-between my-1">
               <div class="col-md-5">
-                <div class="input-group input-group-static">
+                <div class="input-group input-group-static mb-4">
                   <label>Adres</label>
-                  <textarea
+                  <input
                     class="form-control"
                     rows="5"
                     name="adress"
-                  ></textarea>
+                    value="<%= typeof adress != 'undefined' ? adress : '' %>"
+
+                  >
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="input-group input-group-static">
                   <label>Açıklama</label>
-                  <textarea
+                  <input
                     class="form-control"
                     rows="5"
                     name="desc"
-                  ></textarea>
+                    value="<%= typeof desc != 'undefined' ? desc : '' %>"
+                  >
                 </div>
               </div>
+            </div>
+            <div class="row px-5 justify-content-between mt-4">
+              <div class="col-md-5">
+                <div class="input-group input-group-static ">
+                  <label>Adres Linki</label>
+                  <input
+                    class="form-control"
+                    rows="5"
+                    name="location_url"
+                    value="<%= typeof location_url != 'undefined' ? location_url : '' %>"
+
+                  >
+                </div>
+              </div>
+            
             </div>
             <div class="row px-6 justify-content-center mt-6">
               <div class="col-md-3">
@@ -220,6 +238,7 @@
                 </div>
               </div>
             </div>
+           
             <div class="card-body px-6">
               <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <button

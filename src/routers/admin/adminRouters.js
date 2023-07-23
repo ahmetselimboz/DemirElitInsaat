@@ -16,6 +16,8 @@ router.post("/projeler/daire-guncelle",validations.validateApart(), adminControl
 
 router.get("/projeler/daire-sil/:id", adminController.postDeleteApart);
 
+router.get("/haberler", adminController.getNews);
+
 
 
 

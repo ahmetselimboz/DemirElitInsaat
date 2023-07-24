@@ -40,4 +40,12 @@ router.post("/ekibimiz/baskan",upload.any(),validations.validateTeam(), adminCon
 router.get("/ekibimiz/aciklama", adminController.getTeamDesc)
 router.post("/ekibimiz/aciklama", validations.validateDesc(), adminController.postTeamDesc)
 
+router.get("/ekibimiz/ekip-ekle", adminController.getAddTeam);
+router.post("/ekibimiz/ekip-ekle",upload.any(),validations.validateTeam(), adminController.postAddTeam);
+router.get("/ekibimiz/ekip-guncelle/:id", adminController.getUpdateTeam);
+router.post("/ekibimiz/ekip-guncelle",validations.validateTeam(), adminController.postUpdateTeam);
+
+router.get("/ekibimiz/ekip-sil/:id", adminController.getDeleteTeam);
+
+
 module.exports = router;

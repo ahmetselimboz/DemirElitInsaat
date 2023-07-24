@@ -319,8 +319,20 @@ const getContactInfo = async (req, res, next) => {
       contact: result,
     });
   } else {
-    req.flash("error", ["Bi hata oluştu. Lütfen tekrar deneyiniz."]);
-    res.redirect("/yonetim");
+    const tui = new Contact({
+      facebook_url: "",
+      instagram_url: "",
+      twitter_url: "",
+      linkedln_url: "",
+      phone1: "",
+      phone2: "",
+      mail: "",
+      location: "",
+      location_link: "",
+    });
+    tui.save();
+
+    res.redirect("/yonetim/iletisim-bilgileri");
   }
 };
 
@@ -426,14 +438,9 @@ const getDeleteMessages = async (req, res, next) => {
 
 const getTeam = async (req, res, next) => {
   const pres = await Team.find({ president: true });
-  const desc = await Team.findOne({team_desc_check:true})
-  if (pres != "") {
-    res.render("./admin/ad_team", {
-      layout: "./admin/layouts/admin_layouts.ejs",
-      pres: pres,
-      desc:desc
-    });
-  } else {
+  const desc = await Team.findOne({ team_desc_check: true });
+  const ekip = await Team.find({ team_desc_check: false, president: false });
+  if (pres == "") {
     var team = new Team();
 
     team.name_surname = "ornek";
@@ -441,8 +448,36 @@ const getTeam = async (req, res, next) => {
     team.president = true;
 
     team.save();
-    res.redirect("/ekibimiz");
   }
+
+  if (desc == null) {
+    var team = new Team();
+
+    team.team_desc = "ornek";
+
+    team.team_desc_check = true;
+
+    team.save();
+  }
+  if (ekip == "") {
+    var team = new Team();
+
+    team.name_surname = "ornek";
+    team.task = "ornek";
+    team.president = false;
+
+    team.save();
+  } if((ekip != "") && (desc != null) && (pres != "")) {
+    
+    res.render("./admin/ad_team", {
+      layout: "./admin/layouts/admin_layouts.ejs",
+      pres: pres,
+      desc: desc,
+      ekip: ekip,
+    });
+  }
+  
+
 };
 
 const getPresident = async (req, res, next) => {
@@ -511,10 +546,10 @@ const postPresident = async (req, res, next) => {
 };
 
 const getTeamDesc = async (req, res, next) => {
-  const result  = await Team.findOne({team_desc_check:true})
+  const result = await Team.findOne({ team_desc_check: true });
   res.render("./admin/ad_teamDesc", {
     layout: "./admin/layouts/admin_layouts.ejs",
-    result:result
+    result: result,
   });
 };
 
@@ -525,18 +560,18 @@ const postTeamDesc = async (req, res, next) => {
     req.flash("validation_error", hatalar.array());
     req.flash("team_desc", req.body.team_desc);
 
-    res.redirect("/yonetim/ekibimiz/aciklama" );
+    res.redirect("/yonetim/ekibimiz/aciklama");
   } else {
     try {
       if (req.body) {
-        const result = await Team.findOne({team_desc_check:true});
+        const result = await Team.findOne({ team_desc_check: true });
 
         if (result) {
           const options = {
             team_desc: req.body.team_desc,
           };
 
-          await Team.findOneAndUpdate({team_desc_check:true}, options);
+          await Team.findOneAndUpdate({ team_desc_check: true }, options);
           req.flash("success_message", [
             { msg: "Ekip açıklaması güncellendi" },
           ]);
@@ -545,7 +580,6 @@ const postTeamDesc = async (req, res, next) => {
           const team = new Team({
             team_desc: req.body.team_desc,
             team_desc_check: req.body.team_desc_check,
-         
           });
           team.save();
           req.flash("success_message", [
@@ -556,6 +590,114 @@ const postTeamDesc = async (req, res, next) => {
       }
     } catch (f) {
       console.log(f);
+    }
+  }
+};
+
+const getAddTeam = (req, res, next) => {
+  res.render("./admin/ad_addTeam", {
+    layout: "./admin/layouts/admin_layouts.ejs",
+  });
+};
+
+const postAddTeam = async (req, res, next) => {
+  const hatalar = validationResult(req);
+
+  if (!hatalar.isEmpty()) {
+    req.flash("validation_error", hatalar.array());
+    req.flash("name_surname", req.body.name_surname);
+    req.flash("task", req.body.task);
+
+    res.redirect("/yonetim/ekibimiz/ekip-ekle");
+  } else {
+    var val = [];
+
+    try {
+      const { body, files } = req;
+
+      for (let f = 0; f < files.length; f++) {
+        await uploadFile(files[f]);
+        if (data) {
+          val.push(data);
+        }
+      }
+
+      var team = new Team();
+
+      team.name_surname = req.body.name_surname;
+      team.task = req.body.task;
+
+      val.forEach((element) => {
+        team.images.push(element);
+      });
+
+      team.save();
+      req.flash("success_message", [{ msg: "Ekip Arkadaşı Eklendi" }]);
+      res.redirect("/yonetim/ekibimiz");
+    } catch (f) {
+      console.log(f);
+    }
+  }
+};
+
+const getUpdateTeam = async (req, res, next) => {
+  try {
+    if (req.params.id) {
+      const result = await Team.findById(req.params.id);
+      //console.log(result);
+      res.render("./admin/ad_updateTeam", {
+        layout: "./admin/layouts/admin_layouts.ejs",
+        team: result,
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const postUpdateTeam = async (req, res, next) => {
+  const hatalar = validationResult(req);
+
+  if (!hatalar.isEmpty()) {
+    req.flash("validation_error", hatalar.array());
+
+    res.redirect("/yonetim/ekibimiz/ekip-guncelle/" + req.body.id);
+  } else {
+    try {
+      const options = {
+        name_surname: req.body.name_surname,
+        task: req.body.task,
+      };
+
+      const result = await Team.findByIdAndUpdate(req.body.id, options);
+      if (result) {
+        req.flash("success_message", [{ msg: "Ekip Güncellendi" }]);
+
+        res.redirect("/yonetim/ekibimiz");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+};
+
+const getDeleteTeam = async (req, res, next) => {
+  if (req.params) {
+    const result = await Team.findById(req.params.id);
+
+    if (result) {
+      for (let index = 0; index < result.images.length; index++) {
+        var check = await deleteFile(result.images[index].id);
+      }
+
+      if (check == 204) {
+        await Team.findByIdAndRemove(req.params.id);
+        req.flash("success_message", [{ msg: "Silindi" }]);
+
+        res.redirect("/yonetim/ekibimiz");
+      } else {
+        req.flash("error", ["Bi hata oluştu. Lütfen tekrar deneyiniz."]);
+      }
     }
   }
 };
@@ -584,4 +726,9 @@ module.exports = {
   postPresident,
   getTeamDesc,
   postTeamDesc,
+  getAddTeam,
+  postAddTeam,
+  getUpdateTeam,
+  postUpdateTeam,
+  getDeleteTeam,
 };

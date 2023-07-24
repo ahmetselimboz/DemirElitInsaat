@@ -22,51 +22,28 @@
         <div class="ek-col-pres">
           <div class="ek-pres js-scroll fade-in-bottom">
             <div class="ek-pres-img">
-              <img src="/frontend/assets/baskan.jpg" alt="" />
+              <img src="https://drive.google.com/uc?export=view&id=<%- pres.images[0].id %>" alt="" />
             </div>
             <div class="ek-pres-text">
-              <h1>Harun DEMIR</h1>
-              <h4>Yönetim Kurulu Başkanı</h4>
+              <h1><%- pres.name_surname %></h1>
+              <h4><%- pres.task %></h4>
             </div>
           </div>
         </div>
         <div class="ek-col">
-          <div class="ek-pres js-scroll fade-in-bottom">
-            <div class="ek-img">
-              <img src="/frontend/assets/baskan.jpg" alt="" />
+          <% for( let index = 0; index < ekip.length; index++ ) { %>
+            <div class="ek-pres js-scroll fade-in-bottom">
+              <div class="ek-img">
+                <img src="https://drive.google.com/uc?export=view&id=<%- ekip[index].images[0].id %>" alt="" />
+              </div>
+              <div class="ek-pres-text">
+                <h1><%- ekip[index].name_surname %></h1>
+                <h4><%- ekip[index].task %></h4>
+              </div>
             </div>
-            <div class="ek-pres-text">
-              <h1>Harun DEMIR</h1>
-              <h4>Yönetim Kurulu Başkanı</h4>
-            </div>
-          </div>
-          <div class="ek-pres js-scroll fade-in-bottom">
-            <div class="ek-img">
-              <img src="/frontend/assets/baskan.jpg" alt="" />
-            </div>
-            <div class="ek-pres-text">
-              <h1>Harun DEMIR</h1>
-              <h4>Yönetim Kurulu Başkanı</h4>
-            </div>
-          </div>
-          <div class="ek-pres js-scroll fade-in-bottom">
-            <div class="ek-img">
-              <img src="/frontend/assets/baskan.jpg" alt="" />
-            </div>
-            <div class="ek-pres-text">
-              <h1>Harun DEMIR</h1>
-              <h4>Yönetim Kurulu Başkanı</h4>
-            </div>
-          </div>
-          <div class="ek-pres js-scroll fade-in-bottom">
-            <div class="ek-img">
-              <img src="/frontend/assets/baskan.jpg" alt="" />
-            </div>
-            <div class="ek-pres-text">
-              <h1>Harun DEMIR</h1>
-              <h4>Yönetim Kurulu Başkanı</h4>
-            </div>
-          </div>
+          <% } %>
+         
+       
         </div>
       </div>
     </div>
@@ -75,17 +52,7 @@
     <div class="about-area js-scroll slide-left">
       <div class="about-text">
         <h5>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          ad fugit nam dignissimos nemo assumenda aspernatur vero labore quo
-          totam voluptates, hic tempore alias illo asperiores, veritatis
-          quidem repudiandae dolor! Fuga dignissimos veniam eius nemo earum,
-          dolor debitis! Adipisci cupiditate at unde vero tempora aspernatur
-          non ad, illo impedit quam magnam, nam deserunt blanditiis iure
-          quasi id libero voluptas repellat. Aperiam deserunt labore impedit
-          dicta odit ratione placeat illo quaerat fugiat voluptatum
-          distinctio ab cupiditate quas perferendis consectetur quae hic
-          laudantium ullam veniam nostrum soluta, blanditiis eaque
-          molestiae. Hic, nisi!
+        <%- desc.team_desc %>
        
         </h5>
       </div>

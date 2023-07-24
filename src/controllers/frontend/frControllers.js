@@ -2,6 +2,7 @@ const Apart = require("../../model/_apartModel");
 const Contact = require("../../model/_contactModel");
 const Message = require("../../model/_messageModel");
 const News = require("../../model/_newsModel");
+const Team = require("../../model/_teamModel");
 
 const getHomePage = async (req, res, next) => {
   const contact = await Contact.findOne({});
@@ -162,6 +163,10 @@ const getOurValues = async (req, res, next) => {
 };
 const getSquad = async (req, res, next) => {
   const contact = await Contact.findOne({});
+  const pres = await Team.findOne({ president: true });
+  const desc = await Team.findOne({ team_desc_check: true });
+  const ekip = await Team.find({ team_desc_check: false, president: false });
+
 
   res.render("./frontend/squad", {
     layout: "./frontend/layouts/_layouts.ejs",
@@ -171,6 +176,9 @@ const getSquad = async (req, res, next) => {
     link4: "",
     link5: "",
     contact: contact,
+    pres: pres,
+    desc: desc,
+    ekip: ekip,
   });
 };
 const getVisionMision = async (req, res, next) => {

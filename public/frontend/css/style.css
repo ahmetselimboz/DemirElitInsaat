@@ -3387,11 +3387,11 @@ footer .container {
 .ek-col {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
-
+  justify-content: space-between;
+  flex-wrap: wrap;
   border-radius: 5px;
   margin: 2rem;
-  padding: 2rem 0;
+  padding: 2rem 5rem;
 }
 
 .ek-pres {
@@ -3399,16 +3399,18 @@ footer .container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 4rem;
 }
 
 .ek-pres-img {
-  width: 15%;
-  height: 300px;
+  width: 250px;
+  height: auto;
   overflow: hidden;
   border: 5px solid #565656;
 }
 .ek-pres-img img {
   width: 100%;
+  height: 100%;
 }
 
 .ek-pres-text {
@@ -3426,13 +3428,14 @@ footer .container {
 }
 
 .ek-img {
-  width: 60%;
-  height: 300px;
+  width: 250px;
+  height: auto;
   overflow: hidden;
   border: 5px solid #565656;
 }
 .ek-img img {
   width: 100%;
+  height: 100%;
 }
 
 .ker-bottom-text h6 {

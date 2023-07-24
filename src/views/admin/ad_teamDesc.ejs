@@ -1,0 +1,60 @@
+<div class="row">
+    <div class="col-12">
+      <div class="card my-4">
+        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-1">
+          <div
+            class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3"
+          >
+            <h4 class="text-white text-capitalize ps-4">EKİP AÇIKLAMA ALANI</h4>
+          </div>
+          <div class="card-body">
+            <h6 class="text-secondary">
+              Bu panel üzerinden ekibiniz ile alakalı açıklama alanını güncelleyebilirsiniz.
+            </h6>
+          </div>
+        </div>
+        <div class="card-body px-0 pb-2">
+            <form
+              action="/yonetim/ekibimiz/aciklama"
+              method="post"
+           
+            >
+              <div class="row px-5 justify-content-between mt-4">
+                <div class="col-12">
+                  <div class="input-group input-group-static">
+                    <label>Ekip Açıklaması</label>
+                    <input
+                      class="form-control"
+                      rows="5"
+                      name="team_desc"
+                      value='<%- result.team_desc %>'
+                    />
+                  </div>
+                </div>
+                <input type="hidden" name="team_desc_check" value="true">
+                <input type="hidden" name="id" value="<%- result.id %>">
+              </div>
+            
+  
+              <div class="card-body px-6">
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                  <button
+                  onclick="btn(this)"
+                    type="submit"
+                    class="btn bg-gradient-success shadow-success"
+                    id="load2"
+                    data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order"
+                    
+                    >
+                    Güncelle
+                  </button>
+                </div>
+                <script src="/admin/js/btn.js"></script>
+  
+              </div>
+            </form>
+          </div>
+      </div>
+    </div>
+  </div>
+  

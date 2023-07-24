@@ -70,6 +70,14 @@ app.use((req, res, next) => {
   res.locals.location = req.flash("location");
   res.locals.location_link = req.flash("location_link");
 
+  res.locals.name_surname = req.flash("name_surname");
+  res.locals.task = req.flash("task");
+  res.locals.team_desc = req.flash("team_desc");
+
+
+
+
+
   next();
 });
 

@@ -105,9 +105,36 @@ const validateContact = () => {
   ];
 };
 
+const validateTeam = () => {
+  return [
+    body("name_surname")
+      .trim()
+      .notEmpty()
+      .withMessage("Ad-Soyad alanını boş geçmeyiniz"),
+
+    body("task")
+      .trim()
+      .notEmpty()
+      .withMessage("Görev alanını boş geçmeyiniz"),
+  ];
+};
+
+const validateDesc = () => {
+  return [
+    body("team_desc")
+      .trim()
+      .notEmpty()
+      .withMessage("Ekip Açıklaması alanını boş geçmeyiniz"),
+
+
+  ];
+};
+
 
 module.exports = {
   validateApart,
   validateNews,
-  validateContact
+  validateContact,
+  validateTeam,
+  validateDesc
 };

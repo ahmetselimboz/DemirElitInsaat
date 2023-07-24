@@ -34,7 +34,10 @@ router.get("/mesajlar/mesaj-detay/:id", adminController.getMessagesDetail)
 router.get("/mesajlar/mesaj-sil/:id", adminController.getDeleteMessages)
 
 router.get("/ekibimiz", adminController.getTeam);
-router.get("/ekibimiz/baskan", adminController.getPresident);
-router.post("/ekibimiz/baskan", adminController.postPresident);
+router.get("/ekibimiz/baskan/:id", adminController.getPresident);
+router.post("/ekibimiz/baskan",upload.any(),validations.validateTeam(), adminController.postPresident);
+
+router.get("/ekibimiz/aciklama", adminController.getTeamDesc)
+router.post("/ekibimiz/aciklama", validations.validateDesc(), adminController.postTeamDesc)
 
 module.exports = router;

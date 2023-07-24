@@ -8,10 +8,12 @@ const TeamSchema = new Schema(
     name_surname: {
       type: String,
       trim: true,
+      default: ""
     },
     task: {
       type: String,
       trim: true,
+      default: ""
     },
     
     images: [
@@ -28,6 +30,16 @@ const TeamSchema = new Schema(
       type: Boolean,
       default: false
     },
+    team_desc:{
+      type: String,
+      trim: true,
+      default: ""
+    },
+    team_desc_check:{
+      type: String,
+      trim: true,
+      default: false
+    }
     
   },
   { collection: "team", timestamps: true }

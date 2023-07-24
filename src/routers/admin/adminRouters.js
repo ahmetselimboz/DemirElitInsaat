@@ -30,5 +30,7 @@ router.get("/iletisim-bilgileri", adminController.getContactInfo);
 router.post("/iletisim-bilgileri",validations.validateContact(), adminController.postContactInfo);
 
 router.get("/mesajlar", adminController.getMessages)
+router.get("/mesajlar/mesaj-detay/:id", adminController.getMessagesDetail)
+router.get("/mesajlar/mesaj-sil/:id", adminController.getDeleteMessages)
 
 module.exports = router;

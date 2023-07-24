@@ -3,6 +3,7 @@ const { uploadFile, deleteFile } = require("../../config/multer_config");
 const { validationResult } = require("express-validator");
 const News = require("../../model/_newsModel");
 const Contact = require("../../model/_contactModel");
+const Message = require("../../model/_messageModel");
 
 const getHomePage = async (req, res, next) => {
   res.render("./admin/ad_index", {
@@ -252,7 +253,6 @@ const postUpdateNews = async (req, res, next) => {
     res.redirect("/yonetim/haberler/haber-guncelle/" + req.body.id);
   } else {
     try {
-     
       if (req.body.images != undefined && req.body.news_url != "") {
         req.flash("error", [
           "Aynı anda hem resim hem de video yükleyemezsiniz.",
@@ -387,12 +387,43 @@ const postContactInfo = async (req, res, next) => {
   }
 };
 
-const getMessages = (req,res,next)=>{
+const getMessages = async (req, res, next) => {
+  const result = await Message.find({});
   res.render("./admin/ad_messages", {
     layout: "./admin/layouts/admin_layouts.ejs",
+    message: result,
   });
-}
+};
 
+const getMessagesDetail = async (req, res, next) => {
+  try {
+    if (req.params.id) {
+      const result = await Message.findByIdAndUpdate(req.params.id, {
+        read: true,
+      });
+      res.render("./admin/ad_messageDetail", {
+        layout: "./admin/layouts/admin_layouts.ejs",
+        message: result,
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const getDeleteMessages = async (req, res, next) => {
+  try {
+    if (req.params.id) {
+      const result = await Message.findByIdAndDelete(req.params.id);
+      if (result) {
+        req.flash("success_message", [
+          { msg: "Mesaj silindi" },
+        ]);
+        res.redirect("/yonetim/mesajlar")
+      }
+    }
+  } catch (error) {}
+};
 
 module.exports = {
   getHomePage,
@@ -410,5 +441,7 @@ module.exports = {
   postDeleteNews,
   getContactInfo,
   postContactInfo,
-  getMessages
+  getMessages,
+  getMessagesDetail,
+  getDeleteMessages,
 };

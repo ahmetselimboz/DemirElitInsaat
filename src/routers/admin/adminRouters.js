@@ -26,6 +26,9 @@ router.post('/haberler/haber-guncelle',validations.validateNews(), adminControll
 
 router.get("/haberler/haber-sil/:id", adminController.postDeleteNews);
 
+router.get("/iletisim-bilgileri", adminController.getContactInfo);
+router.post("/iletisim-bilgileri",validations.validateContact(), adminController.postContactInfo);
 
+router.get("/mesajlar", adminController.getMessages)
 
 module.exports = router;

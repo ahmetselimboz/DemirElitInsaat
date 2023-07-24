@@ -134,23 +134,23 @@
           <hr class="footer-logo-underline" />
           <ul>
             <li>
-              <a href="#" class="btn-social">
+              <a href="<%- contact.facebook_url%>" class="btn-social">
                 <i class="fa-brands fa-facebook"></i>
               </a>
             </li>
             <li>
-              <a href="#" class="btn-social">
+              <a href="<%- contact.instagram_url %>" class="btn-social">
                 <i class="fa-brands fa-instagram"></i>
               </a>
             </li>
 
             <li>
-              <a href="#" class="btn-social">
+              <a href="<%- contact.twitter_url %>" class="btn-social">
                 <i class="fa-brands fa-twitter"></i>
               </a>
             </li>
             <li>
-              <a href="#" class="btn-social">
+              <a href="<%- contact.linkedln_url %>" class="btn-social">
                 <i class="fa-brands fa-linkedin"></i>
               </a>
             </li>
@@ -161,16 +161,14 @@
             <h4 class="text-uppercase">İLETİŞİM</h4>
             <div class="footer-contact-info">
               <p>
-                <i class="fa-solid fa-phone"></i>&nbsp; Telefon-1: (0344) 555 44
-                33
+                <i class="fa-solid fa-phone"></i>&nbsp; Telefon-1: <%- contact.phone1 %>
               </p>
               <p>
-                <i class="fa-solid fa-phone"></i>&nbsp; Telefon-2: (0532) 242 58
-                77
+                <i class="fa-solid fa-phone"></i>&nbsp; Telefon-2: <%- contact.phone2 %>
               </p>
               <p>
-                <i class="fa-solid fa-envelope"></i>&nbsp; Gmail:
-                demirelitinsaat@gmail.com
+                <i class="fa-solid fa-envelope"></i>&nbsp; Mail:
+                <%- contact.mail %>
               </p>
             </div>
 
@@ -178,8 +176,7 @@
             <h4 class="text-uppercase">KONUM</h4>
             <div class="footer-contact-adress">
               <h6>
-                Yirmiikigün Mah. Prof. Dr. Necmettin Erbakan Bulvarı Berra Apt.
-                No:29/1/B, 46050 Onikişubat/Kahramanmaraş
+                <%- contact.location %>
               </h6>
             </div>
           </div>
@@ -198,7 +195,7 @@
     </footer>
     <div class="footer-bottom">
       <h5>Copyright © DEMİR ELİT İNŞAAT 2023 | Tüm Hakları Saklıdır.</h5>
-      <a href="www.linkedin.com/in/ahmet-selim-boz-216847229" target="_blank" class="footer-made">Designed by -ASB-</a>
+      <a href="https://www.linkedin.com/in/ahmet-selim-boz-216847229" target="_blank" class="footer-made">Made by -ASB-</a>
     </div>
 
     <script

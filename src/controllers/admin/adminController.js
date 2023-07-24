@@ -2,6 +2,7 @@ const Apart = require("../../model/_apartModel");
 const { uploadFile, deleteFile } = require("../../config/multer_config");
 const { validationResult } = require("express-validator");
 const News = require("../../model/_newsModel");
+const Contact = require("../../model/_contactModel");
 
 const getHomePage = async (req, res, next) => {
   res.render("./admin/ad_index", {
@@ -193,6 +194,11 @@ const postAddNews = async (req, res, next) => {
           "Aynı anda hem resim hem de video yükleyemezsiniz.",
         ]);
         res.redirect("/yonetim/haberler/haber-ekle");
+      } else if (req.files[0] == undefined && req.body.news_url == "") {
+        req.flash("error", [
+          "Resim veya video alanlarından birini doldurmalısınız.",
+        ]);
+        res.redirect("/yonetim/haberler/haber-ekle");
       } else {
         const { body, files } = req;
 
@@ -238,7 +244,6 @@ const getUpdateNews = async (req, res, next) => {
 };
 
 const postUpdateNews = async (req, res, next) => {
-
   const hatalar = validationResult(req);
 
   if (!hatalar.isEmpty()) {
@@ -247,16 +252,29 @@ const postUpdateNews = async (req, res, next) => {
     res.redirect("/yonetim/haberler/haber-guncelle/" + req.body.id);
   } else {
     try {
-      const options = {
-        news_name: req.body.news_name,
-        news_desc: req.body.news_desc,
-        news_url: req.body.news_url,
-      };
+     
+      if (req.body.images != undefined && req.body.news_url != "") {
+        req.flash("error", [
+          "Aynı anda hem resim hem de video yükleyemezsiniz.",
+        ]);
+        res.redirect("/yonetim/haberler/haber-guncelle/" + req.body.id);
+      } else if (req.body.images == undefined && req.body.news_url == "") {
+        req.flash("error", [
+          "Resim veya video alanlarından birini doldurmalısınız.",
+        ]);
+        res.redirect("/yonetim/haberler/haber-guncelle/" + req.body.id);
+      } else {
+        const options = {
+          news_name: req.body.news_name,
+          news_desc: req.body.news_desc,
+          news_url: req.body.news_url,
+        };
 
-      const result = await News.findByIdAndUpdate(req.body.id, options);
-      if (result) {
-        req.flash("success_message", [{ msg: "Haber Güncellendi" }]);
-        res.redirect("/yonetim/haberler");
+        const result = await News.findByIdAndUpdate(req.body.id, options);
+        if (result) {
+          req.flash("success_message", [{ msg: "Haber Güncellendi" }]);
+          res.redirect("/yonetim/haberler");
+        }
       }
     } catch (error) {
       console.log(error);
@@ -292,6 +310,90 @@ const postDeleteNews = async (req, res, next) => {
   }
 };
 
+const getContactInfo = async (req, res, next) => {
+  const result = await Contact.findOne({});
+  if (result) {
+    res.render("./admin/ad_contact", {
+      layout: "./admin/layouts/admin_layouts.ejs",
+      contact: result,
+    });
+  } else {
+    req.flash("error", ["Bi hata oluştu. Lütfen tekrar deneyiniz."]);
+    res.redirect("/yonetim");
+  }
+};
+
+const postContactInfo = async (req, res, next) => {
+  const hatalar = validationResult(req);
+
+  if (!hatalar.isEmpty()) {
+    req.flash("validation_error", hatalar.array());
+    req.flash("facebook_url", req.body.facebook_url);
+    req.flash("instagram_url", req.body.instagram_url);
+    req.flash("twitter_url", req.body.twitter_url);
+    req.flash("linkedln_url", req.body.linkedln_url);
+    req.flash("phone1", req.body.phone1);
+    req.flash("phone2", req.body.phone2);
+    req.flash("mail", req.body.mail);
+    req.flash("location", req.body.location);
+    req.flash("location_link", req.body.location_link);
+
+    res.redirect("/yonetim/iletisim-bilgileri");
+  } else {
+    try {
+      if (req.body) {
+        const result = await Contact.findOne();
+
+        if (result) {
+          const options = {
+            facebook_url: req.body.facebook_url,
+            instagram_url: req.body.instagram_url,
+            twitter_url: req.body.twitter_url,
+            linkedln_url: req.body.linkedln_url,
+            phone1: req.body.phone1,
+            phone2: req.body.phone2,
+            mail: req.body.mail,
+            location: req.body.location,
+            location_link: req.body.location_link,
+          };
+
+          await Contact.findOneAndUpdate({}, options);
+          req.flash("success_message", [
+            { msg: "İletişim bilgileri güncellendi" },
+          ]);
+          res.redirect("/yonetim/iletisim-bilgileri");
+        } else {
+          const contact = new Contact({
+            facebook_url: req.body.facebook_url,
+            instagram_url: req.body.instagram_url,
+            twitter_url: req.body.twitter_url,
+            linkedln_url: req.body.linkedln_url,
+            phone1: req.body.phone1,
+            phone2: req.body.phone2,
+            mail: req.body.mail,
+            location: req.body.location,
+            location_link: req.body.location_link,
+          });
+          contact.save();
+          req.flash("success_message", [
+            { msg: "İletişim bilgileri güncellendi" },
+          ]);
+          res.redirect("/yonetim/iletisim-bilgileri");
+        }
+      }
+    } catch (f) {
+      console.log(f);
+    }
+  }
+};
+
+const getMessages = (req,res,next)=>{
+  res.render("./admin/ad_messages", {
+    layout: "./admin/layouts/admin_layouts.ejs",
+  });
+}
+
+
 module.exports = {
   getHomePage,
   getAllProjects,
@@ -306,4 +408,7 @@ module.exports = {
   getUpdateNews,
   postUpdateNews,
   postDeleteNews,
+  getContactInfo,
+  postContactInfo,
+  getMessages
 };

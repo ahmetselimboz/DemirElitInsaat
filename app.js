@@ -56,6 +56,20 @@ app.use((req, res, next) => {
   res.locals.desc = req.flash("desc");
   res.locals.location_url = req.flash("location_url");
 
+  res.locals.news_name = req.flash("news_name");
+  res.locals.news_desc = req.flash("news_desc");
+  res.locals.news_url = req.flash("news_url");
+
+  res.locals.facebook_url = req.flash("facebook_url");
+  res.locals.instagram_url = req.flash("instagram_url");
+  res.locals.twitter_url = req.flash("twitter_url");
+  res.locals.linkedln_url = req.flash("linkedln_url");
+  res.locals.phone1 = req.flash("phone1");
+  res.locals.phone2 = req.flash("phone2");
+  res.locals.mail = req.flash("mail");
+  res.locals.location = req.flash("location");
+  res.locals.location_link = req.flash("location_link");
+
   next();
 });
 

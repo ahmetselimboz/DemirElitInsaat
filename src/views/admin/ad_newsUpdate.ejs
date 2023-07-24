@@ -72,6 +72,7 @@
                   role="tabpanel"
                   aria-labelledby="profile-tab"
                 >
+                <input type="hidden" name="images" value="<%- news.images %>">
                   <div class="col-14 px-5">
                     <div class="input-group input-group-static mt-4 mb-5">
                       <label>Haber Linki</label>
@@ -79,7 +80,7 @@
                         class="form-control"
                         rows="5"
                         name="news_url"
-                        value="<%- news.news_url %>"
+                        value='<%- news.news_url %>'
                       />
                     </div>
                   </div>

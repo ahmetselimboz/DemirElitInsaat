@@ -1,0 +1,166 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card my-4">
+      <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-1">
+        <div
+          class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3"
+        >
+          <h4 class="text-white text-capitalize ps-4">İLETİŞİM BİLGİLERİ</h4>
+        </div>
+        <div class="card-body">
+          <h6 class="text-secondary">
+            Bu panel üzerinden iletişim bilgilerinizi güncelleyebilirsiniz.
+          </h6>
+        </div>
+      </div>
+      <div class="card-body px-0 pb-2">
+        <form action="/yonetim/iletisim-bilgileri" method="post">
+          <div class="card-body">
+            <div class="row my-2">
+                <div class="card-header">
+                    <h6>Sosyal Medya Hesapları</h6>
+                    <small class="text-secondary d-block">* Eklediğiniz linklerin başında "https://" ifadesi yok ise ekleyiniz. Aksi halde linkler çalışmaz.</small>
+                    <small class="text-danger d-block">* (Yanlış) www.example.com</small>
+                    <small class="text-success d-block">* (Doğru) https://www.example.com</small>
+
+                </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="input-group input-group-static mb-4 px-5">
+                  <label>Facebook Linki </label>
+                  <input
+                    value="<%- contact.facebook_url%>"
+                    type="text"
+                    class="form-control"
+                    name="facebook_url"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="input-group input-group-static mb-4 px-5">
+                  <label>İnstagram Linki</label>
+                  <input
+                  value="<%- contact.instagram_url%>"
+                  type="text"
+                    class="form-control"
+                    name="instagram_url"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="input-group input-group-static mb-4 px-5">
+                  <label>Twitter Linki</label>
+                  <input
+                  value="<%- contact.twitter_url%>"
+                  type="text"
+                    class="form-control"
+                    name="twitter_url"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="input-group input-group-static mb-4 px-5">
+                  <label>Linkedln Linki</label>
+                  <input
+                  value="<%- contact.linkedln_url%>"
+                  type="text"
+                    class="form-control"
+                    name="linkedln_url"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row my-2">
+                <div class="card-header"><h6>Diğer İletişim Bilgileri</h6></div>
+
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="input-group input-group-static mb-4 px-5">
+                  <label>Telefon-1</label>
+                  <input
+                  value="<%- contact.phone1%>"
+                  type="text"
+                    class="form-control"
+                    name="phone1"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="input-group input-group-static mb-4 px-5">
+                  <label>Telefon-2</label>
+                  <input
+                  value="<%- contact.phone2%>"
+                  type="text"
+                    class="form-control"
+                    name="phone2"
+                  />
+                </div>
+              </div>
+            </div>
+           
+            <div class="row">
+              <div class="col-md-6">
+                <div class="input-group input-group-static mb-4 px-5">
+                  <label>Mail</label>
+                  <input
+                  value="<%- contact.mail%>"
+                  type="text"
+                    class="form-control"
+                    name="mail"
+                  />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="input-group input-group-static mb-4 px-5">
+                  <label>Konum</label>
+                  <input
+                  value="<%- contact.location%>"
+                  type="text"
+                    class="form-control"
+                    name="location"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                  <div class="input-group input-group-static mb-4 px-5">
+                    <label>Konum Linki</label>
+                    <input
+                    value='<%- contact.location_link%>'
+                      type="text"
+                      class="form-control"
+                      name="location_link"
+                    />
+                  </div>
+                </div>
+                
+              </div>
+          </div>
+
+          <div class="card-body px-6">
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <button
+                onclick="btn(this)"
+                type="submit"
+                class="btn bg-gradient-success shadow-success"
+                id="load2"
+                data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order"
+              >
+                Güncelle
+              </button>
+            </div>
+            <script src="/admin/js/btn.js"></script>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

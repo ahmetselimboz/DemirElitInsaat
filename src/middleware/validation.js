@@ -63,8 +63,51 @@ const validateNews = () => {
       .withMessage("Açıklama alanını boş geçmeyiniz"),
   ];
 };
+const validateContact = () => {
+  return [
+    body("facebook_url")
+      .trim()
+      .notEmpty()
+      .withMessage("Facebook Link alanını boş geçmeyiniz"),
+
+    body("instagram_url")
+      .trim()
+      .notEmpty()
+      .withMessage("İnstagram Link alanını boş geçmeyiniz"),
+    body("twitter_url")
+      .trim()
+      .notEmpty()
+      .withMessage("Twitter Link alanını boş geçmeyiniz"),
+    body("linkedln_url")
+      .trim()
+      .notEmpty()
+      .withMessage("Linkedln Link alanını boş geçmeyiniz"),
+    body("phone1")
+      .trim()
+      .notEmpty()
+      .withMessage("Telefon-1 alanını boş geçmeyiniz"),
+    body("phone2")
+      .trim()
+      .notEmpty()
+      .withMessage("Telefon-2 alanını boş geçmeyiniz"),
+    body("mail")
+      .trim()
+      .notEmpty()
+      .withMessage("Mail alanını boş geçmeyiniz"),
+    body("location")
+      .trim()
+      .notEmpty()
+      .withMessage("Konum alanını boş geçmeyiniz"),
+    body("location_link")
+      .trim()
+      .notEmpty()
+      .withMessage("Konum Link alanını boş geçmeyiniz"),
+  ];
+};
+
 
 module.exports = {
   validateApart,
   validateNews,
+  validateContact
 };

@@ -33,4 +33,8 @@ router.get("/mesajlar", adminController.getMessages)
 router.get("/mesajlar/mesaj-detay/:id", adminController.getMessagesDetail)
 router.get("/mesajlar/mesaj-sil/:id", adminController.getDeleteMessages)
 
+router.get("/ekibimiz", adminController.getTeam);
+router.get("/ekibimiz/baskan", adminController.getPresident);
+router.post("/ekibimiz/baskan", adminController.postPresident);
+
 module.exports = router;

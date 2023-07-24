@@ -416,13 +416,29 @@ const getDeleteMessages = async (req, res, next) => {
     if (req.params.id) {
       const result = await Message.findByIdAndDelete(req.params.id);
       if (result) {
-        req.flash("success_message", [
-          { msg: "Mesaj silindi" },
-        ]);
-        res.redirect("/yonetim/mesajlar")
+        req.flash("success_message", [{ msg: "Mesaj silindi" }]);
+        res.redirect("/yonetim/mesajlar");
       }
     }
   } catch (error) {}
+};
+
+const getTeam = async (req, res, next) => {
+  res.render("./admin/ad_team", {
+    layout: "./admin/layouts/admin_layouts.ejs",
+  });
+};
+
+const getPresident = async (req, res, next) => {
+  res.render("./admin/ad_getPresident", {
+    layout: "./admin/layouts/admin_layouts.ejs",
+  });
+};
+const postPresident =  (req, res, next) => {
+  console.log(req.body);
+  console.log(req.files);
+  if (req.body) {
+  }
 };
 
 module.exports = {
@@ -444,4 +460,7 @@ module.exports = {
   getMessages,
   getMessagesDetail,
   getDeleteMessages,
+  getTeam,
+  getPresident,
+  postPresident,
 };

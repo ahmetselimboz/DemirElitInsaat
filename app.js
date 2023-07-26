@@ -80,6 +80,8 @@ app.use((req, res, next) => {
   res.locals.vision = req.flash("vision");
   res.locals.mision = req.flash("mision");
 
+
+
   next();
 });
 

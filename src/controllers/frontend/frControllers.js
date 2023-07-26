@@ -1,6 +1,7 @@
 const About = require("../../model/_aboutModel");
 const Apart = require("../../model/_apartModel");
 const Contact = require("../../model/_contactModel");
+const HomePage = require("../../model/_homepageModel");
 const Message = require("../../model/_messageModel");
 const News = require("../../model/_newsModel");
 const OurValue = require("../../model/_ourvalueModel");
@@ -10,6 +11,13 @@ const VisMis = require("../../model/_vismisModel");
 const getHomePage = async (req, res, next) => {
   const contact = await Contact.findOne({});
   const apart = await Apart.find({homepage_view:true});
+  const news = await News.find({}).sort({ createdAt: "desc" }).limit(9);
+  const apar = await Apart.find({}).sort({ createdAt: "desc" }).limit(6);
+  const hm = await HomePage.findOne();
+
+
+
+
   res.render("./frontend/index", {
     layout: "./frontend/layouts/_layouts.ejs",
     link1: "nav-active-link",
@@ -18,7 +26,11 @@ const getHomePage = async (req, res, next) => {
     link4: "",
     link5: "",
     contact: contact,
-    apart:apart
+    apart:apart,
+    news:news,
+    apar:apar,
+    why:hm.why,
+    static: hm.static,
   });
 };
 

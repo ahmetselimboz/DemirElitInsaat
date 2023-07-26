@@ -13,185 +13,359 @@
         </div>
       </div>
       <div class="card-body px-0 pt-0 pb-2">
-        <form action="/yonetim/vizyon-misyon" method="post">
-          <div class="card-body">
-            <div class="row my-2">
-              <div class="card-header py-2">
-                <h6>Ana Sayfa En Üst Bölüm</h6>
-              </div>
+        <div class="card-body">
+          <div class="row my-2">
+            <div class="card-header py-2">
+              <h6>Açılışta Gösterilecek Resimleri Seçiniz</h6>
+              <small class="text-danger d-block"
+                >* En fazla 5 tane seçebilirsiniz.</small
+              >
             </div>
+          </div>
 
-            <div class="card-body px-0 pb-2 pt-0">
-              <div class="table-responsive p-0">
-                <table class="table align-items-center mb-0">
-                  <thead>
-                    <tr>
-                      <th
-                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+          <div class="card-body px-0 pb-2 pt-0">
+            <div class="table-responsive p-0">
+              <table class="table align-items-center mb-0">
+                <thead>
+                  <tr>
+                    <th
+                      class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                    >
+                      Proje Adı
+                    </th>
+                    <th
+                      class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"
+                    >
+                      Adres
+                    </th>
+                    <th
+                      class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                    >
+                      Durum
+                    </th>
+                    <th
+                      class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                    >
+                      Görüntüleme
+                    </th>
+                    <th
+                      class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                    >
+                      Seç
+                    </th>
+                    <th
+                      class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                    >
+                      Seçme
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% for( let index = 0; index < apart.length; index++ ) { %>
+                  <tr>
+                    <td>
+                      <div class="d-flex px-2 py-1">
+                        <div>
+                          <img
+                            src="https://drive.google.com/uc?export=view&id=<%- apart[index].images[0].id %>"
+                            class="avatar avatar-sm me-3 border-radius-lg"
+                            alt="user1"
+                          />
+                        </div>
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="mb-0 text-sm">
+                            <%- apart[index].project_name %>
+                          </h6>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <p class="text-xs font-weight-bold mb-0">
+                        <%- apart[index].adress %>
+                      </p>
+                    </td>
+                    <td class="align-middle text-center text-sm">
+                      <% if (apart[index].project_status == "Tamamlandı") { %>
+                      <span class="badge badge-sm bg-gradient-success">
+                        <%- apart[index].project_status %></span
                       >
-                        Proje Adı
-                      </th>
-                      <th
-                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"
+
+                      <% } else if (apart[index].project_status == "Devam Ediyor"){%>
+                      <span class="badge badge-sm bg-gradient-info">
+                        <%- apart[index].project_status %></span
                       >
-                        Adres
-                      </th>
-                      <th
-                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+
+                      <% } else if (apart[index].project_status == "Planlandı"){ %>
+                      <span class="badge badge-sm bg-gradient-secondary">
+                        <%- apart[index].project_status %></span
                       >
-                        Durum
-                      </th>
-                      <th
-                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                      <% } %>
+                    </td>
+                    <td class="align-middle text-center">
+                      <% if (apart[index].homepage_view == true) { %>
+                      <span
+                        class="text-secondary text-xs font-weight-bold text-success"
                       >
-                        Görüntüleme
-                      </th>
-                      <th
-                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                        Seçildi
+                      </span>
+                      <% } else { %>
+                      <span
+                        class="text-secondary text-xs font-weight-bold text-danger"
+                      >
+                        Seçilmedi
+                      </span>
+                      <% } %>
+                    </td>
+                    <td class="align-middle text-center">
+                      <% if (apart[index].homepage_view == true) { %>
+                      <a
+                        onclick="btn(this)"
+                        href="/yonetim/daire-sec/<%- apart[index].id %>"
+                        class="btn bg-gradient-success shadow-success"
+                        style="
+                          opacity: 0.6;
+                          cursor: default !important;
+                          pointer-events: none;
+                        "
                       >
                         Seç
-                      </th>
-                      <th
-                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                      </a>
+                      <% } else { %>
+                      <a
+                        onclick="btn(this)"
+                        href="/yonetim/daire-sec/<%- apart[index].id %>"
+                        class="btn bg-gradient-success shadow-success"
+                      >
+                        Seç
+                      </a>
+                      <% } %>
+                    </td>
+                    <td class="align-middle text-center">
+                      <% if (apart[index].homepage_view == true) { %>
+                      <a
+                        onclick="btn(this)"
+                        href="/yonetim/daire-sec/<%- apart[index].id %>"
+                        class="btn bg-gradient-danger shadow-danger"
                       >
                         Seçme
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <% for( let index = 0; index < apart.length; index++ ) { %>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img
-                              src="https://drive.google.com/uc?export=view&id=<%- apart[index].images[0].id %>"
-                              class="avatar avatar-sm me-3 border-radius-lg"
-                              alt="user1"
-                            />
-                          </div>
-                          <div
-                            class="d-flex flex-column justify-content-center"
-                          >
-                            <h6 class="mb-0 text-sm">
-                              <%- apart[index].project_name %>
-                            </h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <p class="text-xs font-weight-bold mb-0">
-                          <%- apart[index].adress %>
-                        </p>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <% if (apart[index].project_status == "Tamamlandı") { %>
-                        <span class="badge badge-sm bg-gradient-success">
-                          <%- apart[index].project_status %></span
-                        >
-
-                        <% } else if (apart[index].project_status == "Devam Ediyor"){%>
-                        <span class="badge badge-sm bg-gradient-info">
-                          <%- apart[index].project_status %></span
-                        >
-
-                        <% } else if (apart[index].project_status == "Planlandı") { %>
-                        <span class="badge badge-sm bg-gradient-secondary">
-                          <%- apart[index].project_status %></span
-                        >
-                        <% } %>
-                      </td>
-                      <td class="align-middle text-center">
-                        <% if (apart[index].homepage_view == true) { %>
-                        <span
-                          class="text-secondary text-xs font-weight-bold text-success"
-                        >
-                          Seçildi
-                        </span>
-                        <% } else { %>
-                        <span
-                          class="text-secondary text-xs font-weight-bold text-danger"
-                        >
-                          Seçilmedi
-                        </span>
-                        <% } %>
-                      </td>
-                      <td class="align-middle text-center">
-                        <% if (apart[index].homepage_view == true) { %>
-                          <a
-                          onclick="btn(this)"
-                          href="/yonetim/daire-sec/<%- apart[index].id %>"
-                          class="btn bg-gradient-success shadow-success"
-
-                          style="opacity: .6;
+                      </a>
+                      <% } else { %>
+                      <a
+                        onclick="btn(this)"
+                        href="/yonetim/daire-sec/<%- apart[index].id %>"
+                        class="btn bg-gradient-danger shadow-danger"
+                        style="
+                          opacity: 0.6;
                           cursor: default !important;
-                          pointer-events: none;"
-                        >
-                          Seç
-                        </a>
-                          <% } else { %>
-                            <a
-                            onclick="btn(this)"
-                            href="/yonetim/daire-sec/<%- apart[index].id %>"
-                            class="btn bg-gradient-success shadow-success"
-                          >
-                            Seç
-                          </a>
-                          <% } %>
-                       
-                      </td>
-                      <td class="align-middle text-center">
-                        <% if (apart[index].homepage_view == true) { %>
-                          <a
-                          onclick="btn(this)"
-                          href="/yonetim/daire-sec/<%- apart[index].id %>"
-                          class="btn bg-gradient-danger shadow-danger"
-                        >
-                          Seçme
-                        </a>
-                          <% } else { %>
-                            <a
-                            onclick="btn(this)"
-                            href="/yonetim/daire-sec/<%- apart[index].id %>"
-                            class="btn bg-gradient-danger shadow-danger"
-
-                            
-                          style="opacity: .6;
-                          cursor: default !important;
-                          pointer-events: none;"
-                          >
-                            Seçme
-                          </a>
-                          <% } %>
-
-
-
-
-                       
-                      </td>
-                    </tr>
-                    <% } %>
-                  </tbody>
-                </table>
-              </div>
+                          pointer-events: none;
+                        "
+                      >
+                        Seçme
+                      </a>
+                      <% } %>
+                    </td>
+                  </tr>
+                  <% } %>
+                </tbody>
+              </table>
             </div>
           </div>
+        </div>
 
-          <div class="card-body px-6">
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-              <button
-                onclick="btn(this)"
-                type="submit"
-                class="btn bg-gradient-success shadow-success"
-                id="load2"
-                data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order"
-              >
-                Güncelle
-              </button>
+        <div class="row">
+          <div class="col-12">
+            <div class="card-body px-0 pb-2">
+              <form action="/yonetim/neden" method="post">
+                <div class="card-body">
+                  <div class="row my-2">
+                    <div class="card-header">
+                      <h6>Neden "Demir Elit İnşaat?" Bölümü</h6>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="input-group input-group-static mb-4 px-5">
+                        <label>Alt metin</label>
+                        <input
+                          value="<%- why.alt_metin %>"
+                          type="text"
+                          class="form-control"
+                          name="alt_metin"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="input-group input-group-static mb-4 px-5">
+                        <label>Memnuniyet</label>
+                        <input
+                          value="<%- why.memnuniyet %>"
+                          type="text"
+                          class="form-control"
+                          name="memnuniyet"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="input-group input-group-static mb-4 px-5">
+                        <label>Uzman Kadro</label>
+                        <input
+                          value="<%- why.uzman_kadro %>"
+                          type="text"
+                          class="form-control"
+                          name="uzman_kadro"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="input-group input-group-static mb-4 px-5">
+                        <label>Güven</label>
+                        <input
+                          value="<%- why.guven %>"
+                          type="text"
+                          class="form-control"
+                          name="guven"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="input-group input-group-static mb-4 px-5">
+                        <label>Takım Çalışması</label>
+                        <input
+                          value="<%- why.takim_calismasi %>"
+                          type="text"
+                          class="form-control"
+                          name="takim_calismasi"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="input-group input-group-static mb-4 px-5">
+                        <label>Kalite</label>
+                        <input
+                          value="<%- why.kalite %>"
+                          type="text"
+                          class="form-control"
+                          name="kalite"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="input-group input-group-static mb-4 px-5">
+                        <label>Anında Teslim</label>
+                        <input
+                          value="<%- why.aninda_teslim %>"
+                          type="text"
+                          class="form-control"
+                          name="aninda_teslim"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card-body px-6">
+                  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button
+                      onclick="btn(this)"
+                      type="submit"
+                      class="btn bg-gradient-success shadow-success"
+                      id="load2"
+                      data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order"
+                    >
+                      Güncelle
+                    </button>
+                  </div>
+                  <script src="/admin/js/btn.js"></script>
+                </div>
+              </form>
             </div>
-            <script src="/admin/js/btn.js"></script>
           </div>
-        </form>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="card-body px-0 pb-2">
+              <form action="/yonetim/istatistik" method="post">
+                <div class="card-body">
+                  <div class="row my-2">
+                    <div class="card-header">
+                      <h6>İstatistik Bölümü</h6>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="input-group input-group-static mb-4 px-5">
+                        <label>Yıllık Tecrübe</label>
+                        <input
+                          value="<%- static.yillar %>"
+                          type="text"
+                          class="form-control"
+                          name="yillar"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="input-group input-group-static mb-4 px-5">
+                        <label>Mutlu Müşteri</label>
+                        <input
+                          value="<%- static.musteri %>"
+                          type="text"
+                          class="form-control"
+                          name="musteri"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="input-group input-group-static mb-4 px-5">
+                        <label>Tamamlanan Projeler</label>
+                        <input
+                          value="<%- tamam.length %>"
+                          type="text"
+                          class="form-control"
+                          name="tamam_proje"
+                        />
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="input-group input-group-static mb-4 px-5">
+                        <label>Devam Eden Projeler</label>
+                        <input
+                          value="<%- devam.length %>"
+                          type="text"
+                          class="form-control"
+                          name="devam_proje"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card-body px-6">
+                  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button
+                      onclick="btn(this)"
+                      type="submit"
+                      class="btn bg-gradient-success shadow-success"
+                      id="load2"
+                      data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order"
+                    >
+                      Güncelle
+                    </button>
+                  </div>
+                  <script src="/admin/js/btn.js"></script>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -8,6 +8,8 @@ const upload = multer();
 router.get('/', adminController.getHomePage);
 router.get('/anapanel', adminController.getHomePage);
 router.get('/daire-sec/:id', adminController.getChooseApart)
+router.post("/neden",validations.validateWhy(), adminController.postWhy)
+router.post("/istatistik", validations.validateStatistics(), adminController.postStatistics)
 
 
 

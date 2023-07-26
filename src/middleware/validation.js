@@ -171,6 +171,62 @@ const validateAbout = () => {
       .withMessage("Başkanımızdan Mesaj alanını boş geçmeyiniz"),
   ];
 };
+const validateWhy = () => {
+  return [
+    body("alt_metin")
+      .trim()
+      .notEmpty()
+      .withMessage("Alt Metin alanını boş geçmeyiniz"),
+
+    body("memnuniyet")
+      .trim()
+      .notEmpty()
+      .withMessage("Memnuniyet alanını boş geçmeyiniz"),
+    body("uzman_kadro")
+      .trim()
+      .notEmpty()
+      .withMessage("Uzman Kadro alanını boş geçmeyiniz"),
+    body("guven")
+      .trim()
+      .notEmpty()
+      .withMessage("Güven alanını boş geçmeyiniz"),
+    body("takim_calismasi")
+      .trim()
+      .notEmpty()
+      .withMessage("Takım Çalışması alanını boş geçmeyiniz"),
+    body("kalite")
+      .trim()
+      .notEmpty()
+      .withMessage("Kalite alanını boş geçmeyiniz"),
+    body("aninda_teslim")
+      .trim()
+      .notEmpty()
+      .withMessage("Anında Teslim alanını boş geçmeyiniz"),
+  
+  ];
+};
+const validateStatistics = () => {
+  return [
+    body("yillar")
+      .trim()
+      .notEmpty()
+      .withMessage("Alt Metin alanını boş geçmeyiniz"),
+
+    body("tamam_proje")
+      .trim()
+      .notEmpty()
+      .withMessage("Memnuniyet alanını boş geçmeyiniz"),
+    body("devam_proje")
+      .trim()
+      .notEmpty()
+      .withMessage("Uzman Kadro alanını boş geçmeyiniz"),
+    body("musteri")
+      .trim()
+      .notEmpty()
+      .withMessage("Güven alanını boş geçmeyiniz"),
+    
+  ];
+};
 
 
 module.exports = {
@@ -181,5 +237,7 @@ module.exports = {
   validateDesc,
   validateOurValue,
   validateVisMis,
-  validateAbout
+  validateAbout,
+  validateWhy,
+  validateStatistics
 };

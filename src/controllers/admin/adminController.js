@@ -8,13 +8,50 @@ const Team = require("../../model/_teamModel");
 const OurValue = require("../../model/_ourvalueModel");
 const VisMis = require("../../model/_vismisModel");
 const About = require("../../model/_aboutModel");
+const HomePage = require("../../model/_homepageModel");
 
 const getHomePage = async (req, res, next) => {
   const apart = await Apart.find({});
-  res.render("./admin/ad_index", {
-    layout: "./admin/layouts/admin_layouts.ejs",
-    apart: apart,
-  });
+  const tamam = await Apart.find({project_status : "Tamamlandı"});
+  const devam = await Apart.find({project_status : "Devam Ediyor"});
+  const hm = await HomePage.findOne();
+  console.log(tamam.length);
+  if (!hm) {
+    const home = new HomePage({
+      why: {
+        alt_metin: "",
+        memnuniyet: "",
+        uzman_kadro: "",
+        guven: "",
+        takim_calismasi: "",
+        kalite: "",
+        aninda_teslim: "",
+      },
+      static: {
+        yillar: "",
+        tamam_proje: "",
+        devam_proje: "",
+        musteri: "",
+      },
+      projects: {
+        alt_metin: "",
+      },
+      news: {
+        alt_metin: "",
+      },
+    });
+    home.save();
+    res.redirect("/yonetim");
+  } else {
+    res.render("./admin/ad_index", {
+      layout: "./admin/layouts/admin_layouts.ejs",
+      apart: apart,
+      why: hm.why,
+      static: hm.static,
+      tamam:tamam,
+      devam:devam
+    });
+  }
 };
 
 const getChooseApart = async (req, res, next) => {
@@ -48,7 +85,7 @@ const getChooseApart = async (req, res, next) => {
             sayac++;
           }
         }
-        console.log(sayac);
+
         if (sayac < 2) {
           req.flash("error", ["En az bir daire seçmelisiniz"]);
           res.redirect("/yonetim");
@@ -63,10 +100,74 @@ const getChooseApart = async (req, res, next) => {
             res.redirect("/yonetim");
           }
         }
-      
       }
     }
   } catch (error) {}
+};
+
+const postWhy = async (req, res, next) => {
+  const hatalar = validationResult(req);
+
+  if (!hatalar.isEmpty()) {
+    req.flash("validation_error", hatalar.array());
+
+    res.redirect("/yonetim");
+  } else {
+    try {
+      if (req.body) {
+        const options = {
+          why: {
+            alt_metin: req.body.alt_metin,
+            memnuniyet: req.body.memnuniyet,
+            uzman_kadro: req.body.uzman_kadro,
+            guven: req.body.guven,
+            takim_calismasi: req.body.takim_calismasi,
+            kalite: req.body.kalite,
+            aninda_teslim: req.body.aninda_teslim,
+          },
+        };
+        const upd = await HomePage.findOneAndUpdate({}, options);
+        if (upd) {
+          req.flash("success_message", [{ msg: "Güncellendi" }]);
+
+          res.redirect("/yonetim");
+        }
+      }
+    } catch (f) {
+      console.log(f);
+    }
+  }
+};
+
+const postStatistics = async (req, res, next) => {
+  const hatalar = validationResult(req);
+
+  if (!hatalar.isEmpty()) {
+    req.flash("validation_error", hatalar.array());
+
+    res.redirect("/yonetim");
+  } else {
+    try {
+      if (req.body) {
+        const options = {
+          static: {
+            yillar: req.body.yillar,
+            tamam_proje: req.body.tamam_proje,
+            devam_proje: req.body.devam_proje,
+            musteri: req.body.musteri,
+          },
+        };
+        const upd = await HomePage.findOneAndUpdate({}, options);
+        if (upd) {
+          req.flash("success_message", [{ msg: "Güncellendi" }]);
+
+          res.redirect("/yonetim");
+        }
+      }
+    } catch (f) {
+      console.log(f);
+    }
+  }
 };
 
 const getAllProjects = async (req, res, next) => {
@@ -1006,4 +1107,6 @@ module.exports = {
   getAbout,
   postAbout,
   getChooseApart,
+  postWhy,
+  postStatistics,
 };

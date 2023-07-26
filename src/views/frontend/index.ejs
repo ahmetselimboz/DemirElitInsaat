@@ -38,10 +38,7 @@
       <h2>NEDEN "DEMİR ELİT İNŞAAT"?</h2>
 
       <h4>
-        <b>Demir Elit İnşaat</b> ailesi olarak; güven ve kaliteyi hedefleyen
-        projelerimizle, <br />
-        siz değerli müşterilerimizin memnuniyetini en değerli hazinemiz
-        olarak görmekteyiz.
+        <%- why.alt_metin %>
       </h4>
     </div>
 
@@ -54,9 +51,7 @@
           <h5>Memnuniyet</h5>
 
           <h6>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy
-            text ever since the 1500s,
+            <%- why.memnuniyet %>
           </h6>
         </div>
       </div>
@@ -68,9 +63,7 @@
           <h5>Uzman Kadro</h5>
 
           <h6>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy
-            text ever since the 1500s,
+            <%- why.uzman_kadro %>
           </h6>
         </div>
       </div>
@@ -82,9 +75,7 @@
           <h5>Güven</h5>
 
           <h6>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy
-            text ever since the 1500s,
+            <%- why.guven %>
           </h6>
         </div>
       </div>
@@ -96,9 +87,7 @@
           <h5>Takım Çalışması</h5>
 
           <h6>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy
-            text ever since the 1500s,
+            <%- why.takim_calismasi %>
           </h6>
         </div>
       </div>
@@ -110,9 +99,7 @@
           <h5>Kalite</h5>
 
           <h6>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy
-            text ever since the 1500s,
+            <%- why.kalite %>
           </h6>
         </div>
       </div>
@@ -124,9 +111,7 @@
           <h5>Anında Teslim</h5>
 
           <h6>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy
-            text ever since the 1500s,
+            <%- why.aninda_teslim %>
           </h6>
         </div>
       </div>
@@ -140,7 +125,7 @@
       <i class="fa-solid fa-calendar-days"></i>
     </div>
     <div class="statistics-text">
-      <h5 class="count" data-val="14">00</h5>
+      <h5 class="count" data-val="<%- static.yillar %>">00</h5>
       <br />
       <h6>Yıllık Tecrübe</h6>
     </div>
@@ -151,7 +136,7 @@
       <i class="fa-solid fa-building-circle-check"></i>
     </div>
     <div class="statistics-text">
-      <h5 class="count" data-val="250">000</h5>
+      <h5 class="count" data-val="<%- static.tamam_proje %>">000</h5>
       <br />
       <h6>Tamamlanan Projeler</h6>
     </div>
@@ -163,7 +148,7 @@
       <i class="fa-solid fa-building-circle-arrow-right"></i>
     </div>
     <div class="statistics-text">
-      <h5 class="count" data-val="480">000</h5>
+      <h5 class="count" data-val="<%- static.devam_proje %>">000</h5>
       <br />
       <h6>Devam Eden Projeler</h6>
     </div>
@@ -174,7 +159,7 @@
       <i class="fa-regular fa-face-laugh-beam"></i>
     </div>
     <div class="statistics-text">
-      <h5 class="count" data-val="950">000</h5>
+      <h5 class="count" data-val="<%- static.musteri %>">000</h5>
       <br />
       <h6>Mutlu Müşteri</h6>
     </div>
@@ -194,88 +179,23 @@
   </div>
 
   <div class="house-col ">
-    <div class="house-item js-scroll slide-left">
-      <img class="img-fluid-p" src="/frontend/assets/ber.jpeg" alt="" />
-      <div class="house-text">
-        <h2>BERİL SİTESİ</h2>
-      </div>
-      <div class="house-overlay">
-        <div class="house-text-hover">
-          <a href="/dairedetay" class="btn-incele">İncele</a>
-          <h4>Necip Fazıl Mah. 50008. Sok. No:21/14</h4>
+   
+
+    <% for( let index = 0; index < apar.length; index++ ) { %>
+      <div class="house-item js-scroll slide-left">
+        <img class="img-fluid-p" src="https://drive.google.com/uc?export=view&id=<%- apar[index].images[0].id %>" alt="" />
+        <div class="house-text">
+          <h2><%- apar[index].project_name %></h2>
+        </div>
+        <div class="house-overlay">
+          <div class="house-text-hover">
+            <a href="/daire-detay/<%- apar[index].id %>" class="btn-incele">İncele</a>
+            <h4><%- apar[index].adress %></h4>
+          </div>
         </div>
       </div>
-    </div>
-
-  
-    <div class="house-item js-scroll slide-right">
-      <img class="img-fluid-p" src="/frontend/assets/ber.jpeg" alt="" />
-      <div class="house-text">
-        <h2>BERİL SİTESİ</h2>
-      </div>
-      <div class="house-overlay">
-        <div class="house-text-hover">
-          <a href="/dairedetay" class="btn-incele">İncele</a>
-          <h4>Necip Fazıl Mah. 50008. Sok. No:21/14</h4>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="house-item js-scroll slide-left">
-      <img class="img-fluid-p" src="/frontend/assets/ber.jpeg" alt="" />
-      <div class="house-text">
-        <h2>BERİL SİTESİ</h2>
-      </div>
-      <div class="house-overlay">
-        <div class="house-text-hover">
-          <a href="/dairedetay" class="btn-incele">İncele</a>
-          <h4>Necip Fazıl Mah. 50008. Sok. No:21/14</h4>
-        </div>
-      </div>
-    </div>
- 
-
-    <div class="house-item js-scroll slide-right">
-      <img class="img-fluid-p" src="/frontend/assets/ber.jpeg" alt="" />
-      <div class="house-text">
-        <h2>BERİL SİTESİ</h2>
-      </div>
-      <div class="house-overlay">
-        <div class="house-text-hover">
-          <a href="/dairedetay" class="btn-incele">İncele</a>
-          <h4>Necip Fazıl Mah. 50008. Sok. No:21/14</h4>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="house-item  js-scroll slide-left">
-      <img class="img-fluid-p" src="/frontend/assets/ber.jpeg" alt="" />
-      <div class="house-text">
-        <h2>BERİL SİTESİ</h2>
-      </div>
-      <div class="house-overlay">
-        <div class="house-text-hover">
-          <a href="/dairedetay" class="btn-incele">İncele</a>
-          <h4>Necip Fazıl Mah. 50008. Sok. No:21/14</h4>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="house-item js-scroll slide-right">
-      <img class="img-fluid-p" src="/frontend/assets/ber.jpeg" alt="" />
-      <div class="house-text">
-        <h2>BERİL SİTESİ</h2>
-      </div>
-      <div class="house-overlay">
-        <div class="house-text-hover">
-          <a href="/dairedetay" class="btn-incele">İncele</a>
-          <h4>Necip Fazıl Mah. 50008. Sok. No:21/14</h4>
-        </div>
-      </div>
-    </div>
+    <% } %>
+    
 
 
   <div class="house-btn-project js-scroll fade-in-bottom">
@@ -310,150 +230,28 @@
 
   <div class="cardboard-col">
     <div class="customer-logos slider js-scroll fade-in-bottom">
-      <div class="slide">
-        <div class="colu">
-          <div class="cardboard-item">
-            <!-- <iframe
-              width="1046"
-              height="445"
-              loading="lazy"
-              src="https://www.youtube.com/embed/y9j-BL5ocW8"
-              title="Cinematic Real estate video tour example 4K | Laowa 12mm &amp; Sony A7III"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-            ></iframe> -->
-            <div class="cardboard-text">
-              <h5>Video Haber Adı</h5>
-              <a href="/haberdetay">İzle</a>
+      <% for( let index = 0; index < news.length; index++ ) { %>
+        <div class="slide">
+          <div class="colu">
+            <div class="cardboard-item">
+              <% if (news[index].images[0] != undefined && news[index].news_url == "") { %>
+                <img class="card-img-top" src="https://drive.google.com/uc?export=view&id=<%- news[index].images[0].id %>" alt="Card image cap">
+            <% } else { %> 
+              <%- news[index].news_url %>
+              
+              <% } %>
+           
+              <div class="cardboard-text">
+                <h5><%- news[index].news_name %></h5>
+                <a href="/haber-detay/<%- news[index].id %>">İzle</a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="slide">
-        <div class="colu">
-          <div class="cardboard-item">
-            <!-- <iframe
-              width="880"
-              height="495"
-              loading="lazy"
-              src="https://www.youtube.com/embed/7EHnQ0VM4KY"
-              title="Cinematic Real estate video tour example 4K | Laowa 12mm &amp; Sony A7III"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-            ></iframe> -->
-            <div class="cardboard-text">
-              <h5>Video Haber Adı</h5>
-              <a href="/haberdetay">İzle</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="slide">
-        <div class="colu">
-          <div class="cardboard-item">
-            <img src="/frontend/assets/indir (1).jpeg" alt="" />
-            <div class="cardboard-text">
-              <h5>Haber Adı</h5>
-              <a href="/haberdetay">Görüntüle</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="slide">
-        <div class="colu">
-          <div class="cardboard-item">
-            <!-- <iframe
-              width="880"
-              height="495"
-              loading="lazy"
-              src="https://www.youtube.com/embed/59CJ3g1n_6Y"
-              title="BSR Building 2 - Video Presentation"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-            ></iframe> -->
-            <div class="cardboard-text">
-              <h5>Video Haber Adı</h5>
-              <a href="/haberdetay">İzle</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="slide">
-        <div class="colu">
-          <div class="cardboard-item">
-            <img src="/frontend/assets/evrim.jpg" alt="" />
-            <div class="cardboard-text">
-              <h5>Haber Adı</h5>
-              <a href="/haberdetay">Görüntüle</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="slide">
-        <div class="colu">
-          <div class="cardboard-item">
-            <img src="/frontend/assets/indir (1).jpeg" alt="" />
-            <div class="cardboard-text">
-              <h5>Haber Adı</h5>
-              <a href="/haberdetay">Görüntüle</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="slide">
-        <div class="colu">
-          <div class="cardboard-item">
-            <!-- <iframe
-            width="880"
-            height="495"
-            loading="lazy"
-            src="https://www.youtube.com/embed/59CJ3g1n_6Y"
-            title="BSR Building 2 - Video Presentation"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-          ></iframe> -->
-          <div class="cardboard-text">
-            <h5>Video Haber Adı</h5>
-            <a href="/haberdetay">İzle</a>
-          </div>
-          </div>
-        </div>
-      </div>
-      <div class="slide">
-        <div class="colu">
-          <div class="cardboard-item">
-            <iframe
-              width="1046"
-              height="445"
-              loading="lazy"
-              src="https://www.youtube.com/embed/y9j-BL5ocW8"
-              title="Cinematic Real estate video tour example 4K | Laowa 12mm &amp; Sony A7III"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-            ></iframe>
-            <div class="cardboard-text">
-              <h5>Video Haber Adı</h5>
-              <a href="/haberdetay">İzle</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="slide">
-        <div class="colu">
-          <div class="cardboard-item">
-            <img src="/frontend/assets/evrim.jpg" alt="" />
-            <div class="cardboard-text">
-              <h5>Haber Adı</h5>
-              <a href="/haberdetay">Görüntüle</a>
-            </div>
-          </div>
-        </div>
-      </div>
+      <% } %>
+      
+     
+     
     </div>
   </div>
   <div class="house-btn-project js-scroll fade-in-bottom">

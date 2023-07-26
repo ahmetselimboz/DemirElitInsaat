@@ -10,10 +10,65 @@ const VisMis = require("../../model/_vismisModel");
 const About = require("../../model/_aboutModel");
 
 const getHomePage = async (req, res, next) => {
+  const apart = await Apart.find({});
   res.render("./admin/ad_index", {
     layout: "./admin/layouts/admin_layouts.ejs",
+    apart: apart,
   });
 };
+
+const getChooseApart = async (req, res, next) => {
+  try {
+    const value = await Apart.find({});
+    var sayac = 0;
+
+    if (req.params) {
+      const result = await Apart.findById(req.params.id);
+      if (result.homepage_view == false) {
+        for (let index = 0; index < value.length; index++) {
+          if (value[index].homepage_view == true) {
+            sayac++;
+          }
+        }
+        if (sayac > 4) {
+          req.flash("error", ["En fazla 5 daire seçebilirsiniz"]);
+          res.redirect("/yonetim");
+        } else {
+          const ress = await Apart.findByIdAndUpdate(req.params.id, {
+            homepage_view: true,
+          });
+          if (ress) {
+            req.flash("success_message", [{ msg: "Daire seçildi" }]);
+            res.redirect("/yonetim");
+          }
+        }
+      } else {
+        for (let index = 0; index < value.length; index++) {
+          if (value[index].homepage_view == true) {
+            sayac++;
+          }
+        }
+        console.log(sayac);
+        if (sayac < 2) {
+          req.flash("error", ["En az bir daire seçmelisiniz"]);
+          res.redirect("/yonetim");
+        } else {
+          const ress = await Apart.findByIdAndUpdate(req.params.id, {
+            homepage_view: false,
+          });
+          if (ress) {
+            req.flash("success_message", [
+              { msg: "Daire seçimlerden kaldırıldı" },
+            ]);
+            res.redirect("/yonetim");
+          }
+        }
+      
+      }
+    }
+  } catch (error) {}
+};
+
 const getAllProjects = async (req, res, next) => {
   const result = await Apart.find({});
 
@@ -761,7 +816,6 @@ const getUpdateOurValue = async (req, res, next) => {
   }
 };
 const postUpdateOurValue = async (req, res, next) => {
-
   const hatalar = validationResult(req);
 
   if (!hatalar.isEmpty()) {
@@ -855,7 +909,7 @@ const postVisMis = async (req, res, next) => {
   }
 };
 
-const getAbout = async (req,res,next)=>{
+const getAbout = async (req, res, next) => {
   const result = await About.findOne({});
   if (result) {
     res.render("./admin/ad_about", {
@@ -871,9 +925,9 @@ const getAbout = async (req,res,next)=>{
 
     res.redirect("/yonetim/hakkimizda");
   }
-}
+};
 
-const postAbout = async (req,res,next)=>{
+const postAbout = async (req, res, next) => {
   const hatalar = validationResult(req);
 
   if (!hatalar.isEmpty()) {
@@ -910,7 +964,7 @@ const postAbout = async (req,res,next)=>{
       console.log(f);
     }
   }
-}
+};
 
 module.exports = {
   getHomePage,
@@ -950,5 +1004,6 @@ module.exports = {
   getVisMis,
   postVisMis,
   getAbout,
-  postAbout
+  postAbout,
+  getChooseApart,
 };

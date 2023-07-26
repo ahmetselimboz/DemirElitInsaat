@@ -1,46 +1,19 @@
 <div id="wrapper">
   <div id="slider-wrap">
     <ul id="slider">
-      <li>
+      <% for( let index = 0; index < apart.length; index++ ) { %>
+        <li>
     
-        <img src="/frontend/assets/indir.jpeg" alt="" />
-        <div class="header-shad"></div>
-        <div class="header-text">
-          <h3>Yıldız Sitesi</h3>
-        </div>
-      </li>
+          <img src="https://drive.google.com/uc?export=view&id=<%- apart[index].images[0].id %>" alt="" />
+          <div class="header-shad"></div>
+          <div class="header-text">
+            <h3><%- apart[index].project_name %></h3>
+          </div>
+        </li>
+      <% } %>
+      
 
-      <li>
-        <img src="/frontend/assets/proje.jpg" alt="" />
-        <div class="header-shad"></div>
-        <div class="header-text">
-          <h3>Yıldız Sitesi</h3>
-        </div>
-      </li>
-
-      <li>
-        <img src="/frontend/assets/indir2.jpg" alt="" />
-        <div class="header-shad"></div>
-        <div class="header-text">
-          <h3>Yıldız Sitesi</h3>
-        </div>
-      </li>
-
-      <li>
-        <img src="/frontend/assets/bahce.jpg" alt="" />
-        <div class="header-shad"></div>
-        <div class="header-text">
-          <h3>Yıldız Sitesi</h3>
-        </div>
-      </li>
-
-      <li>
-        <img src="/frontend/assets/bina.jpg" alt="" />
-        <div class="header-shad"></div>
-        <div class="header-text">
-          <h3>Yıldız Sitesi</h3>
-        </div>
-      </li>
+     
     </ul>
 
     <div class="btns" id="next"><i class="bx bx-right-arrow-alt"></i></div>

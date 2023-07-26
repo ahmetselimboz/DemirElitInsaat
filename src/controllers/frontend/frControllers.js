@@ -9,6 +9,7 @@ const VisMis = require("../../model/_vismisModel");
 
 const getHomePage = async (req, res, next) => {
   const contact = await Contact.findOne({});
+  const apart = await Apart.find({homepage_view:true});
   res.render("./frontend/index", {
     layout: "./frontend/layouts/_layouts.ejs",
     link1: "nav-active-link",
@@ -17,6 +18,7 @@ const getHomePage = async (req, res, next) => {
     link4: "",
     link5: "",
     contact: contact,
+    apart:apart
   });
 };
 

@@ -80,6 +80,11 @@ const ApartSchema = new Schema(
     location_url:{
       type: String,
       trim: true
+    },
+    homepage_view:{
+      type: Boolean,
+      trim: true,
+      default: false
     }
   },
   { collection: "apart", timestamps: true }

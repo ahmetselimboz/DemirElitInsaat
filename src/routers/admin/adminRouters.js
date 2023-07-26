@@ -7,6 +7,13 @@ const upload = multer();
 
 router.get('/', adminController.getHomePage);
 router.get('/anapanel', adminController.getHomePage);
+router.get('/daire-sec/:id', adminController.getChooseApart)
+
+
+
+
+
+
 router.get('/projeler', adminController.getAllProjects);
 router.get('/projeler/daire-ekle', adminController.getAddApart);
 router.post('/projeler/daire-ekle',upload.any(),validations.validateApart(), adminController.postAddApart);

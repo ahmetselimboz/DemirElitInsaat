@@ -14,6 +14,15 @@ var totalSlides = $("#slider-wrap ul li").length;
 var sliderWidth = $("#slider-wrap").width();
 
 $(document).ready(function () {
+  var foto = document.querySelectorAll("#slider li")
+  console.log(foto);
+ 
+const sayi = 100 / totalSlides;
+  for (let index = 0; index < foto.length; index++) {
+    console.log(foto[index]);
+    foto[index].style.width = sayi.toString() + "%";
+    
+  }
   /*****************
        BUILD THE SLIDER
       *****************/
@@ -106,6 +115,8 @@ function pagination() {
   $("#pagination-wrap ul li").removeClass("active");
   $("#pagination-wrap ul li:eq(" + pos + ")").addClass("active");
 }
+
+
 
 $(document).ready(function () {
   $(".customer-logos").slick({

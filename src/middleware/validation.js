@@ -237,6 +237,23 @@ const validatelogin = () => {
   ];
 };
 
+const validatePass = () => {
+  return [
+    body("oldPass")
+      .trim()
+      .notEmpty()
+      .withMessage("Eski Şifre alanını boş geçmeyiniz"),
+    body("newPass")
+      .trim()
+      .notEmpty()
+      .withMessage("Yeni Şifre alanını boş geçmeyiniz"),
+    body("newPassAgain")
+      .trim()
+      .notEmpty()
+      .withMessage("Yeni Şifre Tekrar alanını boş geçmeyiniz"),
+  ];
+};
+
 module.exports = {
   validateApart,
   validateNews,
@@ -249,5 +266,6 @@ module.exports = {
   validateWhy,
   validateStatistics,
   validateAlt,
-  validatelogin
+  validatelogin,
+  validatePass
 };

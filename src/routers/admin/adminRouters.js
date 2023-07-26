@@ -15,8 +15,10 @@ router.post("/istatistik", validations.validateStatistics(), adminController.pos
 router.post("/proje", validations.validateAlt(), adminController.postProject)
 router.post("/haber", validations.validateAlt(), adminController.postNews)
 
+router.get("/sifre-guncelle", adminController.getPass)
+router.post("/sifre-guncelle", validations.validatePass(), adminController.postPass)
 
-
+router.get("/cikis-yap", adminController.getLogOut);
 
 
 

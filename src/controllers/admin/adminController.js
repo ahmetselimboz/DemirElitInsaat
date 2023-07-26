@@ -9,11 +9,14 @@ const OurValue = require("../../model/_ourvalueModel");
 const VisMis = require("../../model/_vismisModel");
 const About = require("../../model/_aboutModel");
 const HomePage = require("../../model/_homepageModel");
+const User = require("../../model/_userModel");
+const bcrypt = require('bcrypt');
+
 
 const getHomePage = async (req, res, next) => {
   const apart = await Apart.find({});
-  const tamam = await Apart.find({project_status : "Tamamlandı"});
-  const devam = await Apart.find({project_status : "Devam Ediyor"});
+  const tamam = await Apart.find({ project_status: "Tamamlandı" });
+  const devam = await Apart.find({ project_status: "Devam Ediyor" });
   const hm = await HomePage.findOne();
   if (!hm) {
     const home = new HomePage({
@@ -49,8 +52,8 @@ const getHomePage = async (req, res, next) => {
       static: hm.static,
       projects: hm.projects,
       haber: hm.news,
-      tamam:tamam,
-      devam:devam
+      tamam: tamam,
+      devam: devam,
     });
   }
 };
@@ -171,7 +174,7 @@ const postStatistics = async (req, res, next) => {
   }
 };
 
-const postProject = async (req,res,next)=>{
+const postProject = async (req, res, next) => {
   const hatalar = validationResult(req);
 
   if (!hatalar.isEmpty()) {
@@ -184,7 +187,6 @@ const postProject = async (req,res,next)=>{
         const options = {
           projects: {
             alt_metin: req.body.alt_metin,
-           
           },
         };
         const upd = await HomePage.findOneAndUpdate({}, options);
@@ -198,9 +200,9 @@ const postProject = async (req,res,next)=>{
       console.log(f);
     }
   }
-}
+};
 
-const postNews = async (req,res,next)=>{
+const postNews = async (req, res, next) => {
   const hatalar = validationResult(req);
 
   if (!hatalar.isEmpty()) {
@@ -213,7 +215,6 @@ const postNews = async (req,res,next)=>{
         const options = {
           news: {
             alt_metin: req.body.alt_metin,
-           
           },
         };
         const upd = await HomePage.findOneAndUpdate({}, options);
@@ -227,7 +228,82 @@ const postNews = async (req,res,next)=>{
       console.log(f);
     }
   }
+};
+
+const getPass = (req, res, next) => {
+  res.render("./admin/ad_sifre", {
+    layout: "./admin/layouts/admin_layouts.ejs",
+  });
+};
+
+const postPass = async (req, res, next) => {
+  const hatalar = validationResult(req);
+
+  if (!hatalar.isEmpty()) {
+    req.flash("validation_error", hatalar.array());
+    req.flash("oldPass", req.body.oldPass);
+    req.flash("newPass", req.body.newPass);
+
+    res.redirect("/yonetim/sifre-guncelle");
+  } else {
+    try {
+      if(req.body.newPass != req.body.newPassAgain){
+        req.flash("error", ["Şifre tekrarın doğru olduğundan emin olunuz"]);
+        //console.log("Şifre Yanlış");
+        res.redirect("/yonetim/sifre-guncelle");
+      }else{
+        const _findUser = await User.findById(req.user.id);
+        console.log(_findUser);
+        if (!_findUser) {
+          req.flash("error", ["Böyle bir kullanıcı kaydı bulunamadı"]);
+          //console.log("User yok");
+          res.redirect("/yonetim/sifre-guncelle");
+        } else {
+          //console.log("Şifre karşılaştırılılıyor");
+          const checkPassword = await bcrypt.compare(
+            req.body.oldPass,
+            _findUser.password
+          );
+          //console.log(checkPassword);
+          //console.log("Şifre karşılaştırıldı");
+          if (!checkPassword) {
+            req.flash("error", ["Şifrenizin doğru olduğundan emin olunuz"]);
+            //console.log("Şifre Yanlış");
+            res.redirect("/yonetim/sifre-guncelle");
+          } else {
+            await User.findByIdAndUpdate(req.user.id, {
+              password: await bcrypt.hash(req.body.newPass, 10),
+            });
+            req.flash("success_message", [{ msg: "Güncellendi" }]);
+            res.redirect("/yonetim");
+          }
+        }
+      }
+      
+
+   
+    } catch (f) {
+      console.log(f);
+    }
+  }
+};
+
+const getLogOut = async (req,res,next)=>{
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+
+    req.session.destroy((error) => {
+      res.clearCookie("connect.sid");
+
+      res.redirect("/giris");
+
+      // res.redirect('/login');
+    });
+  });
 }
+
 
 const getAllProjects = async (req, res, next) => {
   const result = await Apart.find({});
@@ -1126,8 +1202,6 @@ const postAbout = async (req, res, next) => {
   }
 };
 
-
-
 module.exports = {
   getHomePage,
   getAllProjects,
@@ -1172,5 +1246,7 @@ module.exports = {
   postStatistics,
   postProject,
   postNews,
- 
+  getPass,
+  postPass,
+  getLogOut
 };

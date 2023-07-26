@@ -83,6 +83,9 @@ app.use((req, res, next) => {
   res.locals.user_name = req.flash("user_name");
   res.locals.password = req.flash("password");
 
+  res.locals.oldPass = req.flash("oldPass");
+  res.locals.newPass = req.flash("newPass");
+
   next();
 });
 

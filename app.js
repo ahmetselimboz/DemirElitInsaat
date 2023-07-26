@@ -4,7 +4,7 @@ require("dotenv").config();
 const path = require("path");
 const flash = require("connect-flash");
 const session = require("express-session");
-// const passport = require("passport");
+const passport = require("passport");
 const bodyParser = require("body-parser");
 
 const ejs = require("ejs");
@@ -80,13 +80,14 @@ app.use((req, res, next) => {
   res.locals.vision = req.flash("vision");
   res.locals.mision = req.flash("mision");
 
-
+  res.locals.user_name = req.flash("user_name");
+  res.locals.password = req.flash("password");
 
   next();
 });
 
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 // //app.use(passport.authenticate('session'));
 
 const frRouter = require("./src/routers/frontend/frRouters");

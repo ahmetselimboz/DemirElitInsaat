@@ -1,0 +1,85 @@
+
+<div class="position-relative">
+
+  <div class="position-absolute top-0 end-0 z-index-2 align-items-start">
+    <% validation_error.forEach(element => { %>
+      <div class="col-8 col-sm-12 align-self-start">
+        <div
+          class="alert alert-danger alert-dismissible text-white fade show"
+          role="alert"
+        >
+          <span class="alert-icon align-middle">
+            <span class="material-icons text-md"> error </span>
+          </span>
+          <span class="alert-text"
+            ><strong>Uyarı!</strong> <%- element.msg %></span
+          >
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+      
+      <% }) %>
+
+    <% success_message.forEach(element => { %>
+      <div class="col-8 col-sm-12 align-self-start">
+        <div
+          class="alert alert-success alert-dismissible text-white fade show"
+          role="alert"
+        >
+          <span class="alert-icon align-middle">
+            <span class="material-icons text-md"> thumb_up </span>
+          </span>
+          <span class="alert-text"
+            ><strong>Başarılı!</strong> <%- element.msg %></span
+          >
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+      
+      <% }) %>
+
+      <% error.forEach(element => { %>
+        <div class="col-8 col-sm-12 align-self-start">
+          <div
+            class="alert alert-danger alert-dismissible text-white fade show"
+            role="alert"
+          >
+            <span class="alert-icon align-middle">
+              <span class="material-icons text-md"> error </span>
+            </span>
+            <span class="alert-text"
+              ><strong>Uyarı!</strong> <%- element %></span
+            >
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="alert"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        </div>
+        
+        <% }) %>
+  </div>
+
+</div>
+
+
+
+

@@ -1126,6 +1126,8 @@ const postAbout = async (req, res, next) => {
   }
 };
 
+
+
 module.exports = {
   getHomePage,
   getAllProjects,
@@ -1169,5 +1171,6 @@ module.exports = {
   postWhy,
   postStatistics,
   postProject,
-  postNews
+  postNews,
+ 
 };

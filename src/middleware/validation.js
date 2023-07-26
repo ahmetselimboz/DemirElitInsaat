@@ -224,6 +224,19 @@ const validateAlt = () => {
   ];
 };
 
+const validatelogin = () => {
+  return [
+    body("user_name")
+      .trim()
+      .notEmpty()
+      .withMessage("Kullanıcı Adı alanını boş geçmeyiniz"),
+    body("password")
+      .trim()
+      .notEmpty()
+      .withMessage("Şifre alanını boş geçmeyiniz"),
+  ];
+};
+
 module.exports = {
   validateApart,
   validateNews,
@@ -235,5 +248,6 @@ module.exports = {
   validateAbout,
   validateWhy,
   validateStatistics,
-  validateAlt
+  validateAlt,
+  validatelogin
 };

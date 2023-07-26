@@ -7,16 +7,18 @@ const News = require("../../model/_newsModel");
 const OurValue = require("../../model/_ourvalueModel");
 const Team = require("../../model/_teamModel");
 const VisMis = require("../../model/_vismisModel");
+const User = require("../../model/_userModel");
+const passport = require("passport");
+require("../../config/passport_local")(passport);
+const { validationResult } = require("express-validator");
+const bcrypt = require('bcrypt');
 
 const getHomePage = async (req, res, next) => {
   const contact = await Contact.findOne({});
-  const apart = await Apart.find({homepage_view:true});
+  const apart = await Apart.find({ homepage_view: true });
   const news = await News.find({}).sort({ createdAt: "desc" }).limit(9);
   const apar = await Apart.find({}).sort({ createdAt: "desc" }).limit(6);
   const hm = await HomePage.findOne();
-
-
-
 
   res.render("./frontend/index", {
     layout: "./frontend/layouts/_layouts.ejs",
@@ -26,10 +28,10 @@ const getHomePage = async (req, res, next) => {
     link4: "",
     link5: "",
     contact: contact,
-    apart:apart,
-    news:news,
-    apar:apar,
-    why:hm.why,
+    apart: apart,
+    news: news,
+    apar: apar,
+    why: hm.why,
     static: hm.static,
     projects: hm.projects,
     haber: hm.news,
@@ -66,7 +68,6 @@ const getAboutUs = async (req, res, next) => {
   const about = await About.findOne({});
   const pres = await Team.findOne({ president: true });
 
-
   res.render("./frontend/about_us", {
     layout: "./frontend/layouts/_layouts.ejs",
     link1: "",
@@ -75,8 +76,8 @@ const getAboutUs = async (req, res, next) => {
     link4: "",
     link5: "",
     contact: contact,
-    about:about,
-    pres:pres
+    about: about,
+    pres: pres,
   });
 };
 const getContact = async (req, res, next) => {
@@ -218,7 +219,7 @@ const getVisionMision = async (req, res, next) => {
     link4: "",
     link5: "",
     contact: contact,
-    vismis:vismis
+    vismis: vismis,
   });
 };
 
@@ -237,6 +238,75 @@ const postMessage = (req, res, next) => {
   }
 };
 
+const getLogin = (req, res, next) => {
+  res.render("./admin/login", {
+    layout: false,
+  });
+};
+const postLogin = (req, res, next) => {
+  const hatalar = validationResult(req);
+
+  if (!hatalar.isEmpty()) {
+    req.flash("validation_error", hatalar.array());
+    req.flash("user_name", req.body.user_name);
+    req.flash("password", req.body.password);
+
+    res.redirect("/giris");
+  } else {
+    try {
+      passport.authenticate("local", {
+        successRedirect: "/yonetim",
+        failureRedirect: "/giris",
+        failureFlash: true,
+        successFlash: true,
+      })(req, res, next);
+    } catch (error) {}
+  }
+};
+
+const getRegister = (req, res, next) => {
+  res.render("./admin/register", {
+    layout: false,
+  });
+};
+
+const postRegister = async (req, res, next) => {
+  const hatalar = validationResult(req);
+console.log(req.body);
+  if (!hatalar.isEmpty()) {
+    req.flash("validation_error", hatalar.array());
+    req.flash("user_name", req.body.user_name);
+    req.flash("password", req.body.password);
+
+    res.redirect("/kayit");
+  } else {
+    try {
+      const _user = await User.findOne({ user_name: req.body.user_name });
+
+      if (_user) {
+        req.flash("validation_error", [
+          { msg: "Böyle bir kullanıcı adı mevcut" },
+        ]);
+        req.flash("user_name", req.body.user_name);
+        req.flash("password", req.body.password);
+
+        res.redirect("/kayit");
+      } else {
+        const newUser = new User({
+          user_name: req.body.user_name,
+
+          password: await bcrypt.hash(req.body.password, 10),
+        });
+        await newUser.save();
+        console.log("Kullanici kaydedildi");
+        res.redirect("/giris");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
+};
+
 module.exports = {
   getHomePage,
   getApartDetail,
@@ -249,4 +319,8 @@ module.exports = {
   getSquad,
   getVisionMision,
   postMessage,
+  getLogin,
+  postLogin,
+  getRegister,
+  postRegister,
 };

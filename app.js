@@ -41,7 +41,7 @@ app.use(flash());
 app.use((req, res, next) => {
   res.locals.validation_error = req.flash("validation_error");
   res.locals.success_message = req.flash("success_message");
- 
+
   res.locals.error = req.flash("error");
 
   res.locals.project_name = req.flash("project_name");
@@ -74,9 +74,11 @@ app.use((req, res, next) => {
   res.locals.task = req.flash("task");
   res.locals.team_desc = req.flash("team_desc");
 
+  res.locals.our_title = req.flash("our_title");
+  res.locals.our_text = req.flash("our_text");
 
-
-
+  res.locals.vision = req.flash("vision");
+  res.locals.mision = req.flash("mision");
 
   next();
 });

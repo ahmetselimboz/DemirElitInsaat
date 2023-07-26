@@ -1,8 +1,11 @@
+const About = require("../../model/_aboutModel");
 const Apart = require("../../model/_apartModel");
 const Contact = require("../../model/_contactModel");
 const Message = require("../../model/_messageModel");
 const News = require("../../model/_newsModel");
+const OurValue = require("../../model/_ourvalueModel");
 const Team = require("../../model/_teamModel");
+const VisMis = require("../../model/_vismisModel");
 
 const getHomePage = async (req, res, next) => {
   const contact = await Contact.findOne({});
@@ -44,6 +47,10 @@ const getApartDetail = async (req, res, next) => {
 };
 const getAboutUs = async (req, res, next) => {
   const contact = await Contact.findOne({});
+  const about = await About.findOne({});
+  const pres = await Team.findOne({ president: true });
+
+
   res.render("./frontend/about_us", {
     layout: "./frontend/layouts/_layouts.ejs",
     link1: "",
@@ -52,6 +59,8 @@ const getAboutUs = async (req, res, next) => {
     link4: "",
     link5: "",
     contact: contact,
+    about:about,
+    pres:pres
   });
 };
 const getContact = async (req, res, next) => {
@@ -150,6 +159,7 @@ const getNews = async (req, res, next) => {
 };
 const getOurValues = async (req, res, next) => {
   const contact = await Contact.findOne({});
+  const our = await OurValue.find({});
 
   res.render("./frontend/our_values", {
     layout: "./frontend/layouts/_layouts.ejs",
@@ -159,6 +169,7 @@ const getOurValues = async (req, res, next) => {
     link4: "",
     link5: "",
     contact: contact,
+    our: our,
   });
 };
 const getSquad = async (req, res, next) => {
@@ -166,7 +177,6 @@ const getSquad = async (req, res, next) => {
   const pres = await Team.findOne({ president: true });
   const desc = await Team.findOne({ team_desc_check: true });
   const ekip = await Team.find({ team_desc_check: false, president: false });
-
 
   res.render("./frontend/squad", {
     layout: "./frontend/layouts/_layouts.ejs",
@@ -183,7 +193,7 @@ const getSquad = async (req, res, next) => {
 };
 const getVisionMision = async (req, res, next) => {
   const contact = await Contact.findOne({});
-
+  const vismis = await VisMis.findOne({});
   res.render("./frontend/vision_mision", {
     layout: "./frontend/layouts/_layouts.ejs",
     link1: "",
@@ -192,11 +202,12 @@ const getVisionMision = async (req, res, next) => {
     link4: "",
     link5: "",
     contact: contact,
+    vismis:vismis
   });
 };
 
 const postMessage = (req, res, next) => {
-  if(req.body){
+  if (req.body) {
     const message = new Message({
       name: req.body.name,
       surname: req.body.surname,
@@ -204,7 +215,7 @@ const postMessage = (req, res, next) => {
       phone_num: req.body.phone_num,
       content: req.body.content,
       read: false,
-    })
+    });
     message.save();
     res.redirect("/");
   }

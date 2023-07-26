@@ -130,11 +130,56 @@ const validateDesc = () => {
   ];
 };
 
+const validateOurValue = () => {
+  return [
+    body("our_title")
+      .trim()
+      .notEmpty()
+      .withMessage("Başlık alanını boş geçmeyiniz"),
+
+    body("our_text")
+      .trim()
+      .notEmpty()
+      .withMessage("İçerik alanını boş geçmeyiniz"),
+  ];
+};
+
+const validateVisMis = () => {
+  return [
+    body("vision")
+      .trim()
+      .notEmpty()
+      .withMessage("Vizyon alanını boş geçmeyiniz"),
+
+    body("mision")
+      .trim()
+      .notEmpty()
+      .withMessage("Misyon alanını boş geçmeyiniz"),
+  ];
+};
+
+const validateAbout = () => {
+  return [
+    body("about_text")
+      .trim()
+      .notEmpty()
+      .withMessage("Hakkımızda alanını boş geçmeyiniz"),
+
+    body("about_pres")
+      .trim()
+      .notEmpty()
+      .withMessage("Başkanımızdan Mesaj alanını boş geçmeyiniz"),
+  ];
+};
+
 
 module.exports = {
   validateApart,
   validateNews,
   validateContact,
   validateTeam,
-  validateDesc
+  validateDesc,
+  validateOurValue,
+  validateVisMis,
+  validateAbout
 };

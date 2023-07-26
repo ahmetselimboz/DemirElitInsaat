@@ -47,5 +47,24 @@ router.post("/ekibimiz/ekip-guncelle",validations.validateTeam(), adminControlle
 
 router.get("/ekibimiz/ekip-sil/:id", adminController.getDeleteTeam);
 
+router.get("/degerlerimiz", adminController.getOurValue);
+router.get("/degerlerimiz/deger-ekle", adminController.getAddOurValue);
+router.post("/degerlerimiz/deger-ekle", validations.validateOurValue() ,adminController.postAddOurValue);
+
+
+router.get("/degerlerimiz/deger-guncelle/:id",adminController.getUpdateOurValue);
+router.post("/degerlerimiz/deger-guncelle",validations.validateOurValue() , adminController.postUpdateOurValue);
+
+router.get("/degerlerimiz/deger-sil/:id",adminController.getDeleteOurValue);
+
+
+router.get("/vizyon-misyon", adminController.getVisMis)
+router.post("/vizyon-misyon",validations.validateVisMis() , adminController.postVisMis)
+
+router.get("/hakkimizda", adminController.getAbout)
+router.post("/hakkimizda",validations.validateAbout() , adminController.postAbout)
+
+
+
 
 module.exports = router;

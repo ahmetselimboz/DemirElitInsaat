@@ -1,0 +1,101 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card my-4">
+      <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-1">
+        <div
+          class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3"
+        >
+          <h4 class="text-white text-capitalize ps-4">DEĞERLERİMİZ</h4>
+        </div>
+        <div class="card-body">
+          <h6 class="text-secondary">
+            Bu panel üzerinden değerlerimiz sayfasını dilediğiniz şekilde
+            değiştirebilirsiniz.
+          </h6>
+        </div>
+      </div>
+      <div class="card-body px-0 pb-2">
+        <div class="table-responsive p-0">
+          <table class="table align-items-center mb-0">
+            <thead>
+              <tr>
+                <th
+                  class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                >
+                  Başlık
+                </th>
+                <th
+                  class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"
+                >
+                  İçerik
+                </th>
+
+                <th
+                  class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                >
+                  Güncelle
+                </th>
+                <th
+                  class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                >
+                  Sil
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for( let index = 0; index < our.length; index++ ) { %>
+              <tr>
+                <td>
+                  <div class="d-flex px-2 py-1">
+                    <div class="d-flex flex-column justify-content-center">
+                      <h6 class="mb-0 text-sm">
+                        <%- our[index].our_title %>
+                      </h6>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <p class="text-xs font-weight-bold mb-0">
+                    <%- our[index].our_text %>
+                  </p>
+                </td>
+
+              
+                <td class="align-middle text-center">
+                  <a
+                    onclick="btn(this)"
+                    href="/yonetim/degerlerimiz/deger-guncelle/<%- our[index].id %>"
+                    class="btn bg-gradient-success shadow-success"
+                  >
+                    GÜNCELLE
+                  </a>
+                </td>
+                <td class="align-middle text-center">
+                  <a
+                    onclick="btn(this)"
+                    href="/yonetim/degerlerimiz/deger-sil/<%- our[index].id %>"
+                    class="btn bg-gradient-danger shadow-danger"
+                  >
+                    SİL
+                  </a>
+                </td>
+              </tr>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card-body px-6">
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <a
+            onclick="btn(this)"
+            href="/yonetim/degerlerimiz/deger-ekle"
+            class="btn bg-gradient-info"
+            >Ekle</a
+          >
+        </div>
+      </div>
+      <script src="/admin/js/btn.js"></script>
+    </div>
+  </div>
+</div>

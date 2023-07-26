@@ -1,0 +1,76 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card my-4">
+      <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-1">
+        <div
+          class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3"
+        >
+          <h4 class="text-white text-capitalize ps-4">VİZYON-MİSYON</h4>
+        </div>
+        <div class="card-body">
+          <h6 class="text-secondary">
+            Bu panel üzerinden vizyon-misyon sayfasını güncelleyebilirsiniz.
+          </h6>
+        </div>
+      </div>
+      <div class="card-body px-0 pb-2">
+        <form action="/yonetim/vizyon-misyon" method="post">
+          <div class="card-body">
+            <div class="row my-2">
+              <div class="card-header">
+                <h6>Vizyon</h6>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="input-group input-group-static mb-4 px-5">
+                  <label>Vizyon</label>
+                  <input
+                    value="<%- vismis.vision%>"
+                    type="text"
+                    class="form-control"
+                    name="vision"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="row my-2">
+              <div class="card-header"><h6>Misyon</h6></div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="input-group input-group-static mb-4 px-5">
+                  <label>Misyon</label>
+                  <input
+                    value="<%- vismis.mision%>"
+                    type="text"
+                    class="form-control"
+                    name="mision"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-body px-6">
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <button
+                onclick="btn(this)"
+                type="submit"
+                class="btn bg-gradient-success shadow-success"
+                id="load2"
+                data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order"
+              >
+                Güncelle
+              </button>
+            </div>
+            <script src="/admin/js/btn.js"></script>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

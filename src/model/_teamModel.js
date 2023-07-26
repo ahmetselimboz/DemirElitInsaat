@@ -18,11 +18,13 @@ const TeamSchema = new Schema(
     
     images: [
       {
-        id: {
+        fotoId: {
           type: String,
+          default: "1EosE3ruftFRRTy4PZlUTgUHhY8wOuN6s"
         },
         name: {
           type: String,
+          default: "Default_Team.png"
         },
       },
     ],

@@ -5,6 +5,9 @@ const News = require("../../model/_newsModel");
 const Contact = require("../../model/_contactModel");
 const Message = require("../../model/_messageModel");
 const Team = require("../../model/_teamModel");
+const OurValue = require("../../model/_ourvalueModel");
+const VisMis = require("../../model/_vismisModel");
+const About = require("../../model/_aboutModel");
 
 const getHomePage = async (req, res, next) => {
   res.render("./admin/ad_index", {
@@ -437,16 +440,20 @@ const getDeleteMessages = async (req, res, next) => {
 };
 
 const getTeam = async (req, res, next) => {
-  const pres = await Team.find({ president: true });
-  const desc = await Team.findOne({ team_desc_check: true });
-  const ekip = await Team.find({ team_desc_check: false, president: false });
+  var pres;
+  var desc;
+  var ekip;
+
+  pres = await Team.find({ president: true });
+  desc = await Team.findOne({ team_desc_check: true });
+  ekip = await Team.find({ team_desc_check: false, president: false });
   if (pres == "") {
     var team = new Team();
-
+    var val = { _id: null };
     team.name_surname = "ornek";
     team.task = "ornek";
     team.president = true;
-
+    team.images.push(val);
     team.save();
   }
 
@@ -459,16 +466,11 @@ const getTeam = async (req, res, next) => {
 
     team.save();
   }
-  if (ekip == "") {
-    var team = new Team();
+  pres = await Team.find({ president: true });
+  desc = await Team.findOne({ team_desc_check: true });
+  ekip = await Team.find({ team_desc_check: false, president: false });
 
-    team.name_surname = "ornek";
-    team.task = "ornek";
-    team.president = false;
-
-    team.save();
-  } if((ekip != "") && (desc != null) && (pres != "")) {
-    
+  if (true) {
     res.render("./admin/ad_team", {
       layout: "./admin/layouts/admin_layouts.ejs",
       pres: pres,
@@ -476,8 +478,6 @@ const getTeam = async (req, res, next) => {
       ekip: ekip,
     });
   }
-  
-
 };
 
 const getPresident = async (req, res, next) => {
@@ -510,7 +510,10 @@ const postPresident = async (req, res, next) => {
         var num = find[0].images.length;
 
         for (let index = 0; index < num; index++) {
-          var check = await deleteFile(find[0].images[index].id);
+          if (
+            find[0].images[index].fotoId != "1EosE3ruftFRRTy4PZlUTgUHhY8wOuN6s"
+          )
+            await deleteFile(find[0].images[index].fotoId);
         }
 
         if (true) {
@@ -523,7 +526,11 @@ const postPresident = async (req, res, next) => {
         for (let f = 0; f < files.length; f++) {
           await uploadFile(files[f]);
           if (data) {
-            val.push(data);
+            var deger = {
+              fotoId: data.id,
+              name: data.name,
+            };
+            val.push(deger);
           }
         }
         var team = new Team();
@@ -618,7 +625,11 @@ const postAddTeam = async (req, res, next) => {
       for (let f = 0; f < files.length; f++) {
         await uploadFile(files[f]);
         if (data) {
-          val.push(data);
+          var deger = {
+            fotoId: data.id,
+            name: data.name,
+          };
+          val.push(deger);
         }
       }
 
@@ -687,7 +698,7 @@ const getDeleteTeam = async (req, res, next) => {
 
     if (result) {
       for (let index = 0; index < result.images.length; index++) {
-        var check = await deleteFile(result.images[index].id);
+        var check = await deleteFile(result.images[index].fotoId);
       }
 
       if (check == 204) {
@@ -701,6 +712,205 @@ const getDeleteTeam = async (req, res, next) => {
     }
   }
 };
+
+const getOurValue = async (req, res, next) => {
+  const result = await OurValue.find({});
+  res.render("./admin/ad_ourvalue", {
+    layout: "./admin/layouts/admin_layouts.ejs",
+    our: result,
+  });
+};
+const getAddOurValue = (req, res, next) => {
+  res.render("./admin/ad_ourvalueAdd", {
+    layout: "./admin/layouts/admin_layouts.ejs",
+  });
+};
+
+const postAddOurValue = async (req, res, next) => {
+  const hatalar = validationResult(req);
+
+  if (!hatalar.isEmpty()) {
+    req.flash("validation_error", hatalar.array());
+    req.flash("our_title", req.body.our_title);
+    req.flash("our_text", req.body.our_text);
+
+    res.redirect("/yonetim/degerlerimiz/deger-ekle");
+  } else {
+    try {
+      var our = new OurValue();
+      our.our_title = req.body.our_title;
+      our.our_text = req.body.our_text;
+
+      our.save();
+      req.flash("success_message", [{ msg: "Eklendi" }]);
+      res.redirect("/yonetim/degerlerimiz");
+    } catch (f) {
+      console.log(f);
+    }
+  }
+};
+
+const getUpdateOurValue = async (req, res, next) => {
+  if (req.params) {
+    const result = await OurValue.findById(req.params.id);
+
+    res.render("./admin/ad_ourvalueUpdate", {
+      layout: "./admin/layouts/admin_layouts.ejs",
+      our: result,
+    });
+  }
+};
+const postUpdateOurValue = async (req, res, next) => {
+
+  const hatalar = validationResult(req);
+
+  if (!hatalar.isEmpty()) {
+    req.flash("validation_error", hatalar.array());
+
+    res.redirect("/yonetim/degerlerimiz/deger-guncelle/" + req.body.id);
+  } else {
+    try {
+      const options = {
+        our_title: req.body.our_title,
+        our_text: req.body.our_text,
+      };
+
+      const result = await OurValue.findByIdAndUpdate(req.body.id, options);
+      if (result) {
+        req.flash("success_message", [{ msg: "Güncellendi" }]);
+
+        res.redirect("/yonetim/degerlerimiz");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+};
+
+const getDeleteOurValue = async (req, res, next) => {
+  try {
+    if (req.params.id) {
+      const result = await OurValue.findByIdAndDelete(req.params.id);
+      if (result) {
+        req.flash("success_message", [{ msg: "Silindi" }]);
+        res.redirect("/yonetim/degerlerimiz");
+      }
+    }
+  } catch (error) {}
+};
+
+const getVisMis = async (req, res, next) => {
+  const result = await VisMis.findOne({});
+  if (result) {
+    res.render("./admin/ad_vismis", {
+      layout: "./admin/layouts/admin_layouts.ejs",
+      vismis: result,
+    });
+  } else {
+    const tui = new VisMis({
+      vision: "",
+      mision: "",
+    });
+    tui.save();
+
+    res.redirect("/yonetim/vizyon-misyon");
+  }
+};
+const postVisMis = async (req, res, next) => {
+  const hatalar = validationResult(req);
+
+  if (!hatalar.isEmpty()) {
+    req.flash("validation_error", hatalar.array());
+    req.flash("vision", req.body.facebook_url);
+    req.flash("mision", req.body.instagram_url);
+
+    res.redirect("/yonetim/vizyon-misyon");
+  } else {
+    try {
+      if (req.body) {
+        const result = await VisMis.findOne();
+
+        if (result) {
+          const options = {
+            vision: req.body.vision,
+            mision: req.body.mision,
+          };
+
+          await VisMis.findOneAndUpdate({}, options);
+          req.flash("success_message", [{ msg: "Vizyon-Misyon güncellendi" }]);
+          res.redirect("/yonetim/vizyon-misyon");
+        } else {
+          const vismis = new VisMis({
+            vision: req.body.vision,
+            mision: req.body.mision,
+          });
+          vismis.save();
+          req.flash("success_message", [{ msg: "Vizyon-Misyon güncellendi" }]);
+          res.redirect("/yonetim/vizyon-misyon");
+        }
+      }
+    } catch (f) {
+      console.log(f);
+    }
+  }
+};
+
+const getAbout = async (req,res,next)=>{
+  const result = await About.findOne({});
+  if (result) {
+    res.render("./admin/ad_about", {
+      layout: "./admin/layouts/admin_layouts.ejs",
+      about: result,
+    });
+  } else {
+    const tui = new About({
+      about_text: "",
+      about_pres: "",
+    });
+    tui.save();
+
+    res.redirect("/yonetim/hakkimizda");
+  }
+}
+
+const postAbout = async (req,res,next)=>{
+  const hatalar = validationResult(req);
+
+  if (!hatalar.isEmpty()) {
+    req.flash("validation_error", hatalar.array());
+    req.flash("about_text", req.body.facebook_url);
+    req.flash("about_pres", req.body.instagram_url);
+
+    res.redirect("/yonetim/hakkimizda");
+  } else {
+    try {
+      if (req.body) {
+        const result = await About.findOne();
+
+        if (result) {
+          const options = {
+            about_text: req.body.about_text,
+            about_pres: req.body.about_pres,
+          };
+
+          await About.findOneAndUpdate({}, options);
+          req.flash("success_message", [{ msg: "Hakkkımızda güncellendi" }]);
+          res.redirect("/yonetim/hakkimizda");
+        } else {
+          const about = new About({
+            about_text: req.body.about_text,
+            about_pres: req.body.about_pres,
+          });
+          about.save();
+          req.flash("success_message", [{ msg: "Hakkkımızda güncellendi" }]);
+          res.redirect("/yonetim/hakkimizda");
+        }
+      }
+    } catch (f) {
+      console.log(f);
+    }
+  }
+}
 
 module.exports = {
   getHomePage,
@@ -731,4 +941,14 @@ module.exports = {
   getUpdateTeam,
   postUpdateTeam,
   getDeleteTeam,
+  getOurValue,
+  postAddOurValue,
+  getAddOurValue,
+  getUpdateOurValue,
+  postUpdateOurValue,
+  getDeleteOurValue,
+  getVisMis,
+  postVisMis,
+  getAbout,
+  postAbout
 };

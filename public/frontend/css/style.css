@@ -1914,6 +1914,10 @@ footer .container {
   margin: 0.1rem 0;
 }
 
+.footer-contact-info a {
+color: #940c0c;
+}
+
 .footer-contact-adress {
   display: flex;
   flex-direction: column;
@@ -3267,14 +3271,15 @@ footer .container {
 }
 
 .about-pres-img {
-  width: 30%;
-  height: 350px;
+  width: 300px;
+  height: auto;
   overflow: hidden;
   border: 5px solid #565656;
 }
 
 .about-pres-img img {
   width: 100%;
+  height: 100%;
 }
 
 .about-text-top {

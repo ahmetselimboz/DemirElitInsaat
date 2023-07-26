@@ -90,10 +90,7 @@ const validateContact = () => {
       .trim()
       .notEmpty()
       .withMessage("Telefon-2 alanını boş geçmeyiniz"),
-    body("mail")
-      .trim()
-      .notEmpty()
-      .withMessage("Mail alanını boş geçmeyiniz"),
+    body("mail").trim().notEmpty().withMessage("Mail alanını boş geçmeyiniz"),
     body("location")
       .trim()
       .notEmpty()
@@ -112,10 +109,7 @@ const validateTeam = () => {
       .notEmpty()
       .withMessage("Ad-Soyad alanını boş geçmeyiniz"),
 
-    body("task")
-      .trim()
-      .notEmpty()
-      .withMessage("Görev alanını boş geçmeyiniz"),
+    body("task").trim().notEmpty().withMessage("Görev alanını boş geçmeyiniz"),
   ];
 };
 
@@ -125,8 +119,6 @@ const validateDesc = () => {
       .trim()
       .notEmpty()
       .withMessage("Ekip Açıklaması alanını boş geçmeyiniz"),
-
-
   ];
 };
 
@@ -186,10 +178,7 @@ const validateWhy = () => {
       .trim()
       .notEmpty()
       .withMessage("Uzman Kadro alanını boş geçmeyiniz"),
-    body("guven")
-      .trim()
-      .notEmpty()
-      .withMessage("Güven alanını boş geçmeyiniz"),
+    body("guven").trim().notEmpty().withMessage("Güven alanını boş geçmeyiniz"),
     body("takim_calismasi")
       .trim()
       .notEmpty()
@@ -202,7 +191,6 @@ const validateWhy = () => {
       .trim()
       .notEmpty()
       .withMessage("Anında Teslim alanını boş geçmeyiniz"),
-  
   ];
 };
 const validateStatistics = () => {
@@ -224,10 +212,17 @@ const validateStatistics = () => {
       .trim()
       .notEmpty()
       .withMessage("Güven alanını boş geçmeyiniz"),
-    
   ];
 };
 
+const validateAlt = () => {
+  return [
+    body("alt_metin")
+      .trim()
+      .notEmpty()
+      .withMessage("Alt Metin alanını boş geçmeyiniz"),
+  ];
+};
 
 module.exports = {
   validateApart,
@@ -239,5 +234,6 @@ module.exports = {
   validateVisMis,
   validateAbout,
   validateWhy,
-  validateStatistics
+  validateStatistics,
+  validateAlt
 };

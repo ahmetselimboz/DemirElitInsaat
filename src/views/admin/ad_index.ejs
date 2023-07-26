@@ -366,6 +366,95 @@
             </div>
           </div>
         </div>
+      
+        <div class="row">
+          <div class="col-12">
+            <div class="card-body px-0 pb-2">
+              <form action="/yonetim/proje" method="post">
+                <div class="card-body">
+                  <div class="row my-2">
+                    <div class="card-header">
+                      <h6>Projeler Bölümü</h6>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="input-group input-group-static mb-4 px-5">
+                        <label>Alt metin</label>
+                        <input
+                          value="<%- projects.alt_metin %>"
+                          type="text"
+                          class="form-control"
+                          name="alt_metin"
+                        />
+                      </div>
+                    </div>
+                  </div>
+               
+                </div>
+
+                <div class="card-body px-6">
+                  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button
+                      onclick="btn(this)"
+                      type="submit"
+                      class="btn bg-gradient-success shadow-success"
+                      id="load2"
+                      data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order"
+                    >
+                      Güncelle
+                    </button>
+                  </div>
+                  <script src="/admin/js/btn.js"></script>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="card-body px-0 pb-2">
+              <form action="/yonetim/haber" method="post">
+                <div class="card-body">
+                  <div class="row my-2">
+                    <div class="card-header">
+                      <h6>Haberler Bölümü</h6>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="input-group input-group-static mb-4 px-5">
+                        <label>Alt metin</label>
+                        <input
+                          value="<%- haber.alt_metin %>"
+                          type="text"
+                          class="form-control"
+                          name="alt_metin"
+                        />
+                      </div>
+                    </div>
+                  </div>
+               
+                </div>
+
+                <div class="card-body px-6">
+                  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button
+                      onclick="btn(this)"
+                      type="submit"
+                      class="btn bg-gradient-success shadow-success"
+                      id="load2"
+                      data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order"
+                    >
+                      Güncelle
+                    </button>
+                  </div>
+                  <script src="/admin/js/btn.js"></script>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

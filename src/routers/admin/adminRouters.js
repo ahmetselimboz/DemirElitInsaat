@@ -10,6 +10,8 @@ router.get('/anapanel', adminController.getHomePage);
 router.get('/daire-sec/:id', adminController.getChooseApart)
 router.post("/neden",validations.validateWhy(), adminController.postWhy)
 router.post("/istatistik", validations.validateStatistics(), adminController.postStatistics)
+router.post("/proje", validations.validateAlt(), adminController.postProject)
+router.post("/haber", validations.validateAlt(), adminController.postNews)
 
 
 

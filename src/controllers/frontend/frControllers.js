@@ -31,6 +31,8 @@ const getHomePage = async (req, res, next) => {
     apar:apar,
     why:hm.why,
     static: hm.static,
+    projects: hm.projects,
+    haber: hm.news,
   });
 };
 

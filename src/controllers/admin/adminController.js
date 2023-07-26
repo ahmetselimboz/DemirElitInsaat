@@ -15,7 +15,6 @@ const getHomePage = async (req, res, next) => {
   const tamam = await Apart.find({project_status : "Tamamlandı"});
   const devam = await Apart.find({project_status : "Devam Ediyor"});
   const hm = await HomePage.findOne();
-  console.log(tamam.length);
   if (!hm) {
     const home = new HomePage({
       why: {
@@ -48,6 +47,8 @@ const getHomePage = async (req, res, next) => {
       apart: apart,
       why: hm.why,
       static: hm.static,
+      projects: hm.projects,
+      haber: hm.news,
       tamam:tamam,
       devam:devam
     });
@@ -169,6 +170,64 @@ const postStatistics = async (req, res, next) => {
     }
   }
 };
+
+const postProject = async (req,res,next)=>{
+  const hatalar = validationResult(req);
+
+  if (!hatalar.isEmpty()) {
+    req.flash("validation_error", hatalar.array());
+
+    res.redirect("/yonetim");
+  } else {
+    try {
+      if (req.body) {
+        const options = {
+          projects: {
+            alt_metin: req.body.alt_metin,
+           
+          },
+        };
+        const upd = await HomePage.findOneAndUpdate({}, options);
+        if (upd) {
+          req.flash("success_message", [{ msg: "Güncellendi" }]);
+
+          res.redirect("/yonetim");
+        }
+      }
+    } catch (f) {
+      console.log(f);
+    }
+  }
+}
+
+const postNews = async (req,res,next)=>{
+  const hatalar = validationResult(req);
+
+  if (!hatalar.isEmpty()) {
+    req.flash("validation_error", hatalar.array());
+
+    res.redirect("/yonetim");
+  } else {
+    try {
+      if (req.body) {
+        const options = {
+          news: {
+            alt_metin: req.body.alt_metin,
+           
+          },
+        };
+        const upd = await HomePage.findOneAndUpdate({}, options);
+        if (upd) {
+          req.flash("success_message", [{ msg: "Güncellendi" }]);
+
+          res.redirect("/yonetim");
+        }
+      }
+    } catch (f) {
+      console.log(f);
+    }
+  }
+}
 
 const getAllProjects = async (req, res, next) => {
   const result = await Apart.find({});
@@ -1109,4 +1168,6 @@ module.exports = {
   getChooseApart,
   postWhy,
   postStatistics,
+  postProject,
+  postNews
 };

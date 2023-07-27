@@ -10,7 +10,7 @@ const VisMis = require("../../model/_vismisModel");
 const About = require("../../model/_aboutModel");
 const HomePage = require("../../model/_homepageModel");
 const User = require("../../model/_userModel");
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 
 const getHomePage = async (req, res, next) => {

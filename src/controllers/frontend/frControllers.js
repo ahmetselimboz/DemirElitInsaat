@@ -11,7 +11,7 @@ const User = require("../../model/_userModel");
 const passport = require("passport");
 require("../../config/passport_local")(passport);
 const { validationResult } = require("express-validator");
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 const getHomePage = async (req, res, next) => {
   const contact = await Contact.findOne({});

@@ -1604,6 +1604,10 @@ a {
     font-size: 55px;
     color: #940c0c;
   }
+
+  .statistics-box {
+    margin: 3rem 1rem;
+  }
 }
 @media screen and (min-width: 481px) and (max-width: 768px) {
   #statistics {
@@ -1628,6 +1632,10 @@ a {
   .statistics-text h6 {
     font-size: 18px;
   }
+
+  .statistics-box {
+    margin: 3rem 1rem;
+  }
 }
 @media screen and (min-width: 769px) and (max-width: 1024px) {
   #statistics {
@@ -1651,6 +1659,10 @@ a {
   }
   .statistics-text h6 {
     font-size: 18px;
+  }
+
+  .statistics-box {
+    margin: 3rem 1rem;
   }
 }
 @media screen and (min-width: 1025px) and (max-width: 1200px) {

@@ -60,23 +60,23 @@ router.post("/ekibimiz/ekip-ekle",upload.any(),validations.validateTeam(), admin
 router.get("/ekibimiz/ekip-guncelle/:id",isauth.yes, adminController.getUpdateTeam);
 router.post("/ekibimiz/ekip-guncelle",validations.validateTeam(), adminController.postUpdateTeam);
 
-router.get("/ekibimiz/ekip-sil/:id", adminController.getDeleteTeam);
+router.get("/ekibimiz/ekip-sil/:id",isauth.yes, adminController.getDeleteTeam);
 
-router.get("/degerlerimiz", adminController.getOurValue);
-router.get("/degerlerimiz/deger-ekle", adminController.getAddOurValue);
+router.get("/degerlerimiz",isauth.yes, adminController.getOurValue);
+router.get("/degerlerimiz/deger-ekle",isauth.yes, adminController.getAddOurValue);
 router.post("/degerlerimiz/deger-ekle", validations.validateOurValue() ,adminController.postAddOurValue);
 
 
-router.get("/degerlerimiz/deger-guncelle/:id",adminController.getUpdateOurValue);
+router.get("/degerlerimiz/deger-guncelle/:id",isauth.yes,adminController.getUpdateOurValue);
 router.post("/degerlerimiz/deger-guncelle",validations.validateOurValue() , adminController.postUpdateOurValue);
 
-router.get("/degerlerimiz/deger-sil/:id",adminController.getDeleteOurValue);
+router.get("/degerlerimiz/deger-sil/:id",isauth.yes,adminController.getDeleteOurValue);
 
 
-router.get("/vizyon-misyon", adminController.getVisMis)
+router.get("/vizyon-misyon",isauth.yes, adminController.getVisMis)
 router.post("/vizyon-misyon",validations.validateVisMis() , adminController.postVisMis)
 
-router.get("/hakkimizda", adminController.getAbout)
+router.get("/hakkimizda",isauth.yes, adminController.getAbout)
 router.post("/hakkimizda",validations.validateAbout() , adminController.postAbout)
 
 

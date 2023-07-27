@@ -137,7 +137,7 @@ $(document).ready(function () {
       {
         breakpoint: 769,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 1,
         },
       },
 
@@ -255,7 +255,7 @@ function responsiveNavbar() {
 
 var viewport_width = window.innerWidth;
 
-if (viewport_width <= 610) {
+if (viewport_width <= 7690) {
   var navlink = document.querySelector("#kurumsal");
   var navvvlink = document.querySelector("#kurumsal-alt");
   var navlinkiii = document.querySelector(".nav-link-a-ii");

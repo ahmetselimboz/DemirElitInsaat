@@ -28047,3 +28047,9 @@ pre[class*="language-"] {
   background: rgba(255, 0, 0, 0.6);
   pointer-events: unset;
 }
+
+.deactive{
+  opacity: 0.6;
+  cursor: default !important;
+  pointer-events: none;
+}

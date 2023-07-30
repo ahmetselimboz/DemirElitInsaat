@@ -2,18 +2,20 @@
   <div id="slider-wrap">
     <ul id="slider">
       <% for( let index = 0; index < apart.length; index++ ) { %>
-        <li>
-    
-          <img src="https://drive.google.com/uc?export=view&id=<%- apart[index].images[0].id %>" alt="" />
-          <div class="header-shad"></div>
+      <li>
+        <img
+          src="https://drive.google.com/uc?export=view&id=<%- apart[index].images[0].id %>"
+          alt=""
+        />
+        <div class="header-shad"></div>
+        <a class="header-a" href="/daire-detay/<%- apart[index].id %>">
           <div class="header-text">
             <h3><%- apart[index].project_name %></h3>
           </div>
-        </li>
-      <% } %>
+        </a>
       
-
-     
+      </li>
+      <% } %>
     </ul>
 
     <div class="btns" id="next"><i class="bx bx-right-arrow-alt"></i></div>
@@ -28,8 +30,69 @@
     </div>
   </div>
 </div>
+<section>
+  <div class="proc-panel">
+    <a href="/daireler/tamamlanan-projeler">
+      <div class="proc-item">
+        <div class="proc-icon">
+          <i class="bx bx-like"></i>
+        </div>
+        <div class="proc-title">
+          <h3>Tamamlanan Projeler</h3>
+        </div>
+        <div class="proc-text">
+          <h5>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam
+            delectus corrupti eligendi odio fugiat quaerat velit soluta
+            consequatur,
+          </h5>
+        </div>
+      </div>
+    </a>
+    <a href="/daireler/devam-eden-projeler">
+      <div class="proc-item">
+        <div class="proc-icon">
+          <i class="bx bx-timer"></i>
+        </div>
+        <div class="proc-title">
+          <h3>Devam Eden Projeler</h3>
+        </div>
+        <div class="proc-text">
+          <h5>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam
+            delectus corrupti eligendi odio fugiat quaerat velit soluta
+            consequatur,
+          </h5>
+        </div>
+      </div>
+    </a>
+    <a href="/daireler/gelecek-projeler">
+      <div class="proc-item">
+        <div class="proc-icon">
+          <i class="bx bx-check-circle"></i>
+        </div>
+        <div class="proc-title">
+          <h3>Planlanan Projeler</h3>
+        </div>
+        <div class="proc-text">
+          <h5>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam
+            delectus corrupti eligendi odio fugiat quaerat velit soluta
+            consequatur,
+          </h5>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>
 
-
+<div class="part-line">
+  <hr class="part-underline" />
+  <div class="part-img">
+    <img src="/frontend/assets/Just_Logo.png" alt="" />
+  </div>
+  <hr class="part-underline" />
+</div>
 
 <section>
   <div class="main-panel">
@@ -37,9 +100,7 @@
       <hr class="why-underline" />
       <h2>NEDEN "DEMİR ELİT İNŞAAT"?</h2>
 
-      <h4>
-        <%- why.alt_metin %>
-      </h4>
+      <h4><%- why.alt_metin %></h4>
     </div>
 
     <div class="why-col">
@@ -50,9 +111,7 @@
         <div class="why-text">
           <h5>Memnuniyet</h5>
 
-          <h6>
-            <%- why.memnuniyet %>
-          </h6>
+          <h6><%- why.memnuniyet %></h6>
         </div>
       </div>
       <div class="card why-item js-scroll slide-right">
@@ -62,9 +121,7 @@
         <div class="why-text">
           <h5>Uzman Kadro</h5>
 
-          <h6>
-            <%- why.uzman_kadro %>
-          </h6>
+          <h6><%- why.uzman_kadro %></h6>
         </div>
       </div>
       <div class="card why-item js-scroll slide-left">
@@ -74,9 +131,7 @@
         <div class="why-text">
           <h5>Güven</h5>
 
-          <h6>
-            <%- why.guven %>
-          </h6>
+          <h6><%- why.guven %></h6>
         </div>
       </div>
       <div class="card why-item js-scroll slide-right">
@@ -86,9 +141,7 @@
         <div class="why-text">
           <h5>Takım Çalışması</h5>
 
-          <h6>
-            <%- why.takim_calismasi %>
-          </h6>
+          <h6><%- why.takim_calismasi %></h6>
         </div>
       </div>
       <div class="card why-item js-scroll slide-left">
@@ -98,9 +151,7 @@
         <div class="why-text">
           <h5>Kalite</h5>
 
-          <h6>
-            <%- why.kalite %>
-          </h6>
+          <h6><%- why.kalite %></h6>
         </div>
       </div>
       <div class="card why-item js-scroll slide-right">
@@ -110,9 +161,7 @@
         <div class="why-text">
           <h5>Anında Teslim</h5>
 
-          <h6>
-            <%- why.aninda_teslim %>
-          </h6>
+          <h6><%- why.aninda_teslim %></h6>
         </div>
       </div>
     </div>
@@ -142,7 +191,6 @@
     </div>
   </div>
 
-
   <div class="statistics-box js-scroll fade-in-bottom" id="card-delay-3">
     <div class="statistics-icon mb-3">
       <i class="fa-solid fa-building-circle-arrow-right"></i>
@@ -170,38 +218,38 @@
   <div class="house-title-area">
     <hr class="house-underline" />
     <h3 class="text-uppercase">PROJELER</h3>
-    <h5>
-      <%- projects.alt_metin %>
-    </h5>
+    <h5><%- projects.alt_metin %></h5>
   </div>
 
-  <div class="house-col ">
-   
-
+  <div class="house-col">
     <% for( let index = 0; index < apar.length; index++ ) { %>
-      <div class="house-item js-scroll slide-left">
-        <img class="img-fluid-p" src="https://drive.google.com/uc?export=view&id=<%- apar[index].images[0].id %>" alt="" />
-        <div class="house-text">
-          <h2><%- apar[index].project_name %></h2>
-        </div>
-        <div class="house-overlay">
-          <div class="house-text-hover">
-            <a href="/daire-detay/<%- apar[index].id %>" class="btn-incele">İncele</a>
-            <h4><%- apar[index].adress %></h4>
-          </div>
+    <div class="house-item js-scroll slide-left">
+      <img
+        class="img-fluid-p"
+        src="https://drive.google.com/uc?export=view&id=<%- apar[index].images[0].id %>"
+        alt=""
+      />
+      <div class="house-text">
+        <h2><%- apar[index].project_name %></h2>
+      </div>
+      <div class="house-overlay">
+        <div class="house-text-hover">
+          <a href="/daire-detay/<%- apar[index].id %>" class="btn-incele"
+            >İncele</a
+          >
+          <h4><%- apar[index].adress %></h4>
         </div>
       </div>
+    </div>
     <% } %>
-    
 
-
-  <div class="house-btn-project js-scroll fade-in-bottom">
-    <a href="/daireler" class="btn-project">
-      Tüm Projeler&nbsp;
-      <i class="fa-solid fa-arrow-right"></i>
-    </a>
+    <div class="house-btn-project js-scroll fade-in-bottom">
+      <a href="/daireler" class="btn-project">
+        Tüm Projeler&nbsp;
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
   </div>
-</div>
 </section>
 
 <div class="part-line">
@@ -217,41 +265,35 @@
     <hr class="cardboard-underline" />
     <h2 class="text-uppercase">HABERLER</h2>
 
-    <h4>
-      <%- haber.alt_metin %>
-    </h4>
+    <h4><%- haber.alt_metin %></h4>
   </div>
 
   <div class="cardboard-col">
     <div class="customer-logos slider js-scroll fade-in-bottom">
       <% for( let index = 0; index < news.length; index++ ) { %>
-        <div class="slide">
-          <div class="colu">
-            <div class="cardboard-item">
-              <% if (news[index].images[0] != undefined && news[index].news_url == "") { %>
-                <img class="card-img-top" src="https://drive.google.com/uc?export=view&id=<%- news[index].images[0].id %>" alt="Card image cap">
-            <% } else { %> 
-              <%- news[index].news_url %>
-              
-              <% } %>
-           
-              <div class="cardboard-text">
-                <h5><%- news[index].news_name %></h5>
-                <a href="/haber-detay/<%- news[index].id %>">İzle</a>
-              </div>
+      <div class="slide">
+        <div class="colu">
+          <div class="cardboard-item">
+            <% if (news[index].images[0] != undefined && news[index].news_url ==
+            "") { %>
+            <img
+              class="card-img-top"
+              src="https://drive.google.com/uc?export=view&id=<%- news[index].images[0].id %>"
+              alt="Card image cap"
+            />
+            <% } else { %> <%- news[index].news_url %> <% } %>
+
+            <div class="cardboard-text">
+              <h5><%- news[index].news_name %></h5>
+              <a href="/haber-detay/<%- news[index].id %>">Görüntüle</a>
             </div>
           </div>
         </div>
+      </div>
       <% } %>
-      
-     
-     
     </div>
   </div>
   <div class="house-btn-project js-scroll fade-in-bottom">
-    <a href="/haberler" class="btn-project">
-      Tüm Haberler
-      
-    </a>
+    <a href="/haberler" class="btn-project"> Tüm Haberler </a>
   </div>
 </section>

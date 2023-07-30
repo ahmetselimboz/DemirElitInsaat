@@ -79,7 +79,11 @@ router.post("/vizyon-misyon",validations.validateVisMis() , adminController.post
 router.get("/hakkimizda",isauth.yes, adminController.getAbout)
 router.post("/hakkimizda",validations.validateAbout() , adminController.postAbout)
 
+router.get("/resim-ekle/:id",isauth.yes, adminController.getAddImage)
+router.post("/resim-ekle",upload.any(), adminController.postAddImage)
 
+router.get("/resim-sil/:id",isauth.yes, adminController.getDeleteImage)
+router.get("/foto-sil/:proid/:fotoid",isauth.yes, adminController.getPostDeleteImage)
 
 
 module.exports = router;

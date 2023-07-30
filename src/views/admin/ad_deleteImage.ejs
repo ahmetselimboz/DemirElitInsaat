@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card my-4">
+      <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-1">
+        <div
+          class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3"
+        >
+          <h4 class="text-white text-capitalize ps-4">RESİM SİL</h4>
+        </div>
+        <div class="card-body">
+          <h6 class="text-secondary">
+            Bu panel üzerinden istediğiniz resmi silebilirsiniz.
+          </h6>
+        </div>
+      </div>
+      <h3 class="text-secondary text-capitalize px-5"><%- title.project_name %></h3>
+
+      <div class="card-body px-4">
+        <% for( let index = 0; index < res.length; index++ ) { %>
+        <div class="card d-inline-flex mx-1 my-4" style="width: 18rem">
+          <img
+            class="card-img-top"
+            src="https://drive.google.com/uc?export=view&id=<%- res[index].id %>"
+            alt="Card image cap"
+          />
+
+          <div class="card-body text-center">
+            <a
+              onclick="btn(this)"
+              href="/yonetim/foto-sil/<%- title.id %>/<%- res[index].id %>"
+              class="d-inline m-2 btn bg-gradient-danger shadow-danger"
+              >RESMİ SİL</a
+            >
+          </div>
+        </div>
+        <% } %>
+      </div>
+     
+    </div>
+  </div>
+
+  <script src="/admin/js/btn.js"></script>
+</div>

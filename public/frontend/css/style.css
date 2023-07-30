@@ -896,6 +896,13 @@ a {
   position: absolute;
 }
 
+.header-a{
+  width: 100%;
+  height: inherit;
+  position: absolute;
+  z-index: 5;
+}
+
 .header-text {
   width: 100%;
   height: inherit;
@@ -914,6 +921,13 @@ a {
   font-weight: lighter;
   border-left: 4px solid #fff;
   padding: 0 1rem;
+  transform-origin: center center;
+}
+.header-text h3:hover {
+  transition: .4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border-left: 4px solid #940c0c;
+
+
 }
 
 .btns {
@@ -5728,3 +5742,123 @@ footer .container {
 }
 @media screen and (min-width: 1025px) and (max-width: 1200px) {
 }
+
+.proc-panel{
+  width: 100%;
+  height: inherit;
+  padding: 4rem 3rem;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.proc-panel a{
+
+  margin: 0 1rem;
+}
+
+.proc-item{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 384px;
+  height: inherit;
+  padding: 2rem;
+  background-color: #171717;
+  
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.616) 0px 0px 15px 3px;
+}
+
+.proc-item:hover{
+  transition: .4s ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.816) 0px 0px 15px 5px;
+}
+
+.proc-icon{
+margin: .5rem 0;
+  
+}
+.proc-icon i{
+width: 110px;
+height: 110px;
+font-size: 68px;
+background-color: #ececec;
+color: #940c0c;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+border: 3px solid #940c0c;
+}
+
+.proc-title{
+  
+}
+
+.proc-title h3{
+  font-size: 26px;
+  color: #ececec;
+  font-family: "Raleway", sans-serif;
+  font-weight: bolder;
+
+}
+
+.proc-text h5{
+  padding: 1rem 0;
+  font-size: 15px;
+  color: #ececec;
+  font-family: "Poppins" , sans-serif;
+  font-weight: lighter;
+}
+@media screen and (max-width: 480px) {
+  .proc-panel{
+    width: 100%;
+    height: inherit;
+    padding: 4rem 3rem;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  }
+  .proc-panel a{
+
+    margin: 2rem 2rem;
+  }
+}
+@media screen and (min-width: 481px) and (max-width: 768px) {
+ .proc-panel{
+    width: 100%;
+    height: inherit;
+    padding: 4rem 3rem;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  }
+  .proc-panel a{
+
+    margin: 2rem 2rem;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+ .proc-panel{
+    width: 100%;
+    height: inherit;
+    padding: 4rem 3rem;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+  }
+  .proc-panel a{
+
+    margin: 2rem 2rem;
+  }
+}
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+} 

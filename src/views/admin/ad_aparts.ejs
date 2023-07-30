@@ -42,6 +42,17 @@
                 <th
                   class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
                 >
+                  Resim Ekle
+                </th>
+                <th
+                  class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                >
+                  Resim Sil
+                </th>
+                
+                <th
+                  class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                >
                   Güncelle
                 </th>
                 <th
@@ -103,6 +114,24 @@
                     <%- date.getDate() + "." + aylar[date.getMonth()] + "." +
                     date.getFullYear() %></span
                   >
+                </td>
+                <td class="align-middle text-center">
+                  <a
+                    onclick="btn(this)"
+                    href="/yonetim/resim-ekle/<%- apart[index].id %>"
+                    class="btn bg-gradient-info shadow-info"
+                  >
+                    RESİM EKLE
+                  </a>
+                </td>
+                <td class="align-middle text-center">
+                  <a
+                    onclick="btn(this)"
+                    href="/yonetim/resim-sil/<%- apart[index].id %>"
+                    class="btn bg-gradient-danger shadow-danger"
+                  >
+                    RESİM SİL
+                  </a>
                 </td>
                 <td class="align-middle text-center">
                   <a

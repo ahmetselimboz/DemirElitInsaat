@@ -10,8 +10,7 @@ const VisMis = require("../../model/_vismisModel");
 const About = require("../../model/_aboutModel");
 const HomePage = require("../../model/_homepageModel");
 const User = require("../../model/_userModel");
-const bcrypt = require('bcryptjs');
-
+const bcrypt = require("bcryptjs");
 
 const getHomePage = async (req, res, next) => {
   const apart = await Apart.find({});
@@ -247,11 +246,11 @@ const postPass = async (req, res, next) => {
     res.redirect("/yonetim/sifre-guncelle");
   } else {
     try {
-      if(req.body.newPass != req.body.newPassAgain){
+      if (req.body.newPass != req.body.newPassAgain) {
         req.flash("error", ["Şifre tekrarın doğru olduğundan emin olunuz"]);
         //console.log("Şifre Yanlış");
         res.redirect("/yonetim/sifre-guncelle");
-      }else{
+      } else {
         const _findUser = await User.findById(req.user.id);
         console.log(_findUser);
         if (!_findUser) {
@@ -279,16 +278,13 @@ const postPass = async (req, res, next) => {
           }
         }
       }
-      
-
-   
     } catch (f) {
       console.log(f);
     }
   }
 };
 
-const getLogOut = async (req,res,next)=>{
+const getLogOut = async (req, res, next) => {
   req.logout(function (err) {
     if (err) {
       return next(err);
@@ -302,8 +298,7 @@ const getLogOut = async (req,res,next)=>{
       // res.redirect('/login');
     });
   });
-}
-
+};
 
 const getAllProjects = async (req, res, next) => {
   const result = await Apart.find({});
@@ -1202,6 +1197,80 @@ const postAbout = async (req, res, next) => {
   }
 };
 
+const getAddImage = async (req, res, next) => {
+  if (req.params) {
+    const result = await Apart.findById(req.params.id);
+    res.render("./admin/ad_addImage", {
+      layout: "./admin/layouts/admin_layouts.ejs",
+      res: result,
+    });
+  }
+};
+
+const postAddImage = async (req, res, next) => {
+  try {
+    if (req.body) {
+      const { body, files } = req;
+      var val = [];
+      for (let f = 0; f < files.length; f++) {
+        await uploadFile(files[f]);
+        if (data) {
+          var deger = {
+            _id: null,
+            id: data.id,
+            name: data.name,
+          };
+          val.push(deger);
+        }
+      }
+      Apart.findById(req.body.id).then((apart) => {
+        // Mevcut fotoğraflara yeni fotoğrafları ekleyin
+        for (let index = 0; index < val.length; index++) {
+          apart.images.push(val[index]);
+        }
+
+        // Veriyi güncelleyin
+        apart.save();
+        req.flash("success_message", [{ msg: "Eklendi" }]);
+        res.redirect("/yonetim/projeler");
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const getDeleteImage = async (req, res, next) => {
+  if (req.params) {
+    const result = await Apart.findById(req.params.id);
+    res.render("./admin/ad_deleteImage", {
+      layout: "./admin/layouts/admin_layouts.ejs",
+      title: result,
+      res: result.images,
+    });
+  }
+};
+
+const getPostDeleteImage = async (req, res, next) => {
+  if (req.params) {
+    Apart.findById(req.params.proid).then((apart) => {
+      deleteFile(req.params.fotoid);
+      for (let index = 0; index < apart.images.length; index++) {
+        if (apart.images[index].id == req.params.fotoid) {
+          apart.images.splice(index, 1);
+        }
+      }
+
+      // Veriyi güncelleyin
+      apart.save();
+      // req.flash("success_message", [{ msg: "Eklendi" }]);
+      res.redirect("/yonetim/resim-sil/" + req.params.proid);
+    });
+
+    //res.redirect("/yonetim/resim-sil/"+req.params.proid);
+  }
+};
+
 module.exports = {
   getHomePage,
   getAllProjects,
@@ -1248,5 +1317,9 @@ module.exports = {
   postNews,
   getPass,
   postPass,
-  getLogOut
+  getLogOut,
+  getAddImage,
+  postAddImage,
+  getDeleteImage,
+  getPostDeleteImage,
 };

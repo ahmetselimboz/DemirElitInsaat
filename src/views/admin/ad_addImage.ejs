@@ -1,0 +1,71 @@
+<div class="row">
+    <div class="col-12">
+      <div class="card my-4">
+        <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-1">
+          <div
+            class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3"
+          >
+            <h4 class="text-white text-capitalize ps-4">RESİM EKLE</h4>
+          </div>
+          <div class="card-body">
+            <h6 class="text-secondary">
+              Bu panel üzerinden yeni resimler ekleyebilirsiniz.
+            </h6>
+          </div>
+        </div>
+        <div class="card-body px-0 pb-2">
+            <form
+              action="/yonetim/resim-ekle"
+              method="post"
+              enctype="multipart/form-data"
+              id="my-form"
+            >
+              <div class="col-8 mx-auto">
+                <div class="multiple-uploader" id="multiple-uploader">
+                  <div class="mup-msg">
+                    <span class="mup-main-msg"
+                      >Resim yüklemek için tıklayınız</span
+                    >
+                    <span class="mup-msg" id="max-upload-number"
+                      >En fazla 30 fotoğraf yükleyebilirsiniz</span
+                    >
+                    <span class="mup-msg">Sadece resim dosyası yükleyiniz</span>
+                  </div>
+                </div>
+  
+                <script src="/admin/js/multiple-uploader.js"></script>
+                <script>
+                  let multipleUploader = new MultipleUploader(
+                    "#multiple-uploader"
+                  ).init({
+                    maxUpload: 30, // maximum number of uploaded images
+                    maxSize: 3, // in size in mb
+                    filesInpName: "images", // input name sent to backend
+                    formSelector: "#my-form", // form selector
+                  });
+                </script>
+              </div>
+              
+             <input type="hidden" name="id" value="<%- res.id %>">
+             <div class="card-body px-6">
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                  <button
+                  onclick="btn(this)"
+                    type="submit"
+                    class="btn bg-gradient-info shadow-succes"
+                    id="load2"
+                    data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order"
+                    
+                    >
+                    Ekle
+                  </button>
+                </div>
+                <script src="/admin/js/btn.js"></script>
+  
+              </div>
+            </form>
+          </div>
+      </div>
+    </div>
+  </div>
+  

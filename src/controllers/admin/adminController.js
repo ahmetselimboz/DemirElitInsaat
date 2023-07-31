@@ -331,17 +331,23 @@ const postAddApart = async (req, res, next) => {
     req.flash("adress", req.body.adress);
     req.flash("desc", req.body.desc);
     req.flash("location_url", req.body.location_url);
-    req.flash("access", req.body.location_url);
+    req.flash("access", req.body.access);
 
     res.redirect("/yonetim/projeler/daire-ekle");
   } else {
     var val = [];
 
     try {
+      const { body, files } = req;
+
+      for (let f = 0; f < files.length; f++) {
+        await uploadFile(files[f]);
+        if (data) {
+          val.push(data);
+        }
+      }
 
 
-   
-      val.push("");
       var apt = new Apart();
 
       apt.project_name = req.body.project_name;
@@ -356,19 +362,17 @@ const postAddApart = async (req, res, next) => {
       apt.desc = req.body.desc;
       apt.project_status = req.body.project_status;
       apt.location_url = req.body.location_url;
-      apt.checkbox.open_otopark = !req.body.open_otopark ? false : true;
-      apt.checkbox.closed_otopark = !req.body.closed_otopark ? false : true;
-      apt.checkbox.open_otopark = !req.body.open_otopark ? false : true;
-      apt.checkbox.open_otopark = !req.body.open_otopark ? false : true;
-      apt.checkbox.open_otopark = !req.body.open_otopark ? false : true;
-      apt.checkbox.open_otopark = !req.body.open_otopark ? false : true;
-      apt.checkbox.open_otopark = !req.body.open_otopark ? false : true;
-      apt.checkbox.open_otopark = !req.body.open_otopark ? false : true;
-      apt.checkbox.open_otopark = !req.body.open_otopark ? false : true;
+      apt.access = req.body.access;
+      apt.checkbox.open_otopark = !req.body.open_otopark ? " " : "checked";
+      apt.checkbox.closed_otopark = !req.body.closed_otopark ? " " : "checked";
+      apt.checkbox.school = !req.body.school ? " " : "checked";
+      apt.checkbox.pharmacy = !req.body.pharmacy ? " " : "checked";
+      apt.checkbox.clinic = !req.body.clinic ? " " : "checked";
+      apt.checkbox.mosque = !req.body.mosque ? " " : "checked";
+      apt.checkbox.bus_station = !req.body.bus_station ? " " : "checked";
+      apt.checkbox.park = !req.body.park ? " " : "checked";
+      apt.checkbox.market = !req.body.market ? " " : "checked";
       
-
-
-
       val.forEach((element) => {
         apt.images.push(element);
       });
@@ -405,6 +409,7 @@ const getUpdateApart = async (req, res, next) => {
         op1: op1,
         op2: op2,
         op3: op3,
+        checkbox: result.checkbox
       });
     }
   } catch (error) {
@@ -434,9 +439,19 @@ const postUpdateApart = async (req, res, next) => {
         adress: req.body.adress,
         desc: req.body.desc,
         location_url: req.body.location_url,
-        otopark_check: !req.body.otopark_check ? false : true,
-        locat_check: !req.body.locat_check ? false : true,
-        transfer_check: !req.body.transfer_check ? false : true,
+        access: req.body.access,
+        checkbox:{
+          open_otopark : !req.body.open_otopark ? " " : "checked",
+          closed_otopark : !req.body.closed_otopark ? " " : "checked",
+          school : !req.body.school ? " " : "checked",
+          pharmacy : !req.body.pharmacy ? " " : "checked",
+          clinic : !req.body.clinic ? " " : "checked",
+          mosque : !req.body.mosque ? " " : "checked",
+          bus_station : !req.body.bus_station ? " " : "checked",
+          park : !req.body.park ? " " : "checked",
+          market : !req.body.market ? " " : "checked",
+        }
+        
       };
 
       const result = await Apart.findByIdAndUpdate(req.body.id, options);

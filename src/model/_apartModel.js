@@ -77,40 +77,40 @@ const ApartSchema = new Schema(
     },
     checkbox:{
       closed_otopark: {
-        type: Boolean,
-        default: false
+        type: String,
+        default: " "
       },
       open_otopark: {
-        type: Boolean,
-        default: false
+        type: String,
+        default:  " "
       },
       school: {
-        type: Boolean,
-        default: false
+        type: String,
+        default:  " "
       },
       pharmacy: {
-        type: Boolean,
-        default: false
+        type: String,
+        default:  " "
       },
       clinic: {
-        type: Boolean,
-        default: false
+        type: String,
+        default:  " "
       },
       mosque: {
-        type: Boolean,
-        default: false
+        type: String,
+        default:  " "
       },
       bus_station: {
-        type: Boolean,
-        default: false
+        type: String,
+        default:  " "
       },
       park: {
-        type: Boolean,
-        default: false
+        type: String,
+        default:  " "
       },
       market: {
-        type: Boolean,
-        default: false
+        type: String,
+        default:  " "
       },
    
     },

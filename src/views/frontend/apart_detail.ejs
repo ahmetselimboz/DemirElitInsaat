@@ -186,16 +186,33 @@
           <h4>Otopark</h4>
           <hr class="det-line" />
         </div>
-        <% if (apart.otopark_check == true ) { %>
 
         <div class="det-text">
-          <h5>Var</h5>
+          <div class="det-sla">
+            <div class="det-bas">
+              <h5>Açık:&nbsp;</h5>
+            </div>
+            <div class="det-cli">
+              <% if (apart.checkbox.open_otopark == "checked") { %>
+              <i class="bx bx-check"></i>
+              <% } else { %>
+              <i class="bx bx-x"></i>
+              <% } %> 
+            </div>
+          </div>
+          <div class="det-sla">
+            <div class="det-bas">
+              <h5>Kapalı:&nbsp;</h5>
+            </div>
+            <div class="det-cli">
+              <% if (apart.checkbox.closed_otopark == "checked") { %>
+              <i class="bx bx-check"></i>
+              <% } else { %>
+              <i class="bx bx-x"></i>
+              <% } %>
+            </div>
+          </div>
         </div>
-        <% } else { %>
-        <div class="det-text">
-          <h5>Yok</h5>
-        </div>
-        <% } %>
       </div>
     </div>
     <div class="det-col js-scroll fade-in-bottom">
@@ -204,19 +221,96 @@
       </div>
       <div class="det-desc">
         <div class="det-title">
-          <h4>Merkeze Yakınlık</h4>
+          <h4>Yakınlık</h4>
           <hr class="det-line" />
         </div>
-        <% if (apart.locat_check == true ) { %>
 
-          <div class="det-text">
-            <h5>Var</h5>
+        <div class="det-text">
+          <div class="det-sla">
+            <div class="det-bas">
+              <h5>Okul:&nbsp;</h5>
+            </div>
+            <div class="det-cli">
+              <% if (apart.checkbox.school == "checked") { %>
+              <i class="bx bx-check"></i>
+              <% } else { %>
+              <i class="bx bx-x"></i>
+              <% } %>
+            </div>
           </div>
-          <% } else { %>
-          <div class="det-text">
-            <h5>Yok</h5>
+          <div class="det-sla">
+            <div class="det-bas">
+              <h5>Eczane:&nbsp;</h5>
+            </div>
+            <div class="det-cli">
+              <% if (apart.checkbox.pharmacy == "checked") { %>
+              <i class="bx bx-check"></i>
+              <% } else { %>
+              <i class="bx bx-x"></i>
+              <% } %>
+            </div>
           </div>
-          <% } %>
+          <div class="det-sla">
+            <div class="det-bas">
+              <h5>Sağlık Ocağı:&nbsp;</h5>
+            </div>
+            <div class="det-cli">
+              <% if (apart.checkbox.clinic == "checked") { %>
+              <i class="bx bx-check"></i>
+              <% } else { %>
+              <i class="bx bx-x"></i>
+              <% } %>
+            </div>
+          </div>
+          <div class="det-sla">
+            <div class="det-bas">
+              <h5>Camii:&nbsp;</h5>
+            </div>
+            <div class="det-cli">
+              <% if (apart.checkbox.mosque == "checked") { %>
+              <i class="bx bx-check"></i>
+              <% } else { %>
+              <i class="bx bx-x"></i>
+              <% } %>
+            </div>
+          </div>
+          <div class="det-sla">
+            <div class="det-bas">
+              <h5>Otobüs Durağı:&nbsp;</h5>
+            </div>
+            <div class="det-cli">
+              <% if (apart.checkbox.bus_station == "checked") { %>
+              <i class="bx bx-check"></i>
+              <% } else { %>
+              <i class="bx bx-x"></i>
+              <% } %>
+            </div>
+          </div>
+          <div class="det-sla">
+            <div class="det-bas">
+              <h5>Park:&nbsp;</h5>
+            </div>
+            <div class="det-cli">
+              <% if (apart.checkbox.park == "checked") { %>
+              <i class="bx bx-check"></i>
+              <% } else { %>
+              <i class="bx bx-x"></i>
+              <% } %>
+            </div>
+          </div>
+          <div class="det-sla">
+            <div class="det-bas">
+              <h5>Market:&nbsp;</h5>
+            </div>
+            <div class="det-cli">
+              <% if (apart.checkbox.market == "checked") { %>
+              <i class="bx bx-check"></i>
+              <% } else { %>
+              <i class="bx bx-x"></i>
+              <% } %>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="det-col js-scroll fade-in-bottom">
@@ -225,19 +319,15 @@
       </div>
       <div class="det-desc">
         <div class="det-title">
-          <h4>Ulaşım Kolaylığı</h4>
+          <h4>Ulaşım</h4>
           <hr class="det-line" />
         </div>
-        <% if (apart.transfer_check == true ) { %>
 
-          <div class="det-text">
-            <h5>Var</h5>
-          </div>
-          <% } else { %>
-          <div class="det-text">
-            <h5>Yok</h5>
-          </div>
-          <% } %>
+        <div class="det-text">
+          <h5>
+            <%- apart.access %>
+          </h5>
+        </div>
       </div>
     </div>
     <div class="det-col js-scroll fade-in-bottom">
@@ -250,7 +340,7 @@
           <hr class="det-line" />
         </div>
         <div class="det-text">
-          <h5>+90 (505) 789 66 44</h5>
+          <h5><%- contact.phone1 %></h5>
         </div>
       </div>
     </div>

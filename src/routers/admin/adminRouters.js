@@ -24,7 +24,7 @@ router.get("/cikis-yap", adminController.getLogOut);
 
 router.get('/projeler',isauth.yes, adminController.getAllProjects);
 router.get('/projeler/daire-ekle',isauth.yes, adminController.getAddApart);
-router.post('/projeler/daire-ekle',validations.validateApart(), adminController.postAddApart);
+router.post('/projeler/daire-ekle',upload.any(),validations.validateApart(), adminController.postAddApart);
 
 router.get("/projeler/daire-guncelle/:id",isauth.yes,  adminController.getUpdateApart)
 router.post("/projeler/daire-guncelle",validations.validateApart(), adminController.postUpdateApart)

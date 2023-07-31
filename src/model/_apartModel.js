@@ -61,18 +61,7 @@ const ApartSchema = new Schema(
         },
       },
     ],
-    otopark_check: {
-      type: Boolean,
-      default: false
-    },
-    locat_check: {
-      type: Boolean,
-      default: false
-    },
-    transfer_check: {
-      type: Boolean,
-      default: false
-    },
+
     project_status:{
       type:String,
       default: 1
@@ -85,7 +74,50 @@ const ApartSchema = new Schema(
       type: Boolean,
       trim: true,
       default: false
-    }
+    },
+    checkbox:{
+      closed_otopark: {
+        type: Boolean,
+        default: false
+      },
+      open_otopark: {
+        type: Boolean,
+        default: false
+      },
+      school: {
+        type: Boolean,
+        default: false
+      },
+      pharmacy: {
+        type: Boolean,
+        default: false
+      },
+      clinic: {
+        type: Boolean,
+        default: false
+      },
+      mosque: {
+        type: Boolean,
+        default: false
+      },
+      bus_station: {
+        type: Boolean,
+        default: false
+      },
+      park: {
+        type: Boolean,
+        default: false
+      },
+      market: {
+        type: Boolean,
+        default: false
+      },
+   
+    },
+    access:{
+      type: String,
+      trim: true
+    },
   },
   { collection: "apart", timestamps: true }
 );

@@ -86,6 +86,8 @@ app.use((req, res, next) => {
   res.locals.oldPass = req.flash("oldPass");
   res.locals.newPass = req.flash("newPass");
 
+  res.locals.access = req.flash("access");
+
   next();
 });
 

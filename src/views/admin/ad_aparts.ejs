@@ -39,26 +39,22 @@
                 >
                   Eklenme Tarihi
                 </th>
+              
                 <th
                   class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
                 >
-                  Resim Ekle
-                </th>
-                <th
-                  class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-                >
-                  Resim Sil
+                  Resmi Güncelle
                 </th>
                 
                 <th
                   class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
                 >
-                  Güncelle
+                  Bilgileri Güncelle
                 </th>
                 <th
                   class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
                 >
-                  Sil
+                  Projeyi Kaldır
                 </th>
               </tr>
             </thead>
@@ -115,22 +111,14 @@
                     date.getFullYear() %></span
                   >
                 </td>
-                <td class="align-middle text-center">
-                  <a
-                    onclick="btn(this)"
-                    href="/yonetim/resim-ekle/<%- apart[index].id %>"
-                    class="btn bg-gradient-info shadow-info"
-                  >
-                    RESİM EKLE
-                  </a>
-                </td>
+          
                 <td class="align-middle text-center">
                   <a
                     onclick="btn(this)"
                     href="/yonetim/resim-sil/<%- apart[index].id %>"
-                    class="btn bg-gradient-danger shadow-danger"
+                    class="btn bg-gradient-warning shadow-warning"
                   >
-                    RESİM SİL
+                    RESMİ GÜNCELLE
                   </a>
                 </td>
                 <td class="align-middle text-center">
@@ -139,7 +127,7 @@
                     href="/yonetim/projeler/daire-guncelle/<%- apart[index].id %>"
                     class="btn bg-gradient-success shadow-success"
                   >
-                    GÜNCELLE
+                    BİLGİLERİ GÜNCELLE
                   </a>
                 </td>
                 <td class="align-middle text-center">
@@ -148,7 +136,7 @@
                     href="/yonetim/projeler/daire-sil/<%- apart[index].id %>"
                     class="btn bg-gradient-danger shadow-danger"
                   >
-                    SİL
+                    PROJEYİ KALDIR
                   </a>
                 </td>
               </tr>

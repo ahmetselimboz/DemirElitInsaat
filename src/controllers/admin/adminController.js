@@ -331,21 +331,17 @@ const postAddApart = async (req, res, next) => {
     req.flash("adress", req.body.adress);
     req.flash("desc", req.body.desc);
     req.flash("location_url", req.body.location_url);
+    req.flash("access", req.body.location_url);
 
     res.redirect("/yonetim/projeler/daire-ekle");
   } else {
     var val = [];
 
     try {
-      const { body, files } = req;
 
-      for (let f = 0; f < files.length; f++) {
-        await uploadFile(files[f]);
-        if (data) {
-          val.push(data);
-        }
-      }
 
+   
+      val.push("");
       var apt = new Apart();
 
       apt.project_name = req.body.project_name;
@@ -360,9 +356,18 @@ const postAddApart = async (req, res, next) => {
       apt.desc = req.body.desc;
       apt.project_status = req.body.project_status;
       apt.location_url = req.body.location_url;
-      apt.otopark_check = !req.body.otopark_check ? false : true;
-      apt.locat_check = !req.body.locat_check ? false : true;
-      apt.transfer_check = !req.body.transfer_check ? false : true;
+      apt.checkbox.open_otopark = !req.body.open_otopark ? false : true;
+      apt.checkbox.closed_otopark = !req.body.closed_otopark ? false : true;
+      apt.checkbox.open_otopark = !req.body.open_otopark ? false : true;
+      apt.checkbox.open_otopark = !req.body.open_otopark ? false : true;
+      apt.checkbox.open_otopark = !req.body.open_otopark ? false : true;
+      apt.checkbox.open_otopark = !req.body.open_otopark ? false : true;
+      apt.checkbox.open_otopark = !req.body.open_otopark ? false : true;
+      apt.checkbox.open_otopark = !req.body.open_otopark ? false : true;
+      apt.checkbox.open_otopark = !req.body.open_otopark ? false : true;
+      
+
+
 
       val.forEach((element) => {
         apt.images.push(element);
@@ -380,11 +385,26 @@ const postAddApart = async (req, res, next) => {
 const getUpdateApart = async (req, res, next) => {
   try {
     if (req.params.id) {
+      var op1 = "";
+      var op2 = "";
+      var op3 = "";
+
       const result = await Apart.findById(req.params.id);
+      if (result.project_status == "Tamamlandı") {
+        op1 = "selected";
+      } else if (result.project_status == "Devam Ediyor") {
+        op2 = "selected";
+      } else if (result.project_status == "Planlandı") {
+        op3 = "selected";
+      }
+
       //console.log(result);
       res.render("./admin/ad_apartUpdate", {
         layout: "./admin/layouts/admin_layouts.ejs",
         apart: result,
+        op1: op1,
+        op2: op2,
+        op3: op3,
       });
     }
   } catch (error) {
@@ -1247,6 +1267,7 @@ const getDeleteImage = async (req, res, next) => {
       layout: "./admin/layouts/admin_layouts.ejs",
       title: result,
       res: result.images,
+      params: req.params.id,
     });
   }
 };

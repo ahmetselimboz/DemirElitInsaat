@@ -5,16 +5,34 @@
         <div
           class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3"
         >
-          <h4 class="text-white text-capitalize ps-4">RESİM SİL</h4>
+          <h4 class="text-white text-capitalize ps-4">RESİM GÜNCELLE</h4>
         </div>
         <div class="card-body">
           <h6 class="text-secondary">
-            Bu panel üzerinden istediğiniz resmi silebilirsiniz.
+            Bu panel üzerinden istediğiniz resmi güncelleyebilirsiniz.
           </h6>
         </div>
       </div>
       <h3 class="text-secondary text-capitalize px-5"><%- title.project_name %></h3>
+     
+     
+      <div class="card-body px-6">
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+          <a
+          onclick="btn(this)"
+          href="/yonetim/resim-ekle/<%- params %>"
+          class="btn bg-gradient-info shadow-info"
+        >
+          RESİM EKLE
+        </a>
+        </div>
+        <script src="/admin/js/btn.js"></script>
 
+      </div>
+     
+     
+     
+   
       <div class="card-body px-4">
         <% for( let index = 0; index < res.length; index++ ) { %>
         <div class="card d-inline-flex mx-1 my-4" style="width: 18rem">

@@ -28,7 +28,7 @@
                     >Resim yüklemek için tıklayınız</span
                   >
                   <span class="mup-msg" id="max-upload-number"
-                    >En fazla 8 fotoğraf yükleyebilirsiniz</span
+                    >En fazla 30 fotoğraf yükleyebilirsiniz</span
                   >
                   <span class="mup-msg">Sadece resim dosyası yükleyiniz</span>
                 </div>
@@ -39,7 +39,7 @@
                 let multipleUploader = new MultipleUploader(
                   "#multiple-uploader"
                 ).init({
-                  maxUpload: 8, // maximum number of uploaded images
+                  maxUpload: 30, // maximum number of uploaded images
                   maxSize: 3, // in size in mb
                   filesInpName: "images", // input name sent to backend
                   formSelector: "#my-form", // form selector
@@ -67,6 +67,9 @@
                     name="project_status"
                     id="exampleSelectGender"
                   >
+                    <option value="none" selected disabled hidden>
+                      Projenin durumunu seçiniz..
+                    </option>
                     <option value="Tamamlandı">Tamamlandı</option>
                     <option value="Devam Ediyor">Devam Ediyor</option>
                     <option value="Planlandı">Planlandı</option>
@@ -182,56 +185,145 @@
               <div class="col-md-5">
                 <div class="input-group input-group-static">
                   <label>Adres Linki</label>
-                  <input
-                    class="form-control"
-                    rows="5"
-                    name="location_url"
-                    value='<%= typeof location_url != 'undefined' ? location_url : '' %>'
-                  />
+                  <input class="form-control" rows="5" name="location_url"
+                  value='<%= typeof location_url != 'undefined' ? location_url :'' %>' />
                 </div>
               </div>
             </div>
             <div class="row px-6 justify-content-center mt-6">
               <div class="col-md-3">
-                <div class="form-check">
+                <div class="form-check mx-4">
+                  <small class="lead"><u>Otopark</u></small>
+                </div>
+                <div class="form-check ">
                   <input
                     class="form-check-input"
                     type="checkbox"
-                    name="otopark_check"
+                    name="open_otopark"
                     id="flexCheckDefault"
                     value="true"
                   />
-                  <label class="form-check-label" for="flexCheckDefault">
-                    Otopark
+                  <label class="form-check-label" >
+                    Açık Otopark
+                  </label>
+                </div>
+                <div class="form-check ">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="closed_otopark"
+                    id="flexCheckDefault"
+                    value="true"
+                  />
+                  <label class="form-check-label" >
+                    Kapalı Otopark
                   </label>
                 </div>
               </div>
               <div class="col-md-3">
-                <div class="form-check">
+                <div class="form-check mx-4">
+                  <small class="lead"><u>Yakınlık</u></small>
+                </div>
+             
+                <div class="form-check ">
                   <input
                     class="form-check-input"
                     type="checkbox"
-                    name="locat_check"
+                    name="school"
                     id="flexCheckDefault"
                     value="true"
                   />
-                  <label class="form-check-label" for="flexCheckDefault">
-                    Merkeze Yakınlık
+                  <label class="form-check-label" >
+                    Okul
+                  </label>
+                </div>
+                <div class="form-check ">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="pharmacy"
+                    id="flexCheckDefault"
+                    value="true"
+                  />
+                  <label class="form-check-label" >
+                    Eczane 
+                  </label>
+                </div>
+                <div class="form-check ">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="clinic"
+                    id="flexCheckDefault"
+                    value="true"
+                  />
+                  <label class="form-check-label" >
+                    Sağlık Ocağı 
+                  </label>
+                </div>
+                <div class="form-check ">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="mosque"
+                    id="flexCheckDefault"
+                    value="true"
+                  />
+                  <label class="form-check-label" >
+                    Camii
+                  </label>
+                </div>
+                <div class="form-check ">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="bus_station"
+                    id="flexCheckDefault"
+                    value="true"
+                  />
+                  <label class="form-check-label" >
+                    Otobüs Durağı
+                  </label>
+                </div>
+                <div class="form-check ">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="park"
+                    id="flexCheckDefault"
+                    value="true"
+                  />
+                  <label class="form-check-label" >
+                    Park
+                  </label>
+                </div>
+                <div class="form-check ">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="market"
+                    id="flexCheckDefault"
+                    value="true"
+                  />
+                  <label class="form-check-label" >
+                    Market
                   </label>
                 </div>
               </div>
               <div class="col-md-3">
-                <div class="form-check">
+                <div class="form-check mx-4">
+                  <small class="lead"><u>Ulaşım Kolaylığı</u></small>
+                </div>
+                <div class="input-group input-group-static my-auto">
+         
                   <input
-                    class="form-check-input"
-                    type="checkbox"
-                    name="transfer_check"
-                    id="flexCheckDefault"
-                    value="true"
+                    class="form-control"
+                    rows="5"
+                    name="access"
+                    value='<%= typeof access != 'undefined' ? access :'' %>' />
+
+                    
                   />
-                  <label class="form-check-label" for="flexCheckDefault">
-                    Ulaşım Kolaylığı
-                  </label>
                 </div>
               </div>
             </div>
@@ -239,18 +331,16 @@
             <div class="card-body px-6">
               <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <button
-                onclick="btn(this)"
+                  onclick="btn(this)"
                   type="submit"
                   class="btn btn-info"
                   id="load2"
                   data-loading-text="<i class='fa fa-spinner fa-spin '></i> Processing Order"
-                  
-                  >
+                >
                   Proje Ekle
                 </button>
               </div>
               <script src="/admin/js/btn.js"></script>
-
             </div>
           </form>
         </div>

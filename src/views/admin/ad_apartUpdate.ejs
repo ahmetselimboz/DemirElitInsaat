@@ -16,30 +16,6 @@
       <div class="card-body px-0 pb-2">
         <div class="card-body px-0 pb-2">
           <form action="/yonetim/projeler/daire-guncelle" method="post">
-            <div class="col-8 mx-auto">
-              <div class="multiple-uploader" id="multiple-uploader">
-                <div class="mup-msg">
-                  <span class="mup-main-msg"
-                    >Resimleri güncelleyemezsiniz.</span
-                  >
-                  <span class="mup-msg" id="max-upload-number"
-                    >Ekleme işleminde kullandığınız resimler kullanılır.</span
-                  >
-                </div>
-              </div>
-
-              <script src="/admin/js/multiple-uploader.js"></script>
-              <script>
-                let multipleUploader = new MultipleUploader(
-                  "#multiple-uploader"
-                ).init({
-                  maxUpload: 8, // maximum number of uploaded images
-                  maxSize: 3, // in size in mb
-                  filesInpName: "images", // input name sent to backend
-                  formSelector: "#my-form", // form selector
-                });
-              </script>
-            </div>
             <div class="row">
               <div class="col-md-6">
                 <div class="input-group input-group-static mb-4 px-5">
@@ -60,11 +36,12 @@
                     class="form-control"
                     name="project_status"
                     id="exampleSelectGender"
-                    value="<%- apart.project_status %>"
                   >
-                    <option value="Tamamlandı">Tamamlandı</option>
-                    <option value="Devam Ediyor">Devam Ediyor</option>
-                    <option value="Planlandı">Planlandı</option>
+                    <option value="Tamamlandı" <%- op1 %>>Tamamlandı</option>
+                    <option value="Devam Ediyor" <%- op2 %>
+                      >Devam Ediyor
+                    </option>
+                    <option value="Planlandı" <%- op3 %>>Planlandı</option>
                   </select>
                 </div>
               </div>
@@ -189,7 +166,10 @@
             </div>
             <div class="row px-6 justify-content-center mt-6">
               <div class="col-md-3">
-                <div class="form-check">
+                <div class="form-check mx-4">
+                  <small class="lead"><u>Otopark</u></small>
+                </div>
+                <div class="form-check ">
                   <input
                     class="form-check-input"
                     type="checkbox"
@@ -197,37 +177,126 @@
                     id="flexCheckDefault"
                     value="true"
                   />
-                  <label class="form-check-label" for="flexCheckDefault">
-                    Otopark
+                  <label class="form-check-label" >
+                    Açık Otopark
+                  </label>
+                </div>
+                <div class="form-check ">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="otopark_check"
+                    id="flexCheckDefault"
+                    value="true"
+                  />
+                  <label class="form-check-label" >
+                    Kapalı Otopark
                   </label>
                 </div>
               </div>
               <div class="col-md-3">
-                <div class="form-check">
+                <div class="form-check mx-4">
+                  <small class="lead"><u>Yakınlık</u></small>
+                </div>
+             
+                <div class="form-check ">
                   <input
                     class="form-check-input"
                     type="checkbox"
-                    name="locat_check"
+                    name="otopark_check"
+                    id="flexCheckDefault"
+                    value="true"
+                  checked/>
+                  <label class="form-check-label" >
+                    Okul
+                  </label>
+                </div>
+                <div class="form-check ">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="otopark_check"
                     id="flexCheckDefault"
                     value="true"
                   />
-                  <label class="form-check-label" for="flexCheckDefault">
-                    Merkeze Yakınlık
+                  <label class="form-check-label" >
+                    Eczane 
+                  </label>
+                </div>
+                <div class="form-check ">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="otopark_check"
+                    id="flexCheckDefault"
+                    value="true"
+                  />
+                  <label class="form-check-label" >
+                    Sağlık Ocağı 
+                  </label>
+                </div>
+                <div class="form-check ">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="otopark_check"
+                    id="flexCheckDefault"
+                    value="true"
+                  />
+                  <label class="form-check-label" >
+                    Camii
+                  </label>
+                </div>
+                <div class="form-check ">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="otopark_check"
+                    id="flexCheckDefault"
+                    value="true"
+                  />
+                  <label class="form-check-label" >
+                    Otobüs Durağı
+                  </label>
+                </div>
+                <div class="form-check ">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="otopark_check"
+                    id="flexCheckDefault"
+                    value="true"
+                  />
+                  <label class="form-check-label" >
+                    Park
+                  </label>
+                </div>
+                <div class="form-check ">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    name="otopark_check"
+                    id="flexCheckDefault"
+                    value="true"
+                  />
+                  <label class="form-check-label" >
+                    Market
                   </label>
                 </div>
               </div>
               <div class="col-md-3">
-                <div class="form-check">
+                <div class="form-check mx-4">
+                  <small class="lead"><u>Ulaşım Kolaylığı</u></small>
+                </div>
+                <div class="input-group input-group-static my-auto">
+         
                   <input
-                    class="form-check-input"
-                    type="checkbox"
-                    name="transfer_check"
-                    id="flexCheckDefault"
-                    value="true"
+                    class="form-control"
+                    rows="5"
+                    name="desc"
+                    value=""
+                    
                   />
-                  <label class="form-check-label" for="flexCheckDefault">
-                    Ulaşım Kolaylığı
-                  </label>
                 </div>
               </div>
             </div>

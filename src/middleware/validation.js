@@ -47,6 +47,10 @@ const validateApart = () => {
       .trim()
       .notEmpty()
       .withMessage("Adres Link alanını boş geçmeyiniz"),
+    body("access")
+      .trim()
+      .notEmpty()
+      .withMessage("Ulaşım Kolaylığı alanını boş geçmeyiniz"),
   ];
 };
 

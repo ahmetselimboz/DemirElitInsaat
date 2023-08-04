@@ -11,7 +11,7 @@ const User = require("../../model/_userModel");
 const passport = require("passport");
 require("../../config/passport_local")(passport);
 const { validationResult } = require("express-validator");
-const bcrypt = require('bcryptjs');
+const bcrypt = require("bcryptjs");
 
 const getHomePage = async (req, res, next) => {
   const contact = await Contact.findOne({});
@@ -44,6 +44,23 @@ const getApartDetail = async (req, res, next) => {
       const contact = await Contact.findOne({});
 
       const result = await Apart.findById(req.params.id);
+
+
+      if(result.last_date != null){
+        var lastdate = result.last_date.toISOString().substr(0, 10);
+        const datenow = new Date().toISOString().substr(0, 10);
+  
+        var date1 = new Date(datenow);
+        var date2 = new Date(lastdate);
+          
+        // To calculate the time difference of two dates
+        var Difference_In_Time = date2.getTime() - date1.getTime();
+          
+        // To calculate the no. of days between two dates
+        var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+          
+      }
+
       if (result) {
         res.render("./frontend/apart_detail", {
           layout: "./frontend/layouts/_layouts.ejs",
@@ -54,6 +71,7 @@ const getApartDetail = async (req, res, next) => {
           link5: "",
           apart: result,
           contact: contact,
+          lastday: Difference_In_Days
         });
       }
     } else {
@@ -63,35 +81,7 @@ const getApartDetail = async (req, res, next) => {
     console.log(error);
   }
 };
-const getAboutUs = async (req, res, next) => {
-  const contact = await Contact.findOne({});
-  const about = await About.findOne({});
-  const pres = await Team.findOne({ president: true });
 
-  res.render("./frontend/about_us", {
-    layout: "./frontend/layouts/_layouts.ejs",
-    link1: "",
-    link2: "nav-active-link",
-    link3: "",
-    link4: "",
-    link5: "",
-    contact: contact,
-    about: about,
-    pres: pres,
-  });
-};
-const getContact = async (req, res, next) => {
-  const contact = await Contact.findOne({});
-  res.render("./frontend/contact", {
-    layout: "./frontend/layouts/_layouts.ejs",
-    link1: "",
-    link2: "",
-    link3: "",
-    link4: "",
-    link5: "nav-active-link",
-    contact: contact,
-  });
-};
 const getAparts = async (req, res, next) => {
   try {
     if (req.params) {
@@ -135,6 +125,36 @@ const getAparts = async (req, res, next) => {
     console.log(error);
   }
 };
+const getAboutUs = async (req, res, next) => {
+  const contact = await Contact.findOne({});
+  const about = await About.findOne({});
+  const pres = await Team.findOne({ president: true });
+
+  res.render("./frontend/about_us", {
+    layout: "./frontend/layouts/_layouts.ejs",
+    link1: "",
+    link2: "nav-active-link",
+    link3: "",
+    link4: "",
+    link5: "",
+    contact: contact,
+    about: about,
+    pres: pres,
+  });
+};
+const getContact = async (req, res, next) => {
+  const contact = await Contact.findOne({});
+  res.render("./frontend/contact", {
+    layout: "./frontend/layouts/_layouts.ejs",
+    link1: "",
+    link2: "",
+    link3: "",
+    link4: "",
+    link5: "nav-active-link",
+    contact: contact,
+  });
+};
+
 const getNewsDetail = async (req, res, next) => {
   try {
     if (req.params) {
@@ -272,7 +292,7 @@ const getRegister = (req, res, next) => {
 
 const postRegister = async (req, res, next) => {
   const hatalar = validationResult(req);
-console.log(req.body);
+  console.log(req.body);
   if (!hatalar.isEmpty()) {
     req.flash("validation_error", hatalar.array());
     req.flash("user_name", req.body.user_name);

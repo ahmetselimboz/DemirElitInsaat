@@ -118,6 +118,11 @@ const ApartSchema = new Schema(
       type: String,
       trim: true
     },
+    last_date:{
+      type: Date,
+      trim: true,
+      default: " "
+    },
   },
   { collection: "apart", timestamps: true }
 );

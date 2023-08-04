@@ -87,6 +87,7 @@ app.use((req, res, next) => {
   res.locals.newPass = req.flash("newPass");
 
   res.locals.access = req.flash("access");
+  res.locals.last_date = req.flash("last_date");
 
   next();
 });

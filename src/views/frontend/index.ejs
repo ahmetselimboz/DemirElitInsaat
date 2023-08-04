@@ -40,13 +40,7 @@
         <div class="proc-title">
           <h3>Tamamlanan Projeler</h3>
         </div>
-        <div class="proc-text">
-          <h5>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam
-            delectus corrupti eligendi odio fugiat quaerat velit soluta
-            consequatur,
-          </h5>
-        </div>
+        
       </div>
     </a>
     <a href="/daireler/devam-eden-projeler">
@@ -57,13 +51,7 @@
         <div class="proc-title">
           <h3>Devam Eden Projeler</h3>
         </div>
-        <div class="proc-text">
-          <h5>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam
-            delectus corrupti eligendi odio fugiat quaerat velit soluta
-            consequatur,
-          </h5>
-        </div>
+      
       </div>
     </a>
     <a href="/daireler/gelecek-projeler">
@@ -74,13 +62,7 @@
         <div class="proc-title">
           <h3>Planlanan Projeler</h3>
         </div>
-        <div class="proc-text">
-          <h5>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam
-            delectus corrupti eligendi odio fugiat quaerat velit soluta
-            consequatur,
-          </h5>
-        </div>
+      
       </div>
     </a>
   </div>
@@ -229,6 +211,23 @@
         src="https://drive.google.com/uc?export=view&id=<%- apar[index].images[0].id %>"
         alt=""
       />
+      <% if (apar[index].last_date != null) { %>
+        <%var lastdate = apar[index].last_date.toISOString().substr(0, 10);%>
+        <%const datenow = new Date().toISOString().substr(0, 10);%>
+  
+        <%var date1 = new Date(datenow);%>
+        <%var date2 = new Date(lastdate);%>
+          
+       
+        <% var Difference_In_Time = date2.getTime() - date1.getTime();%>
+          
+  
+        <%var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);%>
+        <div class="day-area">
+          <h3><%- Difference_In_Days  %> gün</h3>
+        </div>
+      <% } %>
+    
       <div class="house-text">
         <h2><%- apar[index].project_name %></h2>
       </div>
@@ -244,7 +243,7 @@
     <% } %>
 
     <div class="house-btn-project js-scroll fade-in-bottom">
-      <a href="/daireler" class="btn-project">
+      <a href="/daireler/tum-projeler" class="btn-project">
         Tüm Projeler&nbsp;
         <i class="fa-solid fa-arrow-right"></i>
       </a>

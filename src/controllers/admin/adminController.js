@@ -332,54 +332,61 @@ const postAddApart = async (req, res, next) => {
     req.flash("desc", req.body.desc);
     req.flash("location_url", req.body.location_url);
     req.flash("access", req.body.access);
+    req.flash("last_date", req.body.last_date);
 
     res.redirect("/yonetim/projeler/daire-ekle");
   } else {
     var val = [];
 
     try {
-      const { body, files } = req;
+      if((req.body.project_status == "Tamamlandı") && (req.body.last_date != null)){
+        req.flash("error", ["Tamamlandı olarak girilen bir projeye teslimat tarihi vermezsiniz."]);
+        res.redirect("/yonetim/projeler/daire-ekle");
+      }else{
+        const { body, files } = req;
 
-      for (let f = 0; f < files.length; f++) {
-        await uploadFile(files[f]);
-        if (data) {
-          val.push(data);
+        for (let f = 0; f < files.length; f++) {
+          await uploadFile(files[f]);
+          if (data) {
+            val.push(data);
+          }
         }
+  
+        var apt = new Apart();
+  
+        apt.project_name = req.body.project_name;
+        apt.room_num = req.body.room_num;
+        apt.bath_num = req.body.bath_num;
+        apt.brut_m2 = req.body.brut_m2;
+        apt.net_m2 = req.body.net_m2;
+        apt.block_num = req.body.block_num;
+        apt.apart_num = req.body.apart_num;
+        apt.floors_num = req.body.floors_num;
+        apt.adress = req.body.adress;
+        apt.desc = req.body.desc;
+        apt.project_status = req.body.project_status;
+        apt.location_url = req.body.location_url;
+        apt.access = req.body.access;
+        apt.last_date = req.body.last_date;
+        apt.checkbox.open_otopark = !req.body.open_otopark ? " " : "checked";
+        apt.checkbox.closed_otopark = !req.body.closed_otopark ? " " : "checked";
+        apt.checkbox.school = !req.body.school ? " " : "checked";
+        apt.checkbox.pharmacy = !req.body.pharmacy ? " " : "checked";
+        apt.checkbox.clinic = !req.body.clinic ? " " : "checked";
+        apt.checkbox.mosque = !req.body.mosque ? " " : "checked";
+        apt.checkbox.bus_station = !req.body.bus_station ? " " : "checked";
+        apt.checkbox.park = !req.body.park ? " " : "checked";
+        apt.checkbox.market = !req.body.market ? " " : "checked";
+  
+        val.forEach((element) => {
+          apt.images.push(element);
+        });
+  
+        apt.save();
+        req.flash("success_message", [{ msg: "Daire Eklendi" }]);
+        res.redirect("/yonetim/projeler");
       }
-
-
-      var apt = new Apart();
-
-      apt.project_name = req.body.project_name;
-      apt.room_num = req.body.room_num;
-      apt.bath_num = req.body.bath_num;
-      apt.brut_m2 = req.body.brut_m2;
-      apt.net_m2 = req.body.net_m2;
-      apt.block_num = req.body.block_num;
-      apt.apart_num = req.body.apart_num;
-      apt.floors_num = req.body.floors_num;
-      apt.adress = req.body.adress;
-      apt.desc = req.body.desc;
-      apt.project_status = req.body.project_status;
-      apt.location_url = req.body.location_url;
-      apt.access = req.body.access;
-      apt.checkbox.open_otopark = !req.body.open_otopark ? " " : "checked";
-      apt.checkbox.closed_otopark = !req.body.closed_otopark ? " " : "checked";
-      apt.checkbox.school = !req.body.school ? " " : "checked";
-      apt.checkbox.pharmacy = !req.body.pharmacy ? " " : "checked";
-      apt.checkbox.clinic = !req.body.clinic ? " " : "checked";
-      apt.checkbox.mosque = !req.body.mosque ? " " : "checked";
-      apt.checkbox.bus_station = !req.body.bus_station ? " " : "checked";
-      apt.checkbox.park = !req.body.park ? " " : "checked";
-      apt.checkbox.market = !req.body.market ? " " : "checked";
       
-      val.forEach((element) => {
-        apt.images.push(element);
-      });
-
-      apt.save();
-      req.flash("success_message", [{ msg: "Daire Eklendi" }]);
-      res.redirect("/yonetim/projeler");
     } catch (f) {
       console.log(f);
     }
@@ -392,6 +399,7 @@ const getUpdateApart = async (req, res, next) => {
       var op1 = "";
       var op2 = "";
       var op3 = "";
+      var date = "";
 
       const result = await Apart.findById(req.params.id);
       if (result.project_status == "Tamamlandı") {
@@ -401,7 +409,16 @@ const getUpdateApart = async (req, res, next) => {
       } else if (result.project_status == "Planlandı") {
         op3 = "selected";
       }
+      
+      if(result.last_date != null){
+        date = result.last_date.toISOString().substr(0, 10);
+        console.log(date);
+      }
+     
+     
 
+      //var last_date = date.getFullYear() + "-" + aylar[date.getMonth()] + "-" + date.getDate();
+      //console.log(last_date);
       //console.log(result);
       res.render("./admin/ad_apartUpdate", {
         layout: "./admin/layouts/admin_layouts.ejs",
@@ -409,7 +426,8 @@ const getUpdateApart = async (req, res, next) => {
         op1: op1,
         op2: op2,
         op3: op3,
-        checkbox: result.checkbox
+        checkbox: result.checkbox,
+        last_date:date
       });
     }
   } catch (error) {
@@ -426,40 +444,46 @@ const postUpdateApart = async (req, res, next) => {
     res.redirect("/yonetim/projeler/daire-guncelle/" + req.body.id);
   } else {
     try {
-      const options = {
-        project_name: req.body.project_name,
-        project_status: req.body.project_status,
-        bath_num: req.body.bath_num,
-        room_num: req.body.room_num,
-        brut_m2: req.body.brut_m2,
-        net_m2: req.body.net_m2,
-        block_num: req.body.block_num,
-        apart_num: req.body.apart_num,
-        floors_num: req.body.floors_num,
-        adress: req.body.adress,
-        desc: req.body.desc,
-        location_url: req.body.location_url,
-        access: req.body.access,
-        checkbox:{
-          open_otopark : !req.body.open_otopark ? " " : "checked",
-          closed_otopark : !req.body.closed_otopark ? " " : "checked",
-          school : !req.body.school ? " " : "checked",
-          pharmacy : !req.body.pharmacy ? " " : "checked",
-          clinic : !req.body.clinic ? " " : "checked",
-          mosque : !req.body.mosque ? " " : "checked",
-          bus_station : !req.body.bus_station ? " " : "checked",
-          park : !req.body.park ? " " : "checked",
-          market : !req.body.market ? " " : "checked",
+      if((req.body.project_status == "Tamamlandı") && (req.body.last_date != null)){
+        req.flash("error", ["Tamamlandı olarak girilen bir projeye teslimat tarihi vermezsiniz."]);
+        res.redirect("/yonetim/projeler/daire-ekle");
+      }else{
+        const options = {
+          project_name: req.body.project_name,
+          project_status: req.body.project_status,
+          bath_num: req.body.bath_num,
+          room_num: req.body.room_num,
+          brut_m2: req.body.brut_m2,
+          net_m2: req.body.net_m2,
+          block_num: req.body.block_num,
+          apart_num: req.body.apart_num,
+          floors_num: req.body.floors_num,
+          adress: req.body.adress,
+          desc: req.body.desc,
+          location_url: req.body.location_url,
+          access: req.body.access,
+          last_date : req.body.last_date,
+          checkbox: {
+            open_otopark: !req.body.open_otopark ? " " : "checked",
+            closed_otopark: !req.body.closed_otopark ? " " : "checked",
+            school: !req.body.school ? " " : "checked",
+            pharmacy: !req.body.pharmacy ? " " : "checked",
+            clinic: !req.body.clinic ? " " : "checked",
+            mosque: !req.body.mosque ? " " : "checked",
+            bus_station: !req.body.bus_station ? " " : "checked",
+            park: !req.body.park ? " " : "checked",
+            market: !req.body.market ? " " : "checked",
+          },
+        };
+  
+        const result = await Apart.findByIdAndUpdate(req.body.id, options);
+        if (result) {
+          req.flash("success_message", [{ msg: "Daire Güncellendi" }]);
+  
+          res.redirect("/yonetim/projeler");
         }
-        
-      };
-
-      const result = await Apart.findByIdAndUpdate(req.body.id, options);
-      if (result) {
-        req.flash("success_message", [{ msg: "Daire Güncellendi" }]);
-
-        res.redirect("/yonetim/projeler");
       }
+     
     } catch (error) {
       console.log(error);
     }

@@ -3779,7 +3779,6 @@ footer .container {
 }
 
 .det-text {
-  
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -3798,10 +3797,10 @@ footer .container {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 0.2rem ;
+  padding: 0.2rem;
 }
 
-.det-cli i{
+.det-cli i {
   font-family: "Poppins", sans-serif;
   color: #171717;
   font-size: 20px;
@@ -3841,7 +3840,7 @@ footer .container {
   .det-col {
     display: flex;
     flex-direction: column;
-   
+
     width: 100%;
     margin: 1rem 0.5rem;
   }
@@ -3956,7 +3955,7 @@ footer .container {
   .det-col {
     display: flex;
     flex-direction: column;
-    
+
     width: 100%;
     margin: 1rem 0.5rem;
   }
@@ -4048,6 +4047,34 @@ footer .container {
   box-shadow: rgba(0, 0, 0, 0.188) 0px 0px 15px 5px;
 
   width: 100%;
+}
+
+.detail-date-area {
+  background-color: #940c0c;
+  width: 70%;
+  margin: 1rem auto;
+  height: inherit;
+  border-radius: 5px;
+  padding: 2rem 0;
+}
+
+.detail-title-area h1 {
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  color: #ececec;
+  padding: 1rem 0;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.detail-title-area h2 {
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  color: #ececec;
+  padding: 0;
+  width: fit-content;
+  margin: 0 auto;
+  font-weight: bolder;
 }
 
 .desc-panel {
@@ -4314,6 +4341,25 @@ footer .container {
 
   font-size: 20px;
   opacity: 1;
+}
+
+.day-area {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 20%;
+  height: 50px;
+  background-color: #00000083;
+  border-radius: 0 0 0 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.day-area h3 {
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
 }
 
 @media screen and (max-width: 480px) {
@@ -5790,7 +5836,7 @@ footer .container {
   align-items: center;
   width: 384px;
   height: inherit;
-  padding: 2rem;
+  padding: 4rem 2rem;
   background-color: #171717;
 
   border-radius: 5px;
@@ -5803,7 +5849,7 @@ footer .container {
 }
 
 .proc-icon {
-  margin: 0.5rem 0;
+  margin: 1rem 0;
 }
 .proc-icon i {
   width: 110px;

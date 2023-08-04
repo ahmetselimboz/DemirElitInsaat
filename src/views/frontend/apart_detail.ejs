@@ -73,6 +73,23 @@
             <li><i class="bx bxs-circle"></i></li> -->
           </ul>
         </div>
+        <% if (lastday != null) { %>
+          <div class="detail-date-area js-scroll slide-left">
+            <div class="detail-title-area">
+              <hr class="detail-lineee" />
+              <% date = new Date( apart.last_date) %> <% aylar =
+              ['01',
+              '02',"03","04","05","06","07","08","09","10","11","12"]; %>
+ 
+               
+              <h1>Tamamlanma tarihi: <%- date.getDate() + "." + aylar[date.getMonth()] + "." +
+                date.getFullYear() %></h1>
+              <h2>Kalan süre: <%- lastday %> gün</h2>
+              <!-- <hr class="detail-line" /> -->
+            </div>
+          </div>
+        <% } %>
+       
       </div>
       <div class="detail-left js-scroll slide-right">
         <div class="detail-title-area">

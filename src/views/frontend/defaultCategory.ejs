@@ -24,6 +24,23 @@
           <% for( let index = 0; index < apart.length; index++ ) { %>
             <div class="cat-item ">
               <img class="img-fluid-p" src="https://drive.google.com/uc?export=view&id=<%- apart[index].images[0].id %>" alt="" />
+              <% if (apart[index].last_date != null) { %>
+                <%var lastdate = apart[index].last_date.toISOString().substr(0, 10);%>
+                <%const datenow = new Date().toISOString().substr(0, 10);%>
+          
+                <%var date1 = new Date(datenow);%>
+                <%var date2 = new Date(lastdate);%>
+                  
+               
+                <% var Difference_In_Time = date2.getTime() - date1.getTime();%>
+                  
+          
+                <%var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);%>
+                <div class="day-area">
+                  <h3><%- Difference_In_Days  %> gün</h3>
+                </div>
+              <% } %>
+            
               <div class="cat-text">
                 <h2><%- apart[index].project_name %></h2>
               </div>

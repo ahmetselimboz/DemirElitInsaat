@@ -51,6 +51,7 @@ const validateApart = () => {
       .trim()
       .notEmpty()
       .withMessage("Ulaşım Kolaylığı alanını boş geçmeyiniz"),
+
   ];
 };
 

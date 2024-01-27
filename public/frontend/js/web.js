@@ -15,7 +15,7 @@ var sliderWidth = $("#slider-wrap").width();
 
 $(document).ready(function () {
   var foto = document.querySelectorAll("#slider li")
-  console.log(foto);
+
  
 const sayi = 100 / totalSlides;
   for (let index = 0; index < foto.length; index++) {

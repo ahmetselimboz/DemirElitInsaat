@@ -20,11 +20,11 @@
         </div>
         <div class="row">
           <div class="card d-inline-flex mx-1 my-4" style="width: 18rem">
-            <!-- <img class="card-img-top" src="https://drive.google.com/uc?export=view&id=" alt="Card image cap"> -->
+          
             <% if (pres[0].images != undefined) { %>
             <img
               class="card-img-top"
-              src="https://drive.google.com/uc?export=view&id=<%- pres[0].images[0].fotoId %>"
+              src="https://drive.google.com/thumbnail?id=<%- pres[0].images[0].fotoId %>&sz=w3000"
               alt="Card image cap"
             />
             <% } %>
@@ -50,7 +50,7 @@
             <% if (ekip[index].images != "") { %>
               <img
               class="card-img-top"
-              src="https://drive.google.com/uc?export=view&id=<%- ekip[index].images[0].fotoId %>"
+              src="https://drive.google.com/thumbnail?id=<%- ekip[index].images[0].fotoId %>&sz=w3000"
               alt="Card image cap"
             />
             <% } %>

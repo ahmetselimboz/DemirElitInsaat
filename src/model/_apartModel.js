@@ -119,7 +119,7 @@ const ApartSchema = new Schema(
       trim: true
     },
     last_date:{
-      type: Date,
+      type: String,
       trim: true,
       default: " "
     },

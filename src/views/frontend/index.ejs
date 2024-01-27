@@ -4,7 +4,7 @@
       <% for( let index = 0; index < apart.length; index++ ) { %>
       <li>
         <img
-          src="https://drive.google.com/uc?export=view&id=<%- apart[index].images[0].id %>"
+          src="https://drive.google.com/thumbnail?id=<%- apart[index].images[0].id %>&sz=w3000"
           alt=""
         />
         <div class="header-shad"></div>
@@ -208,11 +208,11 @@
     <div class="house-item js-scroll slide-left">
       <img
         class="img-fluid-p"
-        src="https://drive.google.com/uc?export=view&id=<%- apar[index].images[0].id %>"
+        src="https://drive.google.com/thumbnail?id=<%- apar[index].images[0].id %>&sz=w3000"
         alt=""
       />
       <% if (apar[index].last_date != null) { %>
-        <%var lastdate = apar[index].last_date.toISOString().substr(0, 10);%>
+        <%var lastdate = apar[index].last_date.toString().substr(0, 10);%>
         <%const datenow = new Date().toISOString().substr(0, 10);%>
   
         <%var date1 = new Date(datenow);%>
@@ -277,7 +277,7 @@
             "") { %>
             <img
               class="card-img-top"
-              src="https://drive.google.com/uc?export=view&id=<%- news[index].images[0].id %>"
+              src="https://drive.google.com/thumbnail?id=<%- news[index].images[0].id %>&sz=w3000"
               alt="Card image cap"
             />
             <% } else { %> <%- news[index].news_url %> <% } %>

@@ -2,9 +2,7 @@
   <div class="col-12">
     <div class="card my-4">
       <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-1">
-        <div
-          class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3"
-        >
+        <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
           <h4 class="text-white text-capitalize ps-4">HABERLER</h4>
         </div>
         <div class="card-body">
@@ -15,44 +13,34 @@
         </div>
       </div>
       <div class="card-body px-4">
-    <% for( let index = 0; index < news.length; index++ ) { %>
-      <div class="card d-inline-flex mx-1 my-4" style="width: 18rem">
-        <% if (news[index].images[0] != undefined && news[index].news_url == "") { %>
-          <img class="card-img-top" src="https://drive.google.com/uc?export=view&id=<%- news[index].images[0].id %>" alt="Card image cap">
-      <% } else { %> 
-        <%- news[index].news_url %>
-        
-        <% } %>
-         
-        
+        <% for( let index = 0; index < news.length; index++ ) { %>
+        <div class="card d-inline-flex mx-1 my-4" style="width: 18rem">
+          <% if (news[index].images[0] != undefined && news[index].news_url == "") { %>
+          <img class="card-img-top" src="https://drive.google.com/thumbnail?id=<%- news[index].images[0].id %>" alt="Card image cap">
+          <% } else { %>
+          <%- news[index].news_url %>
 
-     
-        <div class="card-body">
-          <h5 class="card-title"> <%- news[index].news_name %></h5>
-          <p class="card-text">
-            <%- news[index].news_desc %>
-          </p>
-          <a  onclick="btn(this)"
-            href="/yonetim/haberler/haber-guncelle/<%- news[index].id %>"
-            class="d-inline m-2 btn bg-gradient-success shadow-succes"
-            >GÜNCELLE</a
-          > 
-          <a  onclick="btn(this)"
-            href="/yonetim/haberler/haber-sil/<%- news[index].id %>"
-            class="d-inline m-2 btn bg-gradient-danger shadow-danger"
-            >SİL</a
-          >
+          <% } %>
+
+
+
+
+          <div class="card-body">
+            <h5 class="card-title"> <%- news[index].news_name %></h5>
+            <p class="card-text">
+              <%- news[index].news_desc %>
+            </p>
+            <a onclick="btn(this)" href="/yonetim/haberler/haber-guncelle/<%- news[index].id %>" class="d-inline m-2 btn bg-gradient-success shadow-succes">GÜNCELLE</a>
+            <a onclick="btn(this)" href="/yonetim/haberler/haber-sil/<%- news[index].id %>" class="d-inline m-2 btn bg-gradient-danger shadow-danger">SİL</a>
+          </div>
         </div>
-      </div>
-    <% } %>
-     
+        <% } %>
+
       </div>
 
       <div class="card-body px-6">
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-          <a onclick="btn(this)" href="/yonetim/haberler/haber-ekle" class="btn bg-gradient-info"
-            >Haber Ekle</a
-          >
+          <a onclick="btn(this)" href="/yonetim/haberler/haber-ekle" class="btn bg-gradient-info">Haber Ekle</a>
         </div>
       </div>
     </div>
@@ -67,8 +55,6 @@
       iframe[index].classList.add("embed-responsive-item");
       iframe[index].style.width = "100%";
     }
-
-  
   </script>
-   <script src="/admin/js/btn.js"></script>
+  <script src="/admin/js/btn.js"></script>
 </div>

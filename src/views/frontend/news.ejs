@@ -17,7 +17,7 @@
       <% for( let index = 0; index < news.length; index++ ) { %>
         <div class="news-item ">
           <% if (news[index].images[0] != undefined && news[index].news_url == "") { %>
-            <img class="card-img-top" src="https://drive.google.com/uc?export=view&id=<%- news[index].images[0].id %>" alt="Card image cap">
+            <img class="card-img-top" src="https://drive.google.com/thumbnail?id=<%- news[index].images[0].id %>&sz=w3000" alt="Card image cap">
         <% } else { %> 
           <%- news[index].news_url %>
           

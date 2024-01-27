@@ -47,8 +47,8 @@ const getApartDetail = async (req, res, next) => {
 
 
       if(result.last_date != null){
-        var lastdate = result.last_date.toISOString().substr(0, 10);
-        const datenow = new Date().toISOString().substr(0, 10);
+        var lastdate = result.last_date.toString().substr(0, 10);
+        const datenow = new Date().toString().substr(0, 10);
   
         var date1 = new Date(datenow);
         var date2 = new Date(lastdate);

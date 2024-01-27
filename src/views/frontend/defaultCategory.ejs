@@ -23,7 +23,7 @@
         <div class="cat-contain">
           <% for( let index = 0; index < apart.length; index++ ) { %>
             <div class="cat-item ">
-              <img class="img-fluid-p" src="https://drive.google.com/uc?export=view&id=<%- apart[index].images[0].id %>" alt="" />
+              <img class="img-fluid-p" src="https://drive.google.com/thumbnail?id=<%- apart[index].images[0].id %>&sz=w3000" alt="" />
               <% if (apart[index].last_date != null) { %>
                 <%var lastdate = apart[index].last_date.toISOString().substr(0, 10);%>
                 <%const datenow = new Date().toISOString().substr(0, 10);%>

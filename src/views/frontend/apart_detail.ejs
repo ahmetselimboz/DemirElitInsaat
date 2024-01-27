@@ -47,13 +47,14 @@
         </div>
         <div class="detail-alt-area js-scroll fade-in">
           <i id="detail-alt-left" class="bx bx-chevron-left"></i>
-          <div class="detail-alt">
+          <div class="detail-alt" id="embed-container">
             <% for( let index = 0; index < apart.images.length; index++ ) { %>
             <img
               class="detail-alt-image"
-              src="https://drive.google.com/uc?export=view&id=<%- apart.images[index].id %>"
+              src="https://drive.google.com/thumbnail?id=<%- apart.images[index].id %>&sz=w3000"
               alt=""
             />
+            <!-- <iframe src="https://drive.google.com/file/d/1cvq3IHdSGCkJLpL64qU54OFm4zM-Ndyo/preview" width="640" height="480" allow="autoplay"></iframe> -->
             <% } %>
           </div>
           <i id="detail-alt-right" class="bx bx-chevron-right"></i>

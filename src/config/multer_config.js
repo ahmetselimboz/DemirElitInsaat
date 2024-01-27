@@ -7,7 +7,7 @@ const { google } = require("googleapis");
 
 
 
-
+var oauth2Client = new google.auth.OAuth2();
 
 const KEYFILEPATH = path.join(__dirname, "credentials.json");
 const SCOPES = ["https://www.googleapis.com/auth/drive"];
@@ -20,7 +20,7 @@ const auth = new google.auth.GoogleAuth({
 const uploadFile = async (fileObject) => {
   const bufferStream = new stream.PassThrough();
   bufferStream.end(fileObject.buffer);
-  return ({ data } = await google.drive({ version: "v3", auth }).files.create({
+  return ({ data } = await google.drive({ version: "v3" }).files.create({
     media: {
       mimeType: fileObject.mimeType,
       body: bufferStream,

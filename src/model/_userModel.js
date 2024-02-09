@@ -14,6 +14,10 @@ const UserSchema = new Schema({
         required: true,
         trim: true
        
+    },
+    mainAdmin:{
+        type: Boolean,
+        default:false
     }
 }, {collection:'user', timestamps:true});
 

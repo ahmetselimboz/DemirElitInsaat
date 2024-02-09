@@ -6,16 +6,18 @@ const flash = require("connect-flash");
 const session = require("express-session");
 const passport = require("passport");
 const bodyParser = require("body-parser");
+const cnad = require("@bitc/cnad");
+cnad.config(
+  "/home/ahmetsel/nodevenv/ahmetselimboz.com.tr/demirelitinsaat.com.tr/18"
+);
+cnad.start();
 
 const ejs = require("ejs");
 const expressLayouts = require("express-ejs-layouts");
 app.use(expressLayouts);
 app.use(express.static("public"));
-// app.use("/uploads", express.static(path.join(__dirname, "/src/uploads")))
 app.set("view engine", "ejs");
 app.set("views", path.resolve(__dirname, "./src/views"));
-
-// //require('./src/config/bookApi');
 
 require("./src/config/database");
 const MongoDBStore = require("connect-mongodb-session")(session);
@@ -36,6 +38,14 @@ app.use(
     store: sessionStore,
   })
 );
+
+app.use((req,res,next) => {
+  res.cookie("rememberme", "1", {
+   secure:true,
+   sameSite:"None"
+  });
+  next()
+});
 
 app.use(flash());
 app.use((req, res, next) => {
@@ -102,16 +112,10 @@ const adminRouters = require("./src/routers/admin/adminRouters");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// app.get("/", (req, res, next) => {
-
-//   res.redirect("/");
-// });
+require("./src/config/mainAdmin");
 
 app.use("/", frRouter);
 app.use("/yonetim", adminRouters);
-// app.use("/auth", authRouter);
-// app.use("/mobile", mobile_frRouter);
-// app.use("/mobile/auth", mobile_authRouter);
 
 app.listen(process.env.PORT, () => {
   console.log(`Server is standing to ${process.env.PORT} port`);

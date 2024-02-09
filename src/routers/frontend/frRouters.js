@@ -26,7 +26,7 @@ router.post("/mesaj" , frontController.postMessage);
 router.get("/giris",isauth.no, frontController.getLogin);
 router.post("/giris", validations.validatelogin(), frontController.postLogin);
 
-router.get("/kayit",isauth.no, frontController.getRegister);
+router.get("/kayit",isauth.yes, frontController.getRegister);
 router.post("/kayit", validations.validatelogin(), frontController.postRegister);
 
 

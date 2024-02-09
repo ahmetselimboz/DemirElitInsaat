@@ -121,7 +121,7 @@ const ApartSchema = new Schema(
     last_date:{
       type: String,
       trim: true,
-      default: " "
+     
     },
   },
   { collection: "apart", timestamps: true }

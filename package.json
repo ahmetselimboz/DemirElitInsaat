@@ -6,12 +6,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
-    "calis": "nodemon app.js"
+    "wake": "nodemon app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@bitc/cnad": "^1.1.0",
     "bcrypt": "^5.1.0",
     "bcryptjs": "^2.4.3",
     "connect-flash": "^0.1.1",

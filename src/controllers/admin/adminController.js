@@ -411,8 +411,8 @@ const getUpdateApart = async (req, res, next) => {
       }
       
       if(result.last_date != null){
-        date = result.last_date.toISOString().substr(0, 10);
-        console.log(date);
+        date = result.last_date.toString().substr(0, 10);
+
       }
      
      

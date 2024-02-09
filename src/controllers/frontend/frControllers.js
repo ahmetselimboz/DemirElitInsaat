@@ -12,6 +12,7 @@ const passport = require("passport");
 require("../../config/passport_local")(passport);
 const { validationResult } = require("express-validator");
 const bcrypt = require("bcryptjs");
+const leftday = require("../../config/daysLeft");
 
 const getHomePage = async (req, res, next) => {
   const contact = await Contact.findOne({});
@@ -57,7 +58,7 @@ const getApartDetail = async (req, res, next) => {
         var Difference_In_Time = date2.getTime() - date1.getTime();
           
         // To calculate the no. of days between two dates
-        var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+        var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24) + 1;
           
       }
 
@@ -71,7 +72,7 @@ const getApartDetail = async (req, res, next) => {
           link5: "",
           apart: result,
           contact: contact,
-          lastday: Difference_In_Days
+          lastday: !result.last_date ? " " : leftday(result.last_date)
         });
       }
     } else {
